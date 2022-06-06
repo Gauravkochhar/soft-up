@@ -3,8 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'soft-chaos-fe';
+  title = 'soft-chaos';
+
+  ngOnInit(): void {
+    debugger;
+  }
 }
