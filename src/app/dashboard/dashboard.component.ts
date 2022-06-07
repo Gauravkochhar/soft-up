@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { SlickCarouselComponent } from 'ngx-slick-carousel';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,6 +7,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  
+  leftSlideConfig = {
+    slidesToShow:1, 
+    slidesToScroll:1,
+    centerMode:true,
+    vertical:true,
+    dots:true,
+    infinite: false,
+    verticalSwiping: false,
+    adaptiveHeight: true,
+    centerPadding: '0px'
+    
+  };
+  rightSlideConfig = {
+    slidesToShow:2, 
+    slidesToScroll:1,
+    centerMode:false,
+    vertical:false,
+    dots:true,
+    infinite: false,
+    adaptiveHeight: true,
+    centerPadding: '20'
+  };
+  
   slides = [
     {img: "assets/images/agc6202.png"},
     {img: "assets/images/agc6202.png"},
@@ -17,20 +42,14 @@ export class DashboardComponent implements OnInit {
     'assets/logo/place.png',
     'assets/logo/place.png'
   ];
-
+  
   constructor() {
   }
 
   ngOnInit(): void {
   }
-
-
-  slideConfig = {
-    slidesToShow:1.7, 
-    slidesToScroll:1,
-    centerMode:true,
-    vertical:true,
-    dots:true
-  };
   
+  afterLocationSliderChange($event: any) {
+    debugger
+  }
 }
