@@ -7,8 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'soft-chaos';
-
-  ngOnInit(): void {
-    debugger;
-  }
 }

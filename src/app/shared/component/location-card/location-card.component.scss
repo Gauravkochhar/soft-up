@@ -1,0 +1,56 @@
+.custom-card {
+    border-radius: 12px;
+    overflow: hidden;
+    width: 286px;
+    min-height: 320px;
+    background-color: white;
+    .header-section {
+        position: relative;
+        .main-card-image {
+            // height: 160px;
+            width: 100%;
+        }
+        .rating-section {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: white;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 400;
+            padding: 5px 10px;        }
+    }
+    .card-body-section {
+        padding: 15px;
+        .sub-location-section {
+            font-size: 16px;
+            line-height: 26px;
+            color: #66768F;
+            img {
+                margin-right: 10px;
+            }
+        }
+        .main-location-section {
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 36px;
+        }
+        .price-section {
+            font-size: 16px;
+            line-height: 26px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .people-limit-section {
+            border-top: 1px solid #EFEFEF;
+            p {
+                font-size: 14px;
+                line-height: 21px;
+                color: #66768F;
+            }
+        }
+        .bar-graph-section {
+            display: flex;
+        }
+    }
+}
