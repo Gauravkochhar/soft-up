@@ -1,3 +1,4 @@
+@import '../../../../variables';
 .custom-card {
     border-radius: 12px;
     overflow: hidden;
@@ -18,7 +19,18 @@
             border-radius: 24px;
             font-size: 14px;
             font-weight: 400;
-            padding: 5px 10px;        }
+            padding: 5px 10px;
+            .rating {
+                font-weight: 600;
+                color: #223f59;
+                margin-left: 6px;
+                margin-right: 10px;
+
+            }        
+            .total-review {
+                color: #5e7488;
+            }
+        }
     }
     .card-body-section {
         padding: 15px;
@@ -34,15 +46,18 @@
             font-size: 24px;
             font-weight: 600;
             line-height: 36px;
+            color: $gray700;
         }
         .price-section {
             font-size: 16px;
             line-height: 26px;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+            color: $gray700;
         }
         .people-limit-section {
             border-top: 1px solid #EFEFEF;
+            padding-top: 5px;
             p {
                 font-size: 14px;
                 line-height: 21px;
@@ -51,6 +66,34 @@
         }
         .bar-graph-section {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            .chart-section {
+                flex-basis: 100%;
+                padding-right: 10px;
+            }
+            .chart-label {
+                flex-shrink: 0;
+                p {
+                    padding: 0;
+                    margin: 0;
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: $secondary;
+                }
+            }
         }
+    }
+}
+
+.explore-btn-section {
+    button {
+        width: 100%;
+        border: none;
+        background: linear-gradient(90deg, #9F1EFB 0%, #7A17BF 100%);
+        border-radius: 8px;
+        color: $light;
+        height: 48px;
     }
 }

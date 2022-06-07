@@ -1,7 +1,3 @@
-.dashboard-container {
-  margin-top: 110px;
-}
-
 /* Filtering table demo */
 ngbd-table-filtering span.ngb-highlight {
     background-color: yellow;
@@ -24,4 +20,11 @@ ngbd-table-filtering span.ngb-highlight {
     left: 0;
     bottom: 0;
     right: 0;
+  }
+
+  .wave-top {
+    margin-top: 100px;
+  }
+  .carousel-wrapper {
+    background-color: #F7F8F9;
   }

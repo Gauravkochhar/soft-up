@@ -10,6 +10,7 @@ import { FooterComponent } from './core/component/footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';  
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 const environmentConfig: any = environment.logger;
 
@@ -19,6 +20,7 @@ const environmentConfig: any = environment.logger;
     BrowserModule,
     AppRoutingModule,
     SharedModule,
+    SlickCarouselModule,
     LoggerModule.forRoot({
       level: NgxLoggerLevel[environmentConfig.level],
     } as any),

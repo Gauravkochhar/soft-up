@@ -6,7 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
+  slides = [
+    {img: "assets/images/agc6202.png"},
+    {img: "assets/images/agc6202.png"},
+    {img: "assets/images/agc6202.png"},
+    {img: "assets/images/agc6202.png"}
+  ];
   images = [
     'assets/logo/place.png',
     'assets/logo/place.png',
@@ -18,4 +23,14 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
+  slideConfig = {
+    slidesToShow:1.7, 
+    slidesToScroll:1,
+    centerMode:true,
+    vertical:true,
+    dots:true
+  };
+  
 }
