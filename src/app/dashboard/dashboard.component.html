@@ -4,22 +4,31 @@
 <section class="carousel-wrapper">
     <div class="container dashboard-container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 vert-carousel">
                 <ngx-slick-carousel class="carousel" 
                         #slickModal1="slick-carousel" 
                         [config]="leftSlideConfig" >
-                    <div ngxSlickItem *ngFor="let slide of slides" class="slide vertical-slide">
-                        <img src="{{ slide.img }}" alt="" width="100%">
+                    <div ngxSlickItem *ngFor="let slide of slides; let i = index" class="slide vertical-slide">
+                        <div class="vertical-slide__inner">
+                            <div class="count">{{'0'+(i+1)}}</div>
+                            <h2>{{slide?.heading}}</h2>
+                            <p>{{slide?.desc}}</p>
+                        </div>
                     </div>
                 </ngx-slick-carousel>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 hori-carousel position-relative">
+                <div class="slide-counts">
+                    <span class="slide-counts__lg">01</span>
+                    <span class="slide-counts__sm">/05</span>
+                </div>
+                <img src="assets/images/pattern.png" alt="pattern" class="pattern">
                 <ngx-slick-carousel class="carousel" 
                         #slickModal2="slick-carousel" 
                         [config]="rightSlideConfig" >
                     <div ngxSlickItem *ngFor="let slide of slides" class="slide horizontal-slide" (afterChange)="afterLocationSliderChange($event)">
                         <!-- <img src="{{ slide.img }}" alt="" width="100%"> -->
-                        <div style="margin-right:50px;">
+                        <div>
                             <app-location-card></app-location-card>
                         </div>
                     </div>
@@ -29,3 +38,7 @@
         </div>
     </div>
 </section>
+
+<div class="wave-bottom">
+    <img src="assets/images/wave-bottom.png" class="w-100">
+</div>

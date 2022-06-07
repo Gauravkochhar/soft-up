@@ -2,7 +2,7 @@
 .custom-card {
     border-radius: 12px;
     overflow: hidden;
-    width: 286px;
+    width: 100%;
     min-height: 320px;
     background-color: white;
     .header-section {
@@ -20,6 +20,9 @@
             font-size: 14px;
             font-weight: 400;
             padding: 5px 10px;
+            img {
+                display: inline-block;
+            }
             .rating {
                 font-weight: 600;
                 color: #223f59;
@@ -95,5 +98,8 @@
         border-radius: 8px;
         color: $light;
         height: 48px;
+        img {
+            display: inline-block;
+        }
     }
 }
