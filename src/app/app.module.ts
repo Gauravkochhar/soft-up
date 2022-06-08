@@ -12,11 +12,12 @@ import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { HttpClientModule } from '@angular/common/http';
+import { PageNotFoundComponent } from './core/component/page-not-found/page-not-found.component';
 
 const environmentConfig: any = environment.logger;
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, DashboardComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, DashboardComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

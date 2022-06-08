@@ -1,0 +1,53 @@
+{
+    "header": [
+        {
+            "routeName": "Home",
+            "path": "/dashboard"
+        },
+        {
+            "routeName": "Book Per Tour",
+            "path": "/book-per-tour"
+        },
+        {
+            "routeName": "Soft Fly",
+            "path": "",
+            "subPath": [
+                {
+                    "routeName": "Soft Fly First",
+                    "path": "/soft-fly-first"
+                },
+                {
+                    "routeName": "Soft Fly Second",
+                    "path": "/soft-fly-second"
+                },
+                {
+                    "routeName": "Soft Fly Third",
+                    "path": "/soft-fly-third"
+                }
+            ]
+        },
+        {
+            "routeName": "About Us",
+            "path": "/about-us"
+        },
+        {
+            "routeName": "Contact Us",
+            "path": "/contactus"
+        },
+        {
+            "routeName": "Account",
+            "path": "/account",
+            "userProfileTab": true,
+            "subPath": [
+                {
+                    "routeName": "My Profile",
+                    "path": "/my-profile"
+                },
+                {
+                    "routeName": "Logout",
+                    "path": "/logout"
+                }
+            ]
+        }
+    ]
+}

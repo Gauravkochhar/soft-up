@@ -8,11 +8,15 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  getHeaders() {
+    return this.http.get('assets/mocks/headerList.json');
+  }
+
   getNewLocationsForBanner() {
-    return this.http.get('assets/mocks/newLocationList.json', { observe: 'body' });
+    return this.http.get('assets/mocks/newLocationList.json');
   }
 
   getBannerTextList() {
-    return this.http.get('assets/mocks/bannerTextList.json', { observe: 'body' });
+    return this.http.get('assets/mocks/bannerTextList.json');
   }
 }
