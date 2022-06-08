@@ -1,16 +1,22 @@
 @import '../../../../variables';
+
 .custom-card {
     border-radius: 12px;
     overflow: hidden;
     width: 100%;
     min-height: 320px;
     background-color: white;
+
     .header-section {
         position: relative;
+
         .main-card-image {
-            // height: 160px;
+            // max-height: 160px;
+            object-fit: cover;
             width: 100%;
+            height: 160px;
         }
+
         .rating-section {
             position: absolute;
             bottom: 10px;
@@ -20,37 +26,45 @@
             font-size: 14px;
             font-weight: 400;
             padding: 5px 10px;
+
             img {
                 display: inline-block;
             }
+
             .rating {
                 font-weight: 600;
                 color: #223f59;
                 margin-left: 6px;
                 margin-right: 10px;
 
-            }        
+            }
+
             .total-review {
                 color: #5e7488;
             }
         }
     }
+
     .card-body-section {
         padding: 15px;
+
         .sub-location-section {
             font-size: 16px;
             line-height: 26px;
             color: #66768F;
+
             img {
                 margin-right: 10px;
             }
         }
+
         .main-location-section {
             font-size: 24px;
             font-weight: 600;
             line-height: 36px;
             color: $gray700;
         }
+
         .price-section {
             font-size: 16px;
             line-height: 26px;
@@ -58,35 +72,53 @@
             margin-bottom: 5px;
             color: $gray700;
         }
-        .people-limit-section {
-            border-top: 1px solid #EFEFEF;
-            padding-top: 5px;
-            p {
-                font-size: 14px;
-                line-height: 21px;
-                color: #66768F;
+
+        .bottom-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 1s ease-in-out;
+
+            &-open {
+                max-height: 1000px;
+                transition: max-height 2s ease-in-out;
             }
-        }
-        .bar-graph-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            .chart-section {
-                flex-basis: 100%;
-                padding-right: 10px;
-            }
-            .chart-label {
-                flex-shrink: 0;
+
+            .people-limit-section {
+                border-top: 1px solid #EFEFEF;
+                padding-top: 5px;
+
                 p {
-                    padding: 0;
-                    margin: 0;
                     font-size: 14px;
-                    font-weight: 500;
-                    color: $secondary;
+                    line-height: 21px;
+                    color: #66768F;
+                }
+            }
+
+            .bar-graph-section {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+
+                .chart-section {
+                    flex-basis: 100%;
+                    padding-right: 10px;
+                }
+
+                .chart-label {
+                    flex-shrink: 0;
+
+                    p {
+                        padding: 0;
+                        margin: 0;
+                        font-size: 14px;
+                        font-weight: 500;
+                        color: $secondary;
+                    }
                 }
             }
         }
+
     }
 }
 
@@ -98,6 +130,7 @@
         border-radius: 8px;
         color: $light;
         height: 48px;
+
         img {
             display: inline-block;
         }
