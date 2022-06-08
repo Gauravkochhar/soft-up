@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
+import { ApiService } from '../core/service/api.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,52 +8,126 @@ import { SlickCarouselComponent } from 'ngx-slick-carousel';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  
+
+  requestingServerForBannerText = false;
+  requestingServerForLocations = false;
+  bannerLocationList: any = [];
+  bannerTextList: any = [];
+
+  public isScrolled: any = false;
+  horizontalSlideNumber: any = 1;
   leftSlideConfig = {
-    slidesToShow:2.8, 
-    slidesToScroll:1,
-    centerMode:true,
-    vertical:true,
-    dots:false,
-    nav:false,
+    slidesToShow: 1.5,
+    slidesToScroll: 1,
+    centerMode: false,
+    vertical: true,
+    dots: false,
+    nav: false,
     infinite: false,
     verticalSwiping: true,
     adaptiveHeight: true,
-    centerPadding: '0px'
-    
+    centerPadding: '0px',
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1.2,
+        }
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          vertical: false,
+          verticalSwiping: false,
+          slidesToShow: 1.2,
+        }
+      },
+      {
+        breakpoint: 920,
+        settings: {
+          slidesToShow: 1,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          vertical: false,
+          verticalSwiping: false,
+          slidesToShow: 1.2,
+        }
+      }
+    ]
   };
   rightSlideConfig = {
-    slidesToShow:2, 
-    slidesToScroll:1,
-    centerMode:false,
-    vertical:false,
-    dots:true,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    centerMode: false,
+    vertical: false,
+    dots: true,
     infinite: false,
-    adaptiveHeight: true,
+    adaptiveHeight: false,
     centerPadding: '10',
+    responsive: [
+      {
+        breakpoint: 920,
+        settings: {
+          slidesToShow: 1.2,
+        }
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 2,
+        }
+      },
+      {
+        breakpoint: 556,
+        settings: {
+          slidesToShow: 1.6,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1.2,
+        }
+      }
+    ],
     prevArrow: "<button type='button' class='slick-prev pull-left'><img width='30px' height='30px' src='assets/images/arrow-left.jpeg'></button>",
     nextArrow: "<button type='button' class='slick-next pull-right'><img width='30px' height='30px' src='assets/images/arrow-right.jpeg'></button>",
   };
-  
-  slides = [
-    {heading:'City View', desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus neque augue, bibendum auctor lectus blandit sit amet. Nullam neque risus, feugiat a ligula nec, rutrum imperdiet felis.'},
-    {heading:'Saran', desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus neque augue, bibendum auctor lectus blandit sit amet. Nullam neque risus, feugiat a ligula nec, rutrum imperdiet felis.'},
-    {heading:'Back to the nast', desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus neque augue, bibendum auctor lectus blandit sit amet. Nullam neque risus, feugiat a ligula nec, rutrum imperdiet felis.'},
-    {heading:'demo 1', desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus neque augue, bibendum auctor lectus blandit sit amet. Nullam neque risus, feugiat a ligula nec, rutrum imperdiet felis.'}
-  ];
-  images = [
-    'assets/logo/place.png',
-    'assets/logo/place.png',
-    'assets/logo/place.png'
-  ];
-  
-  constructor() {
+
+  constructor(private apiService: ApiService) {
+    this.loadBannerText();
+    this.loadBannerLocations();
   }
 
   ngOnInit(): void {
   }
-  
-  afterLocationSliderChange($event: any) {
-    debugger
+
+  loadBannerText() {
+    this.requestingServerForBannerText = true;
+    setTimeout(() => {
+      this.apiService.getBannerTextList().subscribe((response: any) => {
+        this.bannerTextList = response.section;
+        this.requestingServerForBannerText = false;
+      })
+    }, 1000)
   }
+
+  loadBannerLocations() {
+    this.requestingServerForLocations = true;
+    setTimeout(() => {
+      this.apiService.getNewLocationsForBanner().subscribe((response: any) => {
+        this.bannerLocationList = response.location;
+        this.requestingServerForLocations = false;
+      })
+    }, 2000)
+  }
+
+  afterChange(event: any) {
+    console.log(event);
+    this.horizontalSlideNumber = event.currentSlide + 1;
+  }
+
 }

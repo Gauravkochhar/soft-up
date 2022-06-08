@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,10 +7,11 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { environment } from 'src/environments/environment';
 import { HeaderComponent } from './core/component/header/header.component';
 import { FooterComponent } from './core/component/footer/footer.component';
-import { DashboardComponent } from './dashboard/dashboard.component';  
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { HttpClientModule } from '@angular/common/http';
 
 const environmentConfig: any = environment.logger;
 
@@ -21,12 +22,14 @@ const environmentConfig: any = environment.logger;
     AppRoutingModule,
     SharedModule,
     SlickCarouselModule,
+    HttpClientModule,
     LoggerModule.forRoot({
       level: NgxLoggerLevel[environmentConfig.level],
     } as any),
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

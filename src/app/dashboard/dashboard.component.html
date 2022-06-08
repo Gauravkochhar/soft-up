@@ -5,10 +5,16 @@
     <div class="container dashboard-container">
         <div class="row">
             <div class="col-md-6 vert-carousel">
-                <ngx-slick-carousel class="carousel" 
-                        #slickModal1="slick-carousel" 
-                        [config]="leftSlideConfig" >
-                    <div ngxSlickItem *ngFor="let slide of slides; let i = index" class="slide vertical-slide">
+                <ngx-slick-carousel class="carousel" #slickModal1="slick-carousel" [config]="leftSlideConfig">
+                    <ng-container *ngIf="requestingServerForBannerText">
+                        <div ngxSlickItem class="slide vertical-slide">
+                            <app-skeleton-loader [elementType]="'bannerTextCard'"></app-skeleton-loader>
+                        </div>
+                        <div ngxSlickItem class="slide vertical-slide">
+                            <app-skeleton-loader [elementType]="'bannerTextCard'"></app-skeleton-loader>
+                        </div>
+                    </ng-container>
+                    <div ngxSlickItem *ngFor="let slide of bannerTextList; let i = index" class="slide vertical-slide">
                         <div class="vertical-slide__inner">
                             <div class="count">{{'0'+(i+1)}}</div>
                             <h2>{{slide?.heading}}</h2>
@@ -19,21 +25,30 @@
             </div>
             <div class="col-md-6 hori-carousel position-relative">
                 <div class="slide-counts">
-                    <span class="slide-counts__lg">01</span>
-                    <span class="slide-counts__sm">/05</span>
+                    <span class="slide-counts__lg">{{ '0' + horizontalSlideNumber }}</span>
+                    <span class="slide-counts__sm">/{{bannerLocationList.length}}</span>
                 </div>
                 <img src="assets/images/pattern.png" alt="pattern" class="pattern">
-                <ngx-slick-carousel class="carousel" 
-                        #slickModal2="slick-carousel" 
-                        [config]="rightSlideConfig" >
-                    <div ngxSlickItem *ngFor="let slide of slides" class="slide horizontal-slide" (afterChange)="afterLocationSliderChange($event)">
-                        <!-- <img src="{{ slide.img }}" alt="" width="100%"> -->
+                <ngx-slick-carousel class="carousel" #slickModal2="slick-carousel" [config]="rightSlideConfig"
+                    (afterChange)="afterChange($event)">
+                    <ng-container *ngIf="requestingServerForLocations">
+                        <div ngxSlickItem class="slide horizontal-slide">
+                            <app-skeleton-loader></app-skeleton-loader>
+                        </div>
+                        <div ngxSlickItem class="slide horizontal-slide">
+                            <app-skeleton-loader></app-skeleton-loader>
+                        </div>
+                    </ng-container>
+                    <div ngxSlickItem *ngFor="let location of bannerLocationList;let i = index"
+                        class="slide horizontal-slide">
                         <div>
-                            <app-location-card></app-location-card>
+                            <app-location-card [isActive]="horizontalSlideNumber == (i+1)" [locationInfo]="location">
+
+                            </app-location-card>
                         </div>
                     </div>
                 </ngx-slick-carousel>
-    
+
             </div>
         </div>
     </div>

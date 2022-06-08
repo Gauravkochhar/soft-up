@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LocationCardComponent } from './component/location-card/location-card.component';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { SkeletonLoaderComponent } from './component/skeleton-loader/skeleton-loader.component';
 
 const MAT_MODULES = [
   MatProgressBarModule
@@ -9,7 +10,8 @@ const MAT_MODULES = [
 
 @NgModule({
   declarations: [
-    LocationCardComponent
+    LocationCardComponent,
+    SkeletonLoaderComponent
   ],
   imports: [
     CommonModule,
@@ -17,6 +19,7 @@ const MAT_MODULES = [
   ],
   exports: [
     LocationCardComponent,
+    SkeletonLoaderComponent,
     MAT_MODULES
   ]
 })
