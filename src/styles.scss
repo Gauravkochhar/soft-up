@@ -87,12 +87,18 @@ h1 span {
 
 .hori-carousel {
 	margin-top: -20px;
-
+	.slick-list {
+		height: 457px;
+	}
 	.slick-dots {
 		display: flex;
 		justify-content: flex-start;
 		transform: translateY(-20px);
 		width: 400px;
+		@media (max-width:480px) {
+			width: 200px;
+			overflow: hidden;
+		}
 
 		li {
 			// width: 40px;
@@ -137,12 +143,12 @@ h1 span {
 		}
 
 		&.slick-prev {
-			right: 50px;
+			right: 60px;
 			left: inherit;
 		}
 
 		&.slick-next {
-			right: 0;
+			right: 10px;
 			left: inherit;
 		}
 

@@ -51,7 +51,8 @@ export class DashboardComponent implements OnInit {
         settings: {
           vertical: false,
           verticalSwiping: false,
-          slidesToShow: 1.2,
+          slidesToShow: 1,
+          centerMode:false
         }
       }
     ]
