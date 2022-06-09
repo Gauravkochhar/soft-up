@@ -1,12 +1,13 @@
 <div class="wave-top">
     <img src="assets/images/wave-top.svg" class="w-100">
 </div>
-<section class="carousel-wrapper">
+<section class="carousel-wrapper" [ngClass]="{'page-scroll-animation': pageSlideAnimationActive}">
     <div class="container-fluid dashboard-container">
         <div class="row">
             <div class="col-md-6 vert-carousel">
                 <ngx-slick-carousel class="carousel" #slickModal1="slick-carousel" [config]="leftSlideConfig"
-                    (afterChange)="afterMasterCarouselChange($event, slickModal2)">
+                    (afterChange)="afterMasterCarouselChange($event, slickModal2)"
+                    (beforeChange)="showPageSlideAnimation()">
                     <ng-container *ngIf="requestingServerForBannerText">
                         <div ngxSlickItem class="slide vertical-slide">
                             <app-skeleton-loader [elementType]="'bannerTextCard'"></app-skeleton-loader>

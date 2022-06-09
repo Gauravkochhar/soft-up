@@ -9,6 +9,7 @@ import { ApiService } from '../core/service/api.service';
 })
 export class DashboardComponent implements OnInit {
 
+  pageSlideAnimationActive = false;
   requestingServerForBannerText = false;
   requestingServerForLocations = false;
   bannerLocationList: any = [];
@@ -52,7 +53,7 @@ export class DashboardComponent implements OnInit {
           vertical: false,
           verticalSwiping: false,
           slidesToShow: 1,
-          centerMode:false
+          centerMode: false
         }
       }
     ]
@@ -145,4 +146,10 @@ export class DashboardComponent implements OnInit {
     slaveCarousel.slickGoTo(0);
   }
 
+  showPageSlideAnimation() {
+    this.pageSlideAnimationActive = true;
+    setTimeout(() => {
+      this.pageSlideAnimationActive = false;
+    }, 2000)
+  }
 }

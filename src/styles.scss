@@ -35,7 +35,7 @@ img {
 }
 
 .container {
-	max-width: 1200px;
+	max-width: 1920px;
 }
 
 ::selection {
@@ -87,14 +87,17 @@ h1 span {
 
 .hori-carousel {
 	margin-top: -20px;
+
 	.slick-list {
 		height: 457px;
 	}
+
 	.slick-dots {
 		display: flex;
 		justify-content: flex-start;
 		transform: translateY(-20px);
 		width: 400px;
+
 		@media (max-width:480px) {
 			width: 200px;
 			overflow: hidden;
@@ -155,6 +158,26 @@ h1 span {
 		&.slick-disabled {
 			opacity: 0.3;
 			cursor: not-allowed;
+		}
+	}
+}
+
+.carousel-wrapper {
+	.rotate-3d {
+		.custom-card {
+			transform: none;
+			transition: none;
+		}
+	}
+
+	&.page-scroll-animation {
+		.rotate-3d {
+
+			.custom-card {
+				transform-style: preserve-3d;
+				transform: scaleX(-1) rotateY(180deg);
+				transition: transform 1s;
+			}
 		}
 	}
 }
