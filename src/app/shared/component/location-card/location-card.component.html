@@ -1,7 +1,7 @@
 <div class="custom-card" [ngClass]="{'card-shadow': isActive}">
     <div class="header-section">
         <img class="main-card-image" [src]="locationInfo?.imageUrl">
-        <div class="rating-section">
+        <div class="rating-section" matRipple>
             <img src="assets/images/card-images/rating.png"> <span class="rating">{{ locationInfo?.rating }}</span>
             <span class="total-review">{{ locationInfo?.totalReview }} Reviews</span>
         </div>
@@ -23,14 +23,16 @@
             </div>
             <div class="bar-graph-section">
                 <div class="chart-section">
-                    <mat-progress-bar name="gaurav" mode="determinate" value="40"></mat-progress-bar>
+                    <mat-progress-bar class="card-progress-bar" name="gaurav" mode="determinate"
+                        [value]="(locationInfo.totalBooked/locationInfo.limit)*100"></mat-progress-bar>
                 </div>
                 <div class="chart-label">
                     <p>{{ locationInfo?.totalBooked }} booked</p>
                 </div>
             </div>
             <div class="explore-btn-section">
-                <button>Explore Tour <img src="assets/images/card-images/right-arrow.png"></button>
+                <button matRipple>Explore Tour <img class="btn-arrow-img"
+                        src="assets/images/card-images/right-arrow.png"></button>
             </div>
         </div>
     </div>

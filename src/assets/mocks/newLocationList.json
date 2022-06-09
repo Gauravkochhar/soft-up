@@ -2,6 +2,138 @@
     "location": [
         {
             "id": "1",
+            "imageUrl": "assets/images/card-images/banner4.png",
+            "rating": "4.8",
+            "totalReview": "10",
+            "placeLocation": "AI Haram, Egypt",
+            "placeName": "Giza Pyramid",
+            "chargeAmount": "$50.00",
+            "limit": "16",
+            "totalBooked": "16"
+        },
+        {
+            "id": "1",
+            "imageUrl": "assets/images/card-images/banner1.png",
+            "rating": "4.8",
+            "totalReview": "10",
+            "placeLocation": "AI Haram, Egypt",
+            "placeName": "Giza Pyramid",
+            "chargeAmount": "$50.00",
+            "limit": "12",
+            "totalBooked": "5"
+        },
+        {
+            "id": "1",
+            "imageUrl": "assets/images/card-images/banner3.png",
+            "rating": "4.8",
+            "totalReview": "10",
+            "placeLocation": "AI Haram, Egypt",
+            "placeName": "Giza Pyramid",
+            "chargeAmount": "$50.00",
+            "limit": "4",
+            "totalBooked": "2"
+        },
+        {
+            "id": "1",
+            "imageUrl": "assets/images/card-images/banner2.png",
+            "rating": "4.8",
+            "totalReview": "10",
+            "placeLocation": "AI Haram, Egypt",
+            "placeName": "Giza Pyramid",
+            "chargeAmount": "$50.00",
+            "limit": "24",
+            "totalBooked": "4"
+        },
+        {
+            "id": "1",
+            "imageUrl": "assets/images/card-images/banner5.png",
+            "rating": "4.8",
+            "totalReview": "10",
+            "placeLocation": "AI Haram, Egypt",
+            "placeName": "Giza Pyramid",
+            "chargeAmount": "$50.00",
+            "limit": "44",
+            "totalBooked": "24"
+        },
+        {
+            "id": "1",
+            "imageUrl": "assets/images/card-images/banner1.png",
+            "rating": "4.8",
+            "totalReview": "10",
+            "placeLocation": "AI Haram, Egypt",
+            "placeName": "Giza Pyramid",
+            "chargeAmount": "$50.00",
+            "limit": "10",
+            "totalBooked": "10"
+        },
+        {
+            "id": "1",
+            "imageUrl": "assets/images/card-images/banner2.png",
+            "rating": "4.8",
+            "totalReview": "10",
+            "placeLocation": "AI Haram, Egypt",
+            "placeName": "Giza Pyramid",
+            "chargeAmount": "$50.00",
+            "limit": "11",
+            "totalBooked": "5"
+        },
+        {
+            "id": "1",
+            "imageUrl": "assets/images/card-images/banner4.png",
+            "rating": "4.8",
+            "totalReview": "10",
+            "placeLocation": "AI Haram, Egypt",
+            "placeName": "Giza Pyramid",
+            "chargeAmount": "$50.00",
+            "limit": "19",
+            "totalBooked": "5"
+        },
+        {
+            "id": "1",
+            "imageUrl": "assets/images/card-images/banner1.png",
+            "rating": "4.8",
+            "totalReview": "10",
+            "placeLocation": "AI Haram, Egypt",
+            "placeName": "Giza Pyramid",
+            "chargeAmount": "$50.00",
+            "limit": "18",
+            "totalBooked": "14"
+        },
+        {
+            "id": "1",
+            "imageUrl": "assets/images/card-images/banner3.png",
+            "rating": "4.8",
+            "totalReview": "10",
+            "placeLocation": "AI Haram, Egypt",
+            "placeName": "Giza Pyramid",
+            "chargeAmount": "$50.00",
+            "limit": "7",
+            "totalBooked": "5"
+        },
+        {
+            "id": "1",
+            "imageUrl": "assets/images/card-images/banner2.png",
+            "rating": "4.8",
+            "totalReview": "10",
+            "placeLocation": "AI Haram, Egypt",
+            "placeName": "Giza Pyramid",
+            "chargeAmount": "$50.00",
+            "limit": "7",
+            "totalBooked": "5"
+        },
+        {
+            "id": "1",
+            "imageUrl": "assets/images/card-images/banner5.png",
+            "rating": "4.8",
+            "totalReview": "10",
+            "placeLocation": "AI Haram, Egypt",
+            "placeName": "Giza Pyramid",
+            "chargeAmount": "$50.00",
+            "limit": "7",
+            "totalBooked": "5"
+        },
+        {
+            "id": "1",
             "imageUrl": "assets/images/card-images/banner1.png",
             "rating": "4.8",
             "totalReview": "10",
@@ -24,6 +156,28 @@
         },
         {
             "id": "1",
+            "imageUrl": "assets/images/card-images/banner4.png",
+            "rating": "4.8",
+            "totalReview": "10",
+            "placeLocation": "AI Haram, Egypt",
+            "placeName": "Giza Pyramid",
+            "chargeAmount": "$50.00",
+            "limit": "7",
+            "totalBooked": "5"
+        },
+        {
+            "id": "1",
+            "imageUrl": "assets/images/card-images/banner1.png",
+            "rating": "4.8",
+            "totalReview": "10",
+            "placeLocation": "AI Haram, Egypt",
+            "placeName": "Giza Pyramid",
+            "chargeAmount": "$50.00",
+            "limit": "7",
+            "totalBooked": "5"
+        },
+        {
+            "id": "1",
             "imageUrl": "assets/images/card-images/banner3.png",
             "rating": "4.8",
             "totalReview": "10",
@@ -35,7 +189,7 @@
         },
         {
             "id": "1",
-            "imageUrl": "assets/images/card-images/banner4.png",
+            "imageUrl": "assets/images/card-images/banner2.png",
             "rating": "4.8",
             "totalReview": "10",
             "placeLocation": "AI Haram, Egypt",

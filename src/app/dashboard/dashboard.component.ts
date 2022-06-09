@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
 import { ApiService } from '../core/service/api.service';
 
@@ -13,20 +13,18 @@ export class DashboardComponent implements OnInit {
   requestingServerForLocations = false;
   bannerLocationList: any = [];
   bannerTextList: any = [];
-
-  public isScrolled: any = false;
   horizontalSlideNumber: any = 1;
+  VerticalSlideNumber: any = 1;
   leftSlideConfig = {
-    slidesToShow: 1.5,
+    slidesToShow: 3,
     slidesToScroll: 1,
-    centerMode: false,
+    centerMode: true,
     vertical: true,
     dots: false,
     nav: false,
     infinite: false,
     verticalSwiping: true,
-    adaptiveHeight: true,
-    centerPadding: '0px',
+    centerPadding: '75px',
     responsive: [
       {
         breakpoint: 1024,
@@ -59,14 +57,17 @@ export class DashboardComponent implements OnInit {
     ]
   };
   rightSlideConfig = {
-    slidesToShow: 2,
+    slidesToShow: 2.5,
     slidesToScroll: 1,
-    centerMode: false,
+    centerMode: true,
     vertical: false,
     dots: true,
     infinite: false,
     adaptiveHeight: false,
-    centerPadding: '10',
+    centerPadding: '30',
+    variableWidth: true,
+    variableHeight: true,
+    speed: 500,
     responsive: [
       {
         breakpoint: 920,
@@ -93,8 +94,8 @@ export class DashboardComponent implements OnInit {
         }
       }
     ],
-    prevArrow: "<button type='button' class='slick-prev pull-left'><img width='30px' height='30px' src='assets/images/arrow-left.jpeg'></button>",
-    nextArrow: "<button type='button' class='slick-next pull-right'><img width='30px' height='30px' src='assets/images/arrow-right.jpeg'></button>",
+    prevArrow: "<button type='button' matRipple class='slick-prev pull-left'><img width='30px' height='30px' src='assets/images/arrow-left.jpeg'></button>",
+    nextArrow: "<button type='button' matRipple class='slick-next pull-right'><img width='30px' height='30px' src='assets/images/arrow-right.jpeg'></button>",
   };
 
   constructor(private apiService: ApiService) {
@@ -116,18 +117,31 @@ export class DashboardComponent implements OnInit {
   }
 
   loadBannerLocations() {
+    console.log('loadBannerLocations')
     this.requestingServerForLocations = true;
+    this.bannerLocationList = [];
     setTimeout(() => {
       this.apiService.getNewLocationsForBanner().subscribe((response: any) => {
         this.bannerLocationList = response.location;
         this.requestingServerForLocations = false;
       })
-    }, 2000)
+    }, 1000)
   }
 
-  afterChange(event: any) {
+
+  afterMasterCarouselChange(event: any, slaveCarousel: any) {
+    this.VerticalSlideNumber = event.currentSlide + 1;
+    slaveCarousel.slickGoTo(0);
+  }
+
+  afterSlaveCarouselChange(event: any) {
     console.log(event);
     this.horizontalSlideNumber = event.currentSlide + 1;
+  }
+
+  onBannerCountClick(masterCarousel: any, slaveCarousel: any, requestedSlideNumber: number) {
+    masterCarousel.slickGoTo(requestedSlideNumber);
+    slaveCarousel.slickGoTo(0);
   }
 
 }

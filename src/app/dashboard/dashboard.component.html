@@ -2,10 +2,11 @@
     <img src="assets/images/wave-top.svg" class="w-100">
 </div>
 <section class="carousel-wrapper">
-    <div class="container dashboard-container">
+    <div class="container-fluid dashboard-container">
         <div class="row">
             <div class="col-md-6 vert-carousel">
-                <ngx-slick-carousel class="carousel" #slickModal1="slick-carousel" [config]="leftSlideConfig">
+                <ngx-slick-carousel class="carousel" #slickModal1="slick-carousel" [config]="leftSlideConfig"
+                    (afterChange)="afterMasterCarouselChange($event, slickModal2)">
                     <ng-container *ngIf="requestingServerForBannerText">
                         <div ngxSlickItem class="slide vertical-slide">
                             <app-skeleton-loader [elementType]="'bannerTextCard'"></app-skeleton-loader>
@@ -16,22 +17,30 @@
                     </ng-container>
                     <div ngxSlickItem *ngFor="let slide of bannerTextList; let i = index" class="slide vertical-slide">
                         <div class="vertical-slide__inner">
-                            <div class="count">{{'0'+(i+1)}}</div>
-                            <h2>{{slide?.heading}}</h2>
-                            <p>{{slide?.desc}}</p>
+                            <div class="count" [ngClass]="{'active-slide': i == (VerticalSlideNumber-1)}"
+                                (click)="onBannerCountClick(slickModal1, slickModal2, i)">{{ (i+1) < 10 ? ('0' + (i+1)):
+                                    (i+1)}}</div>
+                                    <h2 [ngClass]="{'big-font': i == (VerticalSlideNumber-1)}">{{slide?.heading}}</h2>
+                                    <p [ngClass]="{'opacity-0': i != (VerticalSlideNumber-1)}">{{slide?.desc}}</p>
+                            </div>
                         </div>
-                    </div>
                 </ngx-slick-carousel>
             </div>
             <div class="col-md-6 hori-carousel position-relative">
                 <div class="slide-counts">
-                    <span class="slide-counts__lg">{{ '0' + horizontalSlideNumber }}</span>
-                    <span class="slide-counts__sm">/{{bannerLocationList.length}}</span>
+                    <span class="slide-counts__lg">{{ horizontalSlideNumber < 10 ? ('0' + horizontalSlideNumber):
+                            horizontalSlideNumber }}</span>
+                            <span class="slide-counts__sm">/{{bannerLocationList.length < 10 ? ('0' +
+                                    bannerLocationList.length): bannerLocationList.length}}</span>
                 </div>
-                <img src="assets/images/pattern.png" alt="pattern" class="pattern">
+                <img [ngClass]="{'initial-pattern': horizontalSlideNumber == 1 }" src="assets/images/pattern.png"
+                    alt="pattern" class="pattern">
                 <ngx-slick-carousel class="carousel" #slickModal2="slick-carousel" [config]="rightSlideConfig"
-                    (afterChange)="afterChange($event)">
+                    (afterChange)="afterSlaveCarouselChange($event)">
                     <ng-container *ngIf="requestingServerForLocations">
+                        <div ngxSlickItem class="slide horizontal-slide">
+                            <app-skeleton-loader></app-skeleton-loader>
+                        </div>
                         <div ngxSlickItem class="slide horizontal-slide">
                             <app-skeleton-loader></app-skeleton-loader>
                         </div>
@@ -40,7 +49,7 @@
                         </div>
                     </ng-container>
                     <div ngxSlickItem *ngFor="let location of bannerLocationList;let i = index"
-                        class="slide horizontal-slide">
+                        class="slide horizontal-slide" [ngClass]="{'active-slide': i == (horizontalSlideNumber-1)}">
                         <div>
                             <app-location-card [isActive]="horizontalSlideNumber == (i+1)" [locationInfo]="location">
 

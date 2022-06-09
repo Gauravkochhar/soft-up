@@ -94,7 +94,7 @@ h1 span {
 		transform: translateY(-10px);
 
 		li {
-			width: 20px;
+			width: 40px;
 			height: 3px;
 			margin: 0;
 			background: #ededed;
@@ -111,6 +111,7 @@ h1 span {
 				button {
 					width: 100%;
 					height: 4px;
+					border-radius: 2px;
 					background: #ae99bc;
 					padding: 0;
 					margin: 0;
@@ -127,6 +128,7 @@ h1 span {
 		bottom: -30px;
 		position: absolute;
 		top: inherit;
+		cursor: pointer;
 
 		&::before {
 			content: none;
@@ -140,6 +142,11 @@ h1 span {
 		&.slick-next {
 			right: 0;
 			left: inherit;
+		}
+
+		&.slick-disabled {
+			opacity: 0.3;
+			cursor: not-allowed;
 		}
 	}
 }
