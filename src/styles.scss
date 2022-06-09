@@ -91,10 +91,12 @@ h1 span {
 	.slick-dots {
 		display: flex;
 		justify-content: flex-start;
-		transform: translateY(-10px);
+		transform: translateY(-20px);
+		width: 400px;
 
 		li {
-			width: 40px;
+			// width: 40px;
+			flex: 1;
 			height: 3px;
 			margin: 0;
 			background: #ededed;
@@ -109,7 +111,7 @@ h1 span {
 
 			&.slick-active {
 				button {
-					width: 100%;
+					width: inherit;
 					height: 4px;
 					border-radius: 2px;
 					background: #ae99bc;
