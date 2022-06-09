@@ -76,6 +76,7 @@
   &.active-slide {
     margin-top: -30px;
     transition: margin-top 0.5s ease-in-out;
+
     @media (max-width: 991px) {
       margin-top: 0;
     }
@@ -109,6 +110,16 @@
     font-size: 14px;
     line-height: 26px;
     color: #757f8f;
+    transition: line-height 1s ease-in;
+    transition: font-size 1s ease-in;
+
+    &.opacity-0 {
+      opacity: 0;
+      font-size: 0px;
+      line-height: 0px;
+      transition: line-height 1s ease-in;
+      transition: font-size 1s ease-in;
+    }
 
     @media (max-width: 1024px) {
       font-size: 12px;
@@ -171,9 +182,11 @@
   padding-right: 50px;
   height: 400px;
   overflow: hidden;
+
   @media (max-width:767px) {
     height: auto;
   }
+
   // background-color: red;
 
   &::before,
@@ -187,6 +200,7 @@
     content: "";
     left: 0;
     right: 0;
+
     @media (max-width:767px) {
       content: none;
     }
@@ -265,9 +279,4 @@
   //   top: -5px;
   //   left: 122px;
   // }
-}
-
-.opacity-0 {
-  opacity: 0;
-  height: 0;
 }
