@@ -3,14 +3,16 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
+    "start:local": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "lint": "ng lint",
-    "prepare:husky": "husky install"
+    "prepare:husky": "husky install",
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -28,9 +30,11 @@
     "animate.css": "^4.1.1",
     "autoprefixer": "10.4.5",
     "bootstrap": "^4.6.1",
+    "express": "^4.18.1",
     "jquery": "^3.6.0",
     "ngx-logger": "^5.0.11",
     "ngx-slick-carousel": "^0.6.0",
+    "path": "^0.12.7",
     "popper.js": "^1.16.1",
     "rxjs": "~7.5.0",
     "slick-carousel": "^1.8.1",
@@ -81,5 +85,9 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "engines": {
+    "node": "16.13.2",
+    "npm": "6.14.5"
   }
 }
