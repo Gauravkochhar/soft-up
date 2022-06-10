@@ -116,7 +116,7 @@
 }
 
 .horizontal-slide {
-  padding: 0 10px;
+  padding: 35px 10px;
   margin-top: 0;
   transition: margin-top 0.5s ease-in-out;
 
@@ -145,7 +145,11 @@
 
     &.big-font {
       font-size: 45px;
+      line-height: 1;
       transition: font-size 1s ease-in-out;
+      @media (max-width:480px) {
+        font-size: 25px;
+      }
     }
 
     @media (max-width: 1024px) {
@@ -158,6 +162,9 @@
     line-height: 26px;
     color: #757f8f;
     transition: opacity 1s ease-in;
+    @media (max-width:480px) {
+      line-height: 1.6;
+    }
 
     &.opacity-0 {
       opacity: 0;
@@ -175,7 +182,10 @@
     padding: 20px 0;
     padding-left: 130px;
     position: relative;
-
+    max-height: 230px;
+    @media (max-width: 767px) {
+      max-height: inherit ;
+    }
     @media (max-width: 1024px) {
       padding-left: 80px;
     }
@@ -263,7 +273,7 @@
   }
 
   &::after {
-    height: 200px;
+    height: 160px;
     opacity: 4.5;
     background: linear-gradient(0deg, #f7f8f9, rgba(255,255,255,0%));
     background: -moz-linear-gradient(0deg, #f7f8f9, rgba(255,255,255,0%));

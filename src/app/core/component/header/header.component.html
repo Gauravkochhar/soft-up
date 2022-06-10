@@ -15,7 +15,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto py-4 py-md-0">
                             <ng-container *ngFor="let routeObj of headerList; let i = index;">
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 ml-sm-2">
+                                <li class="nav-item">
                                     <ng-container *ngIf="!routeObj?.subPath?.length">
                                         <a class="nav-link" [routerLink]="[routeObj.path]" (click)="onPathClick()">
                                             {{ routeObj?.routeName }}

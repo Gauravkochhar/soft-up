@@ -187,6 +187,9 @@
 .nav-item {
 	position: relative;
 	transition: all 200ms linear;
+	&:not(:last-child) {
+		margin-right: 60px;
+	}
 
 	.user-account-img {
 		height: 38px;

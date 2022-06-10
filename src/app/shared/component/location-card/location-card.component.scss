@@ -41,12 +41,25 @@
                 font-weight: 600;
                 color: #223f59;
                 margin-left: 6px;
-                margin-right: 10px;
+                margin-right: 7px;
 
             }
 
             .total-review {
                 color: #5e7488;
+                position: relative;
+                padding-left: 10px;
+                &::before {
+                    content: '|';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto;
+                    display: block;
+                    opacity: 0.4;
+
+                }
             }
         }
     }
