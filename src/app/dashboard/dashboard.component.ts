@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
 import { ApiService } from '../core/service/api.service';
 
@@ -56,7 +56,11 @@ export class DashboardComponent implements OnInit {
           centerMode: false
         }
       }
-    ]
+    ],
+    // WheelEvent: (e: any) => {
+    //   e.preventDefault();
+    //   console.log(e);
+    // }
   };
   rightSlideConfig = {
     slidesToShow: 2.5,
@@ -99,14 +103,31 @@ export class DashboardComponent implements OnInit {
     prevArrow: "<button type='button' matRipple class='slick-prev pull-left'><img width='30px' height='30px' src='assets/images/arrow-left.jpeg'></button>",
     nextArrow: "<button type='button' matRipple class='slick-next pull-right'><img width='30px' height='30px' src='assets/images/arrow-right.jpeg'></button>",
   };
+  private verticalSliderInitRef: any;
+  @ViewChild('slickModal1', { static: true }) verticalSliderDomRef: ElementRef | any;
+  windowPosition: any = [];
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService,
+    private renderer: Renderer2) {
     this.loadBannerText();
     this.loadBannerLocations();
   }
 
   ngOnInit(): void {
   }
+
+  onVerticalSliderInit(e: any) {
+    this.verticalSliderInitRef = e.event.target;
+    this.verticalSliderInitRef.addEventListener('wheel', this.onVerticalSliderScroll, true);
+  }
+
+  onVerticalSliderScroll = (event: any): void => {
+    if (event.deltaY < 0) {
+      this.verticalSliderDomRef.slickPrev();
+    } else {
+      this.verticalSliderDomRef.slickNext();
+    }
+  };
 
   loadBannerText() {
     this.requestingServerForBannerText = true;

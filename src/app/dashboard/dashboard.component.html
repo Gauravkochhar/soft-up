@@ -4,10 +4,10 @@
 <section class="carousel-wrapper" [ngClass]="{'page-scroll-animation': pageSlideAnimationActive}">
     <div class="container dashboard-container">
         <div class="row">
-            <div class="col-md-6 vert-carousel">
+            <div class="col-md-6 vert-carousel" #verticalSliderDiv>
                 <ngx-slick-carousel class="carousel" #slickModal1="slick-carousel" [config]="leftSlideConfig"
                     (afterChange)="afterMasterCarouselChange($event, slickModal2)"
-                    (beforeChange)="showPageSlideAnimation()">
+                    (beforeChange)="showPageSlideAnimation()" (init)="onVerticalSliderInit($event)">
                     <ng-container *ngIf="requestingServerForBannerText">
                         <div ngxSlickItem class="slide vertical-slide">
                             <app-skeleton-loader [elementType]="'bannerTextCard'"></app-skeleton-loader>
