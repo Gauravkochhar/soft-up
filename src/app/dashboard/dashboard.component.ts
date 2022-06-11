@@ -118,10 +118,12 @@ export class DashboardComponent implements OnInit {
 
   onVerticalSliderInit(e: any) {
     this.verticalSliderInitRef = e.event.target;
-    this.verticalSliderInitRef.addEventListener('wheel', this.onVerticalSliderScroll, true);
+    this.verticalSliderInitRef.addEventListener('wheel', this.onVerticalSliderScroll, { passive: false });
   }
 
   onVerticalSliderScroll = (event: any): void => {
+    event.preventDefault();
+    event.stopPropagation();
     if (event.deltaY < 0) {
       this.verticalSliderDomRef.slickPrev();
     } else {
