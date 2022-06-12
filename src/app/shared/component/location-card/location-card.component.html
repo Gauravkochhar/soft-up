@@ -28,12 +28,14 @@
                             [value]="(locationInfo.totalBooked/locationInfo.limit)*100"></mat-progress-bar>
                     </div>
                     <div class="chart-label">
-                        <p>{{ locationInfo?.totalBooked }} booked</p>
+                        <p *ngIf="locationInfo?.totalBooked != locationInfo.limit">{{
+                            locationInfo?.totalBooked }} booked</p>
+                        <p *ngIf="locationInfo?.totalBooked == locationInfo.limit">Full Booked</p>
                     </div>
                 </div>
                 <div class="explore-btn-section">
-                    <button matRipple>Explore Tour <img class="btn-arrow-img"
-                            src="assets/images/card-images/right-arrow.png"></button>
+                    <button [ngClass]="{'disable': locationInfo?.totalBooked == locationInfo.limit}" matRipple>Explore
+                        Tour <img class="btn-arrow-img" src="assets/images/card-images/right-arrow.png"></button>
                 </div>
             </div>
         </div>

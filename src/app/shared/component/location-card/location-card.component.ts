@@ -14,5 +14,4 @@ export class LocationCardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

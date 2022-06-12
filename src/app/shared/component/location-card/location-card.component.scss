@@ -172,6 +172,19 @@
                 transition: right 0.5s ease-in-out;
             }
         }
+
+        &.disable {
+            background: #c8c8c8;
+
+            &:hover {
+                cursor: not-allowed;
+
+                img {
+                    right: 50px;
+                    transition: none;
+                }
+            }
+        }
     }
 }
 
