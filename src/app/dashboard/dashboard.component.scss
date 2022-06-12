@@ -234,6 +234,10 @@
       }
     }
   }
+
+  &.hide-count {
+    opacity: 0;
+  }
 }
 
 .vert-carousel {

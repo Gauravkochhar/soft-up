@@ -18,7 +18,8 @@
                     </ng-container>
                     <div ngxSlickItem *ngFor="let slide of bannerTextList; let i = index" class="slide vertical-slide">
                         <div class="vertical-slide__inner">
-                            <div class="count" [ngClass]="{'active-slide': i == (VerticalSlideNumber-1)}"
+                            <div class="count"
+                                [ngClass]="{'active-slide': i == (VerticalSlideNumber-1), 'hide-count': (!slide?.heading && !slide?.desc)}"
                                 (click)="onBannerCountClick(slickModal1, slickModal2, i)">{{ (i+1) < 10 ? ('0' + (i+1)):
                                     (i+1)}}</div>
                                     <h2 [ngClass]="{'big-font': i == (VerticalSlideNumber-1)}">{{slide?.heading}}</h2>

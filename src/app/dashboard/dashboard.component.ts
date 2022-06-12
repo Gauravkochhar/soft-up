@@ -1,6 +1,8 @@
-import { Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { SlickCarouselComponent } from 'ngx-slick-carousel';
+import { ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ApiService } from '../core/service/api.service';
+import { Title } from "@angular/platform-browser";
+import { EMPTY_BANNER_TEXT_MODAL } from 'src/assets/constants/main-containt';
+import { ChangeDetectionStrategy } from '@angular/compiler';
 
 @Component({
   selector: 'app-dashboard',
@@ -56,11 +58,7 @@ export class DashboardComponent implements OnInit {
           centerMode: false
         }
       }
-    ],
-    // WheelEvent: (e: any) => {
-    //   e.preventDefault();
-    //   console.log(e);
-    // }
+    ]
   };
   rightSlideConfig = {
     slidesToShow: 2.5,
@@ -73,7 +71,7 @@ export class DashboardComponent implements OnInit {
     centerPadding: '30',
     variableWidth: true,
     variableHeight: true,
-    speed: 500,
+    speed: 1000,
     responsive: [
       {
         breakpoint: 920,
@@ -105,15 +103,20 @@ export class DashboardComponent implements OnInit {
   };
   private verticalSliderInitRef: any;
   @ViewChild('slickModal1', { static: true }) verticalSliderDomRef: ElementRef | any;
-  windowPosition: any = [];
+  allLocations: any = [];
 
   constructor(private apiService: ApiService,
-    private renderer: Renderer2) {
+    private renderer: Renderer2,
+    private titleService: Title,
+    private cdref: ChangeDetectorRef) {
     this.loadBannerText();
-    this.loadBannerLocations();
   }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewChecked() {
+    this.cdref.detectChanges();
   }
 
   onVerticalSliderInit(e: any) {
@@ -127,7 +130,9 @@ export class DashboardComponent implements OnInit {
     if (event.deltaY < 0) {
       this.verticalSliderDomRef.slickPrev();
     } else {
-      this.verticalSliderDomRef.slickNext();
+      if (this.VerticalSlideNumber < this.bannerTextList.length - 2) {
+        this.verticalSliderDomRef.slickNext();
+      }
     }
   };
 
@@ -136,18 +141,22 @@ export class DashboardComponent implements OnInit {
     setTimeout(() => {
       this.apiService.getBannerTextList().subscribe((response: any) => {
         this.bannerTextList = response.section;
+        this.loadBannerLocations(response.section[0].id);
+        this.titleService.setTitle(this.bannerTextList[0].heading);
+        this.bannerTextList = [...this.bannerTextList, EMPTY_BANNER_TEXT_MODAL, EMPTY_BANNER_TEXT_MODAL]
         this.requestingServerForBannerText = false;
       })
     }, 1000)
   }
 
-  loadBannerLocations() {
-    console.log('loadBannerLocations')
+  loadBannerLocations(masterId: any) {
     this.requestingServerForLocations = true;
     this.bannerLocationList = [];
     setTimeout(() => {
       this.apiService.getNewLocationsForBanner().subscribe((response: any) => {
-        this.bannerLocationList = response.location;
+        this.allLocations = response.locations;
+        const newListedLocations = response.locations.find((elm: any) => elm.id == masterId);
+        this.bannerLocationList = newListedLocations && newListedLocations.locationResult || [];
         this.requestingServerForLocations = false;
       })
     }, 1000)
@@ -156,23 +165,28 @@ export class DashboardComponent implements OnInit {
 
   afterMasterCarouselChange(event: any, slaveCarousel: any) {
     this.VerticalSlideNumber = event.currentSlide + 1;
+    const masterCarouselObj = this.bannerTextList[this.VerticalSlideNumber - 1];
+    const newListedLocations = this.allLocations.find((elm: any) => elm.id == masterCarouselObj.id);
+    this.bannerLocationList = newListedLocations && newListedLocations.locationResult || [];
+    this.titleService.setTitle(masterCarouselObj.heading);
     slaveCarousel.slickGoTo(0);
   }
 
   afterSlaveCarouselChange(event: any) {
-    console.log(event);
     this.horizontalSlideNumber = event.currentSlide + 1;
   }
 
   onBannerCountClick(masterCarousel: any, slaveCarousel: any, requestedSlideNumber: number) {
-    masterCarousel.slickGoTo(requestedSlideNumber);
-    slaveCarousel.slickGoTo(0);
+    if (requestedSlideNumber != this.VerticalSlideNumber - 1) {
+      masterCarousel.slickGoTo(requestedSlideNumber);
+      slaveCarousel.slickGoTo(0);
+    }
   }
 
   showPageSlideAnimation() {
     this.pageSlideAnimationActive = true;
     setTimeout(() => {
       this.pageSlideAnimationActive = false;
-    }, 2000)
+    }, 500)
   }
 }

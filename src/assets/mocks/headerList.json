@@ -33,21 +33,6 @@
         {
             "routeName": "Contact Us",
             "path": "/contactus"
-        },
-        {
-            "routeName": "Account",
-            "path": "/account",
-            "userProfileTab": true,
-            "subPath": [
-                {
-                    "routeName": "My Profile",
-                    "path": "/my-profile"
-                },
-                {
-                    "routeName": "Logout",
-                    "path": "/logout"
-                }
-            ]
         }
     ]
 }

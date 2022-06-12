@@ -1,68 +1,18 @@
 {
     "section": [
         {
-            "heading": "City View",
+            "id": "1",
+            "heading": "Safari",
             "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus neque augue, bibendum auctor lectus blandit sit amet. Nullam neque risus, feugiat a ligula nec, rutrum imperdiet felis."
         },
         {
+            "id": "2",
             "heading": "Back to the nast",
             "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus neque augue, bibendum auctor lectus blandit sit amet. Nullam neque risus, feugiat a ligula nec, rutrum imperdiet felis."
         },
         {
-            "heading": "Saran",
-            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus neque augue, bibendum auctor lectus blandit sit amet. Nullam neque risus, feugiat a ligula nec, rutrum imperdiet felis."
-        },
-        
-        {
-            "heading": "demo 1",
-            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus neque augue, bibendum auctor lectus blandit sit amet. Nullam neque risus, feugiat a ligula nec, rutrum imperdiet felis."
-        },
-        {
+            "id": "3",
             "heading": "City View",
-            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus neque augue, bibendum auctor lectus blandit sit amet. Nullam neque risus, feugiat a ligula nec, rutrum imperdiet felis."
-        },
-        {
-            "heading": "Saran",
-            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus neque augue, bibendum auctor lectus blandit sit amet. Nullam neque risus, feugiat a ligula nec, rutrum imperdiet felis."
-        },
-        {
-            "heading": "Back to the nast",
-            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus neque augue, bibendum auctor lectus blandit sit amet. Nullam neque risus, feugiat a ligula nec, rutrum imperdiet felis."
-        },
-        {
-            "heading": "demo 1",
-            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus neque augue, bibendum auctor lectus blandit sit amet. Nullam neque risus, feugiat a ligula nec, rutrum imperdiet felis."
-        },
-        {
-            "heading": "City View",
-            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus neque augue, bibendum auctor lectus blandit sit amet. Nullam neque risus, feugiat a ligula nec, rutrum imperdiet felis."
-        },
-        {
-            "heading": "Saran",
-            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus neque augue, bibendum auctor lectus blandit sit amet. Nullam neque risus, feugiat a ligula nec, rutrum imperdiet felis."
-        },
-        {
-            "heading": "Back to the nast",
-            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus neque augue, bibendum auctor lectus blandit sit amet. Nullam neque risus, feugiat a ligula nec, rutrum imperdiet felis."
-        },
-        {
-            "heading": "demo 1",
-            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus neque augue, bibendum auctor lectus blandit sit amet. Nullam neque risus, feugiat a ligula nec, rutrum imperdiet felis."
-        },
-        {
-            "heading": "City View",
-            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus neque augue, bibendum auctor lectus blandit sit amet. Nullam neque risus, feugiat a ligula nec, rutrum imperdiet felis."
-        },
-        {
-            "heading": "Saran",
-            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus neque augue, bibendum auctor lectus blandit sit amet. Nullam neque risus, feugiat a ligula nec, rutrum imperdiet felis."
-        },
-        {
-            "heading": "Back to the nast",
-            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus neque augue, bibendum auctor lectus blandit sit amet. Nullam neque risus, feugiat a ligula nec, rutrum imperdiet felis."
-        },
-        {
-            "heading": "demo 1",
             "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus neque augue, bibendum auctor lectus blandit sit amet. Nullam neque risus, feugiat a ligula nec, rutrum imperdiet felis."
         }
     ]

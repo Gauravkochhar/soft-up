@@ -87,10 +87,12 @@ h1 span {
 
 .hori-carousel {
 	margin-top: -20px;
+
 	@media (max-width:767px) {
 		margin-top: 0;
 		padding-left: 0;
 	}
+
 	.slick-list {
 		height: 507px;
 	}
@@ -139,6 +141,8 @@ h1 span {
 	.slick-arrow {
 		width: 30px;
 		height: 30px;
+		border-radius: 25px;
+		overflow: hidden;
 		z-index: 9;
 		bottom: -35px;
 		position: absolute;
@@ -169,9 +173,11 @@ h1 span {
 .carousel-wrapper {
 	.rotate-3d {
 		width: 320px;
+
 		@media (max-width:320px) {
 			width: 100%;
 		}
+
 		.custom-card {
 			transform: none;
 			transition: none;
@@ -184,7 +190,7 @@ h1 span {
 			.custom-card {
 				transform-style: preserve-3d;
 				transform: scaleX(-1) rotateY(180deg);
-				transition: transform 1s;
+				transition: transform .5s;
 			}
 		}
 	}
@@ -194,4 +200,39 @@ h1 span {
 	@media (min-width:1920px) {
 		max-width: 1920px;
 	}
+}
+
+::-webkit-scrollbar {
+	width: 5px;
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-button {
+	display: none;
+}
+
+::-webkit-scrollbar-track {
+	background: #e5e2ad;
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-track-piece {
+	background: #e5e2ad;
+	border-radius: 4px;
+	border: 1px solid #c5b481;
+
+}
+
+::-webkit-scrollbar-thumb {
+	background: #fbfae3;
+	border-radius: 4px;
+	border: 1px solid #c5b481;
+}
+
+::-webkit-scrollbar-corner {
+	border-radius: 4px;
+}
+
+::-webkit-resizer {
+	display: none;
 }
