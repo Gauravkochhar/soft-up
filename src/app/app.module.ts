@@ -13,11 +13,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './core/component/page-not-found/page-not-found.component';
+import { TourComponent } from './tour/tour.component';
+import { JoinUsComponent } from './join-us/join-us.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { ServiceComponent } from './service/service.component';
+import { BookingComponent } from './booking/booking.component';
 
 const environmentConfig: any = environment.logger;
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, DashboardComponent, PageNotFoundComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, DashboardComponent, PageNotFoundComponent, TourComponent, JoinUsComponent, AboutUsComponent, ContactUsComponent, ServiceComponent, BookingComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

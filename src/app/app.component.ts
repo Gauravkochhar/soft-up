@@ -17,9 +17,6 @@ export class AppComponent {
     this.loadHeader();
   }
 
-  ngOnInit() {
-  }
-
   scroll = (event: any): void => {
     this.scrollPosition = event.target.scrollTop;
   };
