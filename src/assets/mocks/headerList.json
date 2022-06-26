@@ -1,5 +1,6 @@
 {
-    "header": [{
+    "header": [
+        {
             "routeName": "Home",
             "path": "/dashboard"
         },
@@ -10,7 +11,8 @@
         {
             "routeName": "Soft Fly",
             "path": "",
-            "subPath": [{
+            "subPath": [
+                {
                     "routeName": "Soft Fly First",
                     "path": "/soft-fly-first"
                 },
@@ -30,7 +32,7 @@
         },
         {
             "routeName": "Contact Us",
-            "path": "/contact-us"
+            "path": "/contactus"
         }
     ]
 }

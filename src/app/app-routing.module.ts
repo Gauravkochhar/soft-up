@@ -6,6 +6,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { PageNotFoundComponent } from './core/component/page-not-found/page-not-found.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { JoinUsComponent } from './join-us/join-us.component';
+import { ServiceComponent } from './service/service.component';
 import { TourComponent } from './tour/tour.component';
 
 const routes: Routes = [
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'contact-us',
     component: ContactUsComponent
+  },
+  {
+    path: 'service',
+    component: ServiceComponent
   },
   {
     path: '**',
