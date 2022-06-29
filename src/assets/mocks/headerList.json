@@ -1,18 +1,16 @@
 {
-    "header": [
-        {
+    "header": [{
             "routeName": "Home",
             "path": "/dashboard"
         },
         {
             "routeName": "Book Per Tour",
-            "path": "/book-per-tour"
+            "path": "/booking"
         },
         {
             "routeName": "Soft Fly",
             "path": "",
-            "subPath": [
-                {
+            "subPath": [{
                     "routeName": "Soft Fly First",
                     "path": "/soft-fly-first"
                 },
@@ -32,7 +30,7 @@
         },
         {
             "routeName": "Contact Us",
-            "path": "/contactus"
+            "path": "/contact-us"
         }
     ]
 }
