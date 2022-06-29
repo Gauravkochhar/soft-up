@@ -304,6 +304,14 @@ section.tour-card .col-md-7 img {
     line-height: 75px;
     color: #31496D;
 	margin-top:40px;
+    position: relative;
+    z-index:2;
+}
+.bg-text img {
+    position: absolute;
+    top: 173px;
+    transform: rotate(-3deg);
+    z-index: 1;
 }
 .bg-text p {
     font-family: 'Poppins';
@@ -1479,6 +1487,95 @@ section.testimonials.main-testimonials .slide-box img {
 section.testimonials.main-testimonials .slide-box ul li img{
     width:50px !important;
 }
+section.banner {
+    background: url(/assets/images/background.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 100px 50px 0;
+}
+.col-md-12.text-center.logo-heading p {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 34px;
+    text-align: center;
+    color: #757F8F;
+    position: relative;
+    top: 56px;
+    margin-bottom:0;
+}
+section.banner .form-inline .form-group {
+    border-right: 1px solid #757f8f47;
+}
+.banner-text img {
+    position: absolute;
+    top: 78px;
+    left: 60px;
+    transform: rotate(-3deg);
+}
+.col-md-12.text-center.main-heading img.bg-vector {
+    position: absolute;
+    top: 40px;
+    transform: rotate(-3deg);
+}
+section.services{
+    background: url(/assets/images/bg-plane.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 100px 50px;
+}
+.slider-block {
+    width: 290px;
+    height: 450px;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 20px;
+    text-align: left;
+}
+.slider-block img {
+    width: 60%;
+}
+.slider-block h4 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    color: #31496D;
+    margin: 20px 0;
+    position: relative;
+}
+.slider-block h4:after {
+    content: '';
+    background: #31496d;
+    width: 50px;
+    height: 3px;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    border-radius: 40px;
+}
+.bg-slider .slick-prev:before, .slick-next:before {
+    font-family: 'Poppins' !important;
+}
+.bg-slider .slick-next {
+    right: 80px !important;
+    opacity: 1;
+    position: absolute;
+}
+.bg-slider .slick-next:before {
+    content: "→";
+    opacity: 9999;
+    position: absolute;
+    background: #fab460;
+    border-radius: 8px;
+    width: 55px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 30px;
+}
 /*-------------------media css-------------*/
 @media (max-width: 991px) {
 	.banner-img ul li.item-2.item {
@@ -1571,6 +1668,24 @@ section.testimonials.main-testimonials .slide-box ul li img{
 	section.banner {
 		padding: 85px 0 0;
 	}
+    section.banner .form-inline .form-group {
+        border-right: 1px solid #757f8f47;
+        text-align: left;
+    }
+    .banner-logo ul {
+        margin: 52px 0 0;
+    }
+    section.services {
+        padding: 50px 20px;
+    }
+    .slider-block {
+        width: auto;
+        margin-right: 10px;
+    }
+    .bg-slider .slick-next {
+        right: 0px !important;
+    }
+    .col-md-12.text-center.main-heading img.bg-vector{display:none;}
     section.banner.tour .banner-img img{
         margin-top:30px;
     }

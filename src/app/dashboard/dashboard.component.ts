@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ApiService } from '../core/service/api.service';
 import { Title } from "@angular/platform-browser";
 import { EMPTY_BANNER_TEXT_MODAL } from 'src/assets/constants/main-containt';
@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy } from '@angular/compiler';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit,AfterViewChecked {
 
   pageSlideAnimationActive = false;
   requestingServerForBannerText = false;
@@ -19,15 +19,18 @@ export class DashboardComponent implements OnInit {
   horizontalSlideNumber: any = 1;
   VerticalSlideNumber: any = 1;
   leftSlideConfig = {
-    slidesToShow: 3,
+    slidesToShow: 2,
     slidesToScroll: 1,
+    items :2,
     centerMode: true,
     vertical: true,
     dots: false,
     nav: false,
     infinite: false,
+    margin:10,
     verticalSwiping: true,
     centerPadding: '75px',
+    navText : ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
     responsive: [
       {
         breakpoint: 1024,
@@ -60,6 +63,14 @@ export class DashboardComponent implements OnInit {
       }
     ]
   };
+
+  slideConfig = {
+    'slidesToShow': 2,
+    'slidesToScroll': 1,
+    'dots': false,
+    'arrows': true,
+    'infinite': false
+  };
   rightSlideConfig = {
     slidesToShow: 2.5,
     slidesToScroll: 1,
@@ -82,13 +93,14 @@ export class DashboardComponent implements OnInit {
       {
         breakpoint: 767,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
+          
         }
       },
       {
         breakpoint: 556,
         settings: {
-          slidesToShow: 1.6,
+          slidesToShow: 1,
         }
       },
       {
@@ -113,6 +125,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("")
   }
 
   ngAfterViewChecked() {
