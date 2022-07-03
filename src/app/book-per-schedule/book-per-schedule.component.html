@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="date-range-slider">
-            <ul *ngIf="false">
+            <ul *ngIf="true">
                 <li>
                     <div class="date-range-slider__arrow date-range-slider__arrow--left">
                         <img src="assets/images/long-arrow-left.svg" alt="long-arrow-left">
@@ -84,7 +84,7 @@
                     </div>
                 </li>
             </ul>
-            <ul>
+            <ul *ngIf="false">
                 <li>
                     <div class="date-col">
                         <small>Sun</small>
@@ -94,6 +94,6 @@
             </ul>
         </div>
     </div>
-    <!-- <app-calender></app-calender> -->
-    <app-calender-day></app-calender-day>
+    <app-calender></app-calender>
+    <!-- <app-calender-day></app-calender-day> -->
 </div>
