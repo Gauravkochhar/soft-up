@@ -1,0 +1,99 @@
+<div class="inner-contaier">
+    <div class="calender-top-section">
+        <div class="filter-section position-relative d-flex align-items-center justify-content-center">
+            <div class="date-range d-flex align-items-center">
+                <div class="date-range__arrow date-range__arrow--left cp">
+                    <img src="assets/images/arrow-left.svg" alt="arrow-left">
+                </div>
+                <p class="mb-0 date-range__date">August 13 - August 19</p>
+                <div class="date-range__arrow date-range__arrow--right cp">
+                    <img src="assets/images/arrow-right.svg" alt="arrow-right">
+                </div>
+            </div>
+    
+            <div class="filters d-flex align-items-center">
+               <div class="filters__items">
+                    <button class="btn btn-primary" [matMenuTriggerFor]="menu">Select week <img src="assets/images/arrow-down-white.svg" alt="arrow-down"></button>
+                    <mat-menu #menu="matMenu">
+                    <button mat-menu-item>Safari</button>
+                    <button mat-menu-item>City View</button>
+                    </mat-menu>
+               </div>
+               <div class="filters__items">
+                    <button class="btn btn-outline-primary" [matMenuTriggerFor]="menu">Filter <img src="assets/images/arrow-down-primary.svg" alt="arrow-down"></button>
+                    <mat-menu #menu="matMenu">
+                    <button mat-menu-item>Item 1</button>
+                    <button mat-menu-item>Item 2</button>
+                    </mat-menu>
+               </div>
+    
+            </div>
+        </div>
+        <div class="date-range-slider">
+            <ul *ngIf="false">
+                <li>
+                    <div class="date-range-slider__arrow date-range-slider__arrow--left">
+                        <img src="assets/images/long-arrow-left.svg" alt="long-arrow-left">
+                    </div>
+                </li>
+                <li>
+                    <div class="date-col">
+                        <small>Sun</small>
+                        <p>8</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="date-col">
+                        <small>Mon</small>
+                        <p>9</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="date-col">
+                        <small>Tue</small>
+                        <p>10</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="date-col">
+                        <small>Wed</small>
+                        <p>11</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="date-col">
+                        <small>Thur</small>
+                        <p>12</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="date-col">
+                        <small>Fri</small>
+                        <p>13</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="date-col">
+                        <small>Sat</small>
+                        <p>14</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="date-range-slider__arrow date-range-slider__arrow--right">
+                        <img src="assets/images/long-arrow-right.svg" alt="long-arrow-right">
+                    </div>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <div class="date-col">
+                        <small>Sun</small>
+                        <!-- <p>{{item}}</p> -->
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- <app-calender></app-calender> -->
+    <app-calender-day></app-calender-day>
+</div>

@@ -1,0 +1,52 @@
+@import '../../variables';
+
+.card {
+    &-event {
+        max-width: 300px;
+        padding: 9px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        border: none;
+    }
+    &--gray {
+        background: #EFEFF1;
+    }
+    &--day {
+        min-width: 300px;
+        display: inline-flex;
+    }
+    &--colored {
+        background: transparent;
+        .card-content {
+            p,small {
+                color: $light;
+            }
+        }
+    }
+    &-thumbnail {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;    
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &-content {
+        width: calc(100% - 50px);
+        padding-left: 10px;
+        text-align: left;
+        p {
+            font-size: $text-base;
+            margin-bottom: 0;
+            font-weight: 600;
+        }
+        small {
+            font-size: $text-sm;
+        }
+    }
+}

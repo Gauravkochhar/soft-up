@@ -1,0 +1,32 @@
+@import '../../variables';
+
+.calender-table {
+    display: table;
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0;
+    li {
+        display: table-cell;
+        padding: 16px 10px;
+        height: 126px;
+        vertical-align: middle;
+        border-bottom: 1px solid #EFEFEF;
+        &:not(:last-child) {
+            border-right: 1px solid #EFEFEF;
+        }
+        &:first-child {
+            width: 100px;
+            text-align: center;
+            vertical-align: top;
+            color: #757F8F;
+            font-size: $text-xs;
+        }
+        &:last-child {
+            width: 100px;
+        }
+        p {
+            margin: 0;
+        }
+    }
+}

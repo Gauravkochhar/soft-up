@@ -1,0 +1,100 @@
+@import '../../variables';
+@import '../../mixins'; 
+
+.inner-contaier {
+    padding-top: 100px;
+}
+
+.calender-top-section {
+    background: $gray-300;
+    padding: 20px 10px 0 20px;
+}
+
+.filter-section {
+    min-height: 66px;
+    border-bottom: 1px solid #EFEFEF;
+    padding-bottom: 16px;
+}
+.date-range {
+    &__date {
+        padding: 0 21px;
+        font-size: $text-lg;
+        font-weight: 600;
+        line-height: 0;
+    }
+}
+
+.filters {
+    position: absolute;
+    right: 10px;
+    &__items {
+        &:not(:last-child) {
+            margin-right: 20px;
+        }
+    }
+}
+.date-range-slider {
+    margin: 0 -10px;
+    ul {
+        display: table;
+        table-layout: fixed;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 0;
+        li {
+            display: table-cell;
+            padding: 16px 10px;
+            text-align:center;
+            vertical-align: middle;
+            &:first-child {
+                width: 100px;
+                text-align: center;
+                vertical-align: middle;
+                color: #757F8F;
+                font-size: $text-xs;
+            }
+            &:last-child {
+                width: 100px;
+            }
+            .date-col {
+                display: inline-block;
+                padding: 8px;
+                border-radius: 50px;
+                @include transition();
+                small {
+                    margin-bottom: 17px;
+                    color: #ABBAC7;
+                    display: block;
+                }
+                p {
+                    margin: 0;
+                    font-size: $text-lg;
+                    color: #31496D;
+                    font-weight: 500;
+                }
+                &:hover {
+                    background: #9c1df7;
+                    @include transition();
+                    cursor: pointer;
+                    p,small {
+                        color:$light ;
+                    }
+                }
+            }
+        }
+    }
+    &__arrow {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $light;
+        border-radius: 50%;
+        cursor: pointer;
+        @include transition();
+        &:hover {
+            box-shadow: 0 3px 4px rgb(49 73 109 / 12%);
+        }
+    }
+}
