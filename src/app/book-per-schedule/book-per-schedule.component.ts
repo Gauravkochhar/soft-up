@@ -6,11 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-per-schedule.component.scss']
 })
 export class BookPerScheduleComponent implements OnInit {
-  // public month:number=[];
+  public month:any=[];
   constructor() { }
 
   ngOnInit(): void {
-  
   }
 
 }
