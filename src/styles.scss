@@ -293,7 +293,7 @@ section.tour-card .col-md-7 img {
     background-size:cover;
     background-position:center;
     text-align:center;
-	padding:50px;
+	padding:50px 0;
 	overflow:hidden;
 }
 .bg-text h2 {
@@ -321,7 +321,10 @@ section.tour-card .col-md-7 img {
     line-height: 34px;
     color: #66768F;
 }
-.bg-text{text-align:left;}
+.bg-text {
+    text-align: left;
+    padding-left:30%;
+}
 .bg-slider ul li {
     align-items: flex-start;
     padding: 50px 30px 80px;
@@ -366,7 +369,7 @@ section.tour-card .col-md-7 img {
 }
 .bg-slider {
     position: relative;
-    left: 23%;
+    left: 0;
 }
 footer {
     background-color: #31496D;
@@ -622,21 +625,94 @@ section.gallary .col-md-12.text-center.main-heading img {
     top: 50px;
     margin-left: 60px;
 }
-.banner .form-inline .collapse.show{
+.banner .form-inline .collapse.show {
     position: absolute !important;
-    background-color: #fff;
-    box-shadow: 0px 39px 66px rgb(10 30 59 / 16%);
-    top: 28px;
+    top: 96px;
+    width: 274px;
+    height: 160px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 30px rgba(10, 30, 59, 0.16);
+    border-radius: 15px;
     padding: 20px;
-    border-radius: 12px;
+    left: -19px;
+}
+.bs-datepicker {
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+    z-index: 99999;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 312px;
+    height: 276px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    top: 37px;
+    left: 12px;
+}
+.theme-green .bs-datepicker-head {
+    background-color: #fff;
+    border-radius: 20px;
+}
+.bs-datepicker-head button.next, .bs-datepicker-head button.previous {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    color: #000;
+}
+.bs-datepicker-head button.current {
+    border-radius: 15px;
+    max-width: 155px;
+    padding: 0 13px;
+    color: #000;
+}
+.bs-datepicker-head button.current {
+    border-radius: 15px;
+    max-width: 155px;
+    padding: 0 13px;
+    color: #000;
+}
+.bs-datepicker-container {
+    padding: 0;
+}
+.bs-datepicker-body {
+    padding: 10px;
+    min-height: 232px;
+    min-width: 278px;
+    border: none;
+    width: 312px;
+    height: 276px;
+    border-radius: 16px;
+    top: 25px;
+}
+.bs-datepicker-body table td.is-highlighted:not(.disabled):not(.selected) span, .bs-datepicker-body table td span.is-highlighted:not(.disabled):not(.selected) {
+    background-color: #7b17c1;
+    transition: 0s;
+    color: #fff;
+    border-radius: 5px;
+}
+.theme-green .bs-datepicker-body table td.week span {
+    color: #7b17c1;
+}
+.theme-green .bs-datepicker-body table td span.selected, .theme-green .bs-datepicker-body table td.selected span, .theme-green .bs-datepicker-body table td span[class*=select-]:after, .theme-green .bs-datepicker-body table td[class*=select-] span:after {
+    background-color: #7b17c1;
+    border-radius: 5px;
+}
+.bs-datepicker-head button:hover {
+    background-color: rgb(123 23 193);
+    color: #fff !important;
 }
 .collapsing{
     position: absolute !important;
-    background-color: #fff;
-    box-shadow: 0px 39px 66px rgb(10 30 59 / 16%);
-    top: 28px;
+    top: 96px;
+    width: 274px;
+    height: 160px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 30px rgba(10, 30, 59, 0.16);
+    border-radius: 15px;
     padding: 20px;
-    border-radius: 12px;
+    left: -19px;
 }
 .bg-slider button.slick-prev.slick-arrow.slick-disabled:before {
     content: "←";
@@ -651,23 +727,44 @@ section.gallary .col-md-12.text-center.main-heading img {
 }
 .bg-slider button.slick-prev.slick-arrow:before {
     content: "←";
-    left: -714px;
+    left: 14px;
+    opacity: 9999;
     position: absolute;
     background: #fab460;
     border-radius: 8px;
-    width: 55px;
-    height: 50px;
-    line-height: 50px;
-    font-size: 30px;
+    width: 48px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
 }
-
+button.slick-prev.slick-arrow {
+    width: 135px;
+    height: 200px;
+    z-index: 99;
+}
+.banner-text {
+    text-align: left;
+}
 .banner .form-inline .collapse.show ul li {
     list-style: none;
     text-align: left;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    background: #FFFFFF;
+}
+.banner .form-inline .collapse.show ul li:hover {
+    background: #F9FBFE;
+    border-radius: 8px;
+    padding: 10px;
 }
 .banner .form-inline .collapsing ul li {
     list-style: none;
     text-align: left;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    background: #FFFFFF;
 }
 .banner .form-inline .collapse.show ul li a{
     font-family: "Poppins";
@@ -1299,10 +1396,10 @@ section.testimonials .col-md-5 a i {
 }
 .slide-box {
     background: #FFFFFF;
-    box-shadow: 0px 10px 60px rgba(10, 30, 59, 0.1);
-    border-radius: 30px;
+    border-radius: 20px;
     padding: 20px;
-    height:300px;
+    height: 300px;
+    border: 1px solid #cccccc80;
 }
 .slide-box p {
     font-size: 14px !important;
@@ -1449,13 +1546,13 @@ section.about-gallry h2 {
     margin-top:30px;
 }
 section.about-gallry h2:after {
-    content: '';
-    background: #31496d;
+    content: "";
     width: 80px;
     height: 3px;
     position: absolute;
     left: 0;
     top: 50px;
+    background: #7B17C1;
 }
 section.about-gallry p {
     font-family: 'Poppins';
@@ -1525,7 +1622,7 @@ section.service-boxes .main-heading img {
     margin: 10px 0;
 }
 .block span {
-    font-family: 'Poppins';
+    font-family: "Poppins";
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -1534,6 +1631,21 @@ section.service-boxes .main-heading img {
     color: #31496D;
     display: block;
     margin: 0 0 10px;
+    padding-left: 20px;
+    position: relative;
+}
+.block span {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+    color: #31496D;
+    display: block;
+    margin: 0 0 10px;
+    padding-left: 20px;
+    position: relative;
 }
 .block p{
     font-family: 'Poppins';
@@ -1586,8 +1698,8 @@ section.banner .form-inline .form-group {
 }
 .banner-text img {
     position: absolute;
-    top: 78px;
-    left: 60px;
+    top: 65px;
+    left: 9px;
     transform: rotate(-3deg);
 }
 .col-md-12.text-center.main-heading img.bg-vector {
@@ -1608,6 +1720,12 @@ section.services{
     background: rgba(255, 255, 255, 0.85);
     padding: 20px;
     text-align: left;
+    margin-left:40px;
+}
+.col-md-7.main-flex.d-flex {
+    position: relative;
+    left: 8%;
+    z-index: 9;
 }
 .slider-block img {
     width: 60%;
@@ -1636,7 +1754,7 @@ section.services{
     font-family: 'Poppins' !important;
 }
 .bg-slider .slick-next {
-    right: 80px !important;
+    right: 48px !important;
     opacity: 1;
     position: absolute;
 }
@@ -1646,10 +1764,10 @@ section.services{
     position: absolute;
     background: #fab460;
     border-radius: 8px;
-    width: 55px;
-    height: 50px;
-    line-height: 50px;
-    font-size: 30px;
+    width: 48px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
 }
 /*-------------------media css-------------*/
 @media (max-width: 991px) {
@@ -1743,6 +1861,14 @@ section.services{
 	section.banner {
 		padding: 85px 0 0;
 	}
+    .bg-text {
+        padding-left: 0;
+    }
+    .col-md-7.main-flex.d-flex {
+        left: 0;
+        }
+        .bg-slider button.slick-prev.slick-arrow:before{left:-10px;top:280px;}
+        .bg-slider button.slick-next.slick-arrow:before{right:-10px;top:200px;}
     section.banner .form-inline .form-group {
         border-right: 1px solid #757f8f47;
         text-align: left;
@@ -1756,6 +1882,7 @@ section.services{
     .slider-block {
         width: auto;
         margin-right: 10px;
+        margin-left:0;
     }
     .bg-slider .slick-next {
         right: 0px !important;
