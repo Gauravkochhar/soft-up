@@ -13,11 +13,28 @@
     
             <div class="filters d-flex align-items-center">
                <div class="filters__items">
-                    <button class="btn btn-primary" [matMenuTriggerFor]="menu">Select week <img src="assets/images/arrow-down-white.svg" alt="arrow-down"></button>
-                    <mat-menu #menu="matMenu">
-                    <button mat-menu-item>Safari</button>
-                    <button mat-menu-item>City View</button>
-                    </mat-menu>
+                <div class="dropdown">
+                    <button class="btn btn-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Select week <img src="assets/images/arrow-down-white.svg" alt="arrow-down">
+                    </button>
+                    <div class="dropdown-menu dropdown-menu--calender" aria-labelledby="dropdownMenuButton" (click)="openDropdown($event)">
+
+                        <!-- sub dropdown starts -->
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown1" aria-haspopup="true" aria-expanded="false">
+                              Dropdown button
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                              <a class="dropdown-item" href="#">Action</a>
+                              <a class="dropdown-item" href="#">Another action</a>
+                              <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                          </div>
+                        <!-- sub dropdown ends -->
+
+                        <mat-calendar ></mat-calendar>
+                    </div>
+                  </div>
                </div>
                <div class="filters__items">
                     <button class="btn btn-outline-primary" [matMenuTriggerFor]="menu">Filter <img src="assets/images/arrow-down-primary.svg" alt="arrow-down"></button>
@@ -29,8 +46,8 @@
     
             </div>
         </div>
-        <div class="date-range-slider">
-            <ul *ngIf="true">
+        <div class="date-range-slider date-range-slider--month">
+            <ul *ngIf="false">
                 <li>
                     <div class="date-range-slider__arrow date-range-slider__arrow--left">
                         <img src="assets/images/long-arrow-left.svg" alt="long-arrow-left">
@@ -84,16 +101,19 @@
                     </div>
                 </li>
             </ul>
-            <ul *ngIf="false">
-                <li>
+            <ul *ngIf="true">
+                <li></li>
+                <li *ngFor="let item of month">
                     <div class="date-col">
                         <small>Sun</small>
-                        <!-- <p>{{item}}</p> -->
+                        <p>{{item}}</p>
                     </div>
                 </li>
+                <li></li>
             </ul>
         </div>
     </div>
-    <app-calender></app-calender>
+    <!-- <app-calender></app-calender> -->
     <!-- <app-calender-day></app-calender-day> -->
+    <app-calender-month></app-calender-month>
 </div>

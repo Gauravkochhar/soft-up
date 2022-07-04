@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookPerScheduleComponent implements OnInit {
   public month:any=[];
+  // public selected: Date | null;
   constructor() { }
 
   ngOnInit(): void {
+    this.getFullMonth();
+  }
+
+  getFullMonth(){
+    for(let i = 0; i <= 30; i++) {
+      this.month.push(i+1);
+    }
+  }
+
+  openDropdown(event:any) {
+    event.stopPropagation();
   }
 
 }

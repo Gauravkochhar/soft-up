@@ -97,4 +97,30 @@
             box-shadow: 0 3px 4px rgb(49 73 109 / 12%);
         }
     }
+    &--month {
+        ul {
+            li {
+                padding: 16px 4px;
+                &:first-child, &:last-child {
+                    width: 80px;
+                }
+                &:first-child {                
+                    font-size: $text-base;
+                }
+            }
+        }
+    }
+}
+
+.dropdown-menu {
+    &--calender {
+        width: 300px;
+        right: 0 !important;
+        left: inherit !important;
+        border: none;
+        background: $light;
+        padding: 10px;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    }
 }

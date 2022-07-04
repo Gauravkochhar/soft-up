@@ -18,12 +18,16 @@ import { BookPerScheduleComponent } from './book-per-schedule/book-per-schedule.
 import {MatMenuModule} from '@angular/material/menu';
 import { EventCardComponent } from './event-card/event-card.component';
 import { CalenderDayComponent } from './calender-day/calender-day.component';
-
-
+import { CalenderMonthComponent } from './calender-month/calender-month.component';
+import { EventCardMonthComponent } from './event-card-month/event-card-month.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
 const environmentConfig: any = environment.logger;
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, DashboardComponent, PageNotFoundComponent, CalenderComponent, BookPerScheduleComponent, EventCardComponent, CalenderDayComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, DashboardComponent, PageNotFoundComponent, CalenderComponent, BookPerScheduleComponent, EventCardComponent, CalenderDayComponent, CalenderMonthComponent, EventCardMonthComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,6 +35,11 @@ const environmentConfig: any = environment.logger;
     SlickCarouselModule,
     MatMenuModule,
     HttpClientModule,
+    MatDatepickerModule,
+    MatDatepickerModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
     LoggerModule.forRoot({
       level: NgxLoggerLevel[environmentConfig.level],
     } as any),
