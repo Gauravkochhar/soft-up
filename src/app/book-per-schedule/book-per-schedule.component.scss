@@ -33,84 +33,7 @@
         }
     }
 }
-.date-range-slider {
-    margin: 0 -10px;
-    ul {
-        display: table;
-        table-layout: fixed;
-        border-collapse: collapse;
-        width: 100%;
-        margin: 0;
-        li {
-            display: table-cell;
-            padding: 16px 10px;
-            text-align:center;
-            vertical-align: middle;
-            &:first-child {
-                width: 100px;
-                text-align: center;
-                vertical-align: middle;
-                color: #757F8F;
-                font-size: $text-xs;
-            }
-            &:last-child {
-                width: 100px;
-            }
-            .date-col {
-                display: inline-block;
-                padding: 8px;
-                border-radius: 50px;
-                @include transition();
-                small {
-                    margin-bottom: 17px;
-                    color: #ABBAC7;
-                    display: block;
-                }
-                p {
-                    margin: 0;
-                    font-size: $text-lg;
-                    color: #31496D;
-                    font-weight: 500;
-                }
-                &:hover {
-                    background: #9c1df7;
-                    @include transition();
-                    cursor: pointer;
-                    p,small {
-                        color:$light ;
-                    }
-                }
-            }
-        }
-    }
-    &__arrow {
-        width: 48px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: $light;
-        border-radius: 50%;
-        cursor: pointer;
-        @include transition();
-        &:hover {
-            box-shadow: 0 3px 4px rgb(49 73 109 / 12%);
-        }
-    }
-    &--month {
-        ul {
-            li {
-                padding: 16px 4px;
-                &:first-child, &:last-child {
-                    width: 80px;
-                }
-                &:first-child {                
-                    font-size: $text-base;
-                }
-            }
-        }
-    }
-}
+
 
 .dropdown-menu {
     &--calender {
@@ -121,6 +44,6 @@
         background: $light;
         padding: 10px;
         border-radius: 20px;
-        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+        box-shadow: 0 0px 30px 0 rgb(0 0 0 / 30%);
     }
 }

@@ -1,38 +1,15 @@
 <div style="padding: 0 10px;">
-    <ul class="calender-table">
-        <li>01:00 AM</li>
-        <li><app-event-card-month initials="TM" [background]="'#5062FF'"></app-event-card-month></li>
-        <li><app-event-card-month initials="TM" [background]="'#5062FF'"></app-event-card-month></li>
-        <li><app-event-card-month initials="TM" [background]="'#5062FF'"></app-event-card-month></li>
-        <li></li>
-        <li></li>
-        <li><app-event-card-month initials="TM" [background]="'#5062FF'"></app-event-card-month></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <!-- <li></li> -->
+    <ul class="calender-table" *ngFor="let timeSlot of TIME_SLOTS;let timeSlotIndex = index">
+        <li>{{ timeSlot }}</li>
+        <ng-container *ngFor="let bookingEvent of activeBookingEventDetails;let dayIndex = index;">
+            <ng-container *ngVar="getSlotDetail(timeSlotIndex+1, getDayWiseEvent(bookingEvent.date)) as slotDetails;">
+                <li class="{{ slotDetails?.eventStartTime?.duration?.HH}}-{{slotDetails?.eventStartTime?.duration?.MM}}">
+                    <app-event-card-month *ngIf="slotDetails" 
+                    [initials]="getInitital(slotDetails?.eventLocationDetail?.placeName)" 
+                    [background]="bookEventColourDetails[slotDetails?.eventLocationDetail?.locationId]">
+                    </app-event-card-month>
+                </li>
+            </ng-container>
+        </ng-container>
     </ul>
 </div>

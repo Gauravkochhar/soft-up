@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { TIME_SLOTS } from '../core/config/device.config';
 
 @Component({
-  selector: 'app-calender-month',
-  templateUrl: './calender-month.component.html',
-  styleUrls: ['./calender-month.component.scss']
+  selector: 'app-calender-week',
+  templateUrl: './calender-week.component.html',
+  styleUrls: ['./calender-week.component.scss']
 })
-export class CalenderMonthComponent implements OnInit {
+export class CalenderWeekComponent implements OnInit {
 
   public readonly TIME_SLOTS = TIME_SLOTS;
   @Input() activeBookingEventDetails: any;
@@ -25,7 +25,5 @@ export class CalenderMonthComponent implements OnInit {
     return slots.find((elm: any) => elm.eventStartTime.hour == slotTime);
   }
 
-  getInitital(text: string) {
-    return (text.split(' ').map((word: any) => word[0])).join('');
-  }
+
 }

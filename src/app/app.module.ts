@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './core/component/page-not-found/page-not-found.component';
-import { CalenderComponent } from './calender/calender.component';
+import { CalenderWeekComponent } from './calender-week/calender-week.component';
 import { BookPerScheduleComponent } from './book-per-schedule/book-per-schedule.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { EventCardComponent } from './event-card/event-card.component';
@@ -24,10 +24,15 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
+import { DateRangeSliderComponent } from './date-range-slider/date-range-slider.component';
+import { FindDatePipe } from './core/pipe/find-date.pipe';
+import { FindDayPipe } from './core/pipe/find-day.pipe';
+import { FindMonthPipe } from './core/pipe/find-month.pipe';
+import { NgVarDirective } from './core/directive/ng-var.directive';
 const environmentConfig: any = environment.logger;
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, DashboardComponent, PageNotFoundComponent, CalenderComponent, BookPerScheduleComponent, EventCardComponent, CalenderDayComponent, CalenderMonthComponent, EventCardMonthComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, DashboardComponent, PageNotFoundComponent, CalenderWeekComponent, BookPerScheduleComponent, EventCardComponent, CalenderDayComponent, CalenderMonthComponent, EventCardMonthComponent, DateRangeSliderComponent, FindDatePipe, FindDayPipe, FindMonthPipe, NgVarDirective],
   imports: [
     BrowserModule,
     AppRoutingModule,

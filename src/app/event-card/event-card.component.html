@@ -1,4 +1,4 @@
-<div class="card card-event" [ngClass]="{
+<div class="card card-event default-shadow" [ngClass]="{
     'card--gray':style=='gray', 
     'card--colored':style=='colored',
     'card--day':type=='day'
@@ -7,7 +7,7 @@
         <img src="assets/images/event.png" alt="">
     </div>
     <div class="card-content">
-        <p>Taj Mahal</p>
-        <small>09:45 AM</small>
+        <p>{{ slotDetails?.eventLocationDetail?.placeName}}</p>
+        <small>{{slotDetails?.eventStartTime?.hour}}:{{slotDetails?.eventStartTime?.minute}} {{ slotDetails?.eventStartTime?.hour > 12 ? 'PM': 'AM'}}</small>
     </div>
 </div>
