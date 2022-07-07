@@ -1,4 +1,4 @@
-<ul class="calender-table">
+<!-- <ul class="calender-table">
     <li>
         01:00 AM
     </li>
@@ -26,4 +26,20 @@
     </li>
 
     <li></li>
+</ul> -->
+
+<ul class="calender-table" *ngFor="let timeSlot of TIME_SLOTS;let timeSlotIndex = index">
+    <li >
+        {{ timeSlot }}
+    </li>
+    <ng-container *ngVar="getSlotDetail(timeSlotIndex+1, getDayWiseEvent(selectedDate)) as slotDetails">
+        <li class="{{ slotDetails?.eventStartTime?.duration?.HH}}-{{slotDetails?.eventStartTime?.duration?.MM}}">
+            <app-event-card *ngIf="slotDetails"
+                [slotDetails]="slotDetails"
+                [type]="'day'"
+                [style]="bookEventColourDetails[slotDetails?.eventLocationDetail?.locationId] ? 'colored': 'gray'"
+                [background]="bookEventColourDetails[slotDetails?.eventLocationDetail?.locationId]">
+                </app-event-card>
+        </li>
+    </ng-container>
 </ul>

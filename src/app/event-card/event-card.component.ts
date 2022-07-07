@@ -9,6 +9,7 @@ export class EventCardComponent implements OnInit {
   @Input() style:any;
   @Input() background:any;
   @Input() type:any;
+  @Input() slotDetails: any;
   constructor() { }
 
   ngOnInit(): void {

@@ -1,0 +1,20 @@
+<div class="date-range-slider date-range-slider--month">
+    <ul *ngIf="(appliedFilter.id == durationFilter.daily.id) || (appliedFilter.id == durationFilter.weekly.id) || (appliedFilter.id == durationFilter.monthly.id)">
+        <li>
+            <div class="date-range-slider__arrow date-range-slider__arrow--left">
+                <img src="assets/images/long-arrow-left.svg" alt="long-arrow-left">
+            </div>
+        </li>
+        <li *ngFor="let item of activeBookingEventDetails;">
+            <div class="date-col" [ngClass]="{'activeDate default-shadow': bookPerScheduleService.activeFilterDate && (highlistDateFilterList.includes(bookPerScheduleService.activeFilterId) && (item.date == bookPerScheduleService.activeFilterDate))}">
+                <small>{{ item.date | findDay }}</small>
+                <p>{{item.date | findDate }}</p>
+            </div>
+        </li>
+        <li>
+            <div class="date-range-slider__arrow date-range-slider__arrow--right">
+                <img src="assets/images/long-arrow-right.svg" alt="long-arrow-right">
+            </div>
+        </li>
+    </ul>
+</div>

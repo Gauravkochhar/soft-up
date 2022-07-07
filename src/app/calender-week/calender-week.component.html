@@ -1,0 +1,16 @@
+<ul class="calender-table" *ngFor="let timeSlot of TIME_SLOTS;let timeSlotIndex = index">
+    <li>
+        {{ timeSlot }}
+    </li>
+    <ng-container *ngFor="let bookingEvent of activeBookingEventDetails;let dayIndex = index;">
+        <ng-container *ngVar="getSlotDetail(timeSlotIndex+1, getDayWiseEvent(bookingEvent.date)) as slotDetails">
+            <li class="{{ slotDetails?.eventStartTime?.duration?.HH}}-{{slotDetails?.eventStartTime?.duration?.MM}}">
+                <app-event-card *ngIf="slotDetails"
+                [slotDetails]="slotDetails"
+                [style]="bookEventColourDetails[slotDetails?.eventLocationDetail?.locationId] ? 'colored': 'gray'"
+                [background]="bookEventColourDetails[slotDetails?.eventLocationDetail?.locationId]"></app-event-card>
+            </li>
+        </ng-container>
+    </ng-container>
+    <li></li>
+</ul>
