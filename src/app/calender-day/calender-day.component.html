@@ -33,7 +33,7 @@
         {{ timeSlot }}
     </li>
     <ng-container *ngVar="getSlotDetail(timeSlotIndex+1, getDayWiseEvent(selectedDate)) as slotDetails">
-        <li class="{{ slotDetails?.eventStartTime?.duration?.HH}}-{{slotDetails?.eventStartTime?.duration?.MM}}">
+        <li class="col-{{ slotDetails?.eventStartTime?.duration?.HH}}-{{slotDetails?.eventStartTime?.duration?.MM}}">
             <app-event-card *ngIf="slotDetails"
                 [slotDetails]="slotDetails"
                 [type]="'day'"

@@ -103,6 +103,18 @@
                 &:first-child {                
                     font-size: $text-base;
                 }
+                &.days-31 {
+                    width: calc((100% - 160px) / 31);
+                }
+                &.days-30 {
+                    width: calc((100% - 160px) / 30);
+                }
+                &.days-28 {
+                    width: calc((100% - 160px) / 28);
+                }
+                &.days-29 {
+                    width: calc((100% - 160px) / 29);
+                }
             }
         }
     }

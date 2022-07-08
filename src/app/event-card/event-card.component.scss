@@ -6,7 +6,8 @@
         padding: 9px;
         border-radius: 10px;
         display: flex;
-        align-items: center;
+        // align-items: center;
+        align-items: flex-start;
         flex-direction: row;
         justify-content: space-between;
         border: none;
@@ -29,6 +30,7 @@
     &--day {
         max-width: 200px;
         display: inline-flex;
+        align-items: flex-start;
     }
     &--colored {
         // background: transparent;
