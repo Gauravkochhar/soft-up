@@ -283,9 +283,14 @@ h1 span {
 }
 
 .calender-table li {
+	&.col-0-30 {
+		.card-event {
+			bottom: 50px;
+		}
+	}
 	&.col-1-00 {
 		.card-event {
-			// bottom: -100px;
+			bottom: 10px;
 		}
 	}
 	&.col-1-10 {
@@ -315,36 +320,41 @@ h1 span {
 	}
 	// &.col-1-60 {
 	// 	.card-event {
-	// 		bottom: -60px;
+	// 		bottom: -120px;
 	// 	}
 	// }
 	&.col-2-00 {
 		.card-event {
-			bottom: -140px;
+			bottom: -120px;
 		}
 	}
 	&.col-2-10 {
 		.card-event {
-			bottom: -160px;
+			bottom: -140px;
 		}
 	}
 
 	&.col-2-20 {
 		.card-event {
-			bottom: -18px;
+			bottom: -160px;
 		}
 	}
 	&.col-2-30 {
 		.card-event {
-			bottom: -200px;
+			bottom: -180px;
 		}
 	}
 	&.col-2-40 {
 		.card-event {
-			bottom: -220px;
+			bottom: -200px;
 		}
 	}
 	&.col-2-50 {
+		.card-event {
+			bottom: -220px;
+		}
+	}
+	&.col-3-00 {
 		.card-event {
 			bottom: -240px;
 		}

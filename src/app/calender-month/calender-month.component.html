@@ -3,7 +3,7 @@
         <li>{{ timeSlot }}</li>
         <ng-container *ngFor="let bookingEvent of activeBookingEventDetails;let dayIndex = index;">
             <ng-container *ngVar="getSlotDetail(timeSlotIndex+1, getDayWiseEvent(bookingEvent.date)) as slotDetails;">
-                <li class="{{ slotDetails?.eventStartTime?.duration?.HH}}-{{slotDetails?.eventStartTime?.duration?.MM}}">
+                <li class="{{ slotDetails?.eventStartTime?.duration?.HH}}-{{slotDetails?.eventStartTime?.duration?.MM}} days-{{totalMonthDays}}">
                     <app-event-card-month *ngIf="slotDetails" 
                     [initials]="getInitital(slotDetails?.eventLocationDetail?.placeName)" 
                     [background]="bookEventColourDetails[slotDetails?.eventLocationDetail?.locationId]">
@@ -11,5 +11,6 @@
                 </li>
             </ng-container>
         </ng-container>
+        <li></li>
     </ul>
 </div>

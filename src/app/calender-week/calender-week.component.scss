@@ -14,7 +14,10 @@
         vertical-align: middle;
         border-bottom: 1px solid #EFEFEF;
         list-style: none;
-            width: calc((100% - 200px) / 7);
+        width: calc((100% - 200px) / 7);
+        @media (max-width:576px) {
+            width: calc(100% - 100px);
+        }
         &:not(:last-child) {
             border-right: 1px solid #EFEFEF;
         }
@@ -24,9 +27,15 @@
             vertical-align: top;
             color: #757F8F;
             font-size: $text-xs;
+            @media (max-width:576px) {
+                width: 50px;
+            }
         }
         &:last-child {
             width: 100px;
+            @media (max-width:576px) {
+                width: 50px;
+            }
         }
         p {
             margin: 0;

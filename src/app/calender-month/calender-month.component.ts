@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { TIME_SLOTS } from '../core/config/device.config';
 
 @Component({
@@ -6,15 +6,20 @@ import { TIME_SLOTS } from '../core/config/device.config';
   templateUrl: './calender-month.component.html',
   styleUrls: ['./calender-month.component.scss']
 })
-export class CalenderMonthComponent implements OnInit {
+export class CalenderMonthComponent implements OnInit, OnChanges {
 
   public readonly TIME_SLOTS = TIME_SLOTS;
   @Input() activeBookingEventDetails: any;
   @Input() bookEventColourDetails: any = {};
+  public totalMonthDays:any;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges() {
+    this.totalMonthDays = this.activeBookingEventDetails && this.activeBookingEventDetails.length;
   }
 
   getDayWiseEvent(date: any) {

@@ -16,6 +16,7 @@
         right: 0;
         margin: auto;
         width: 96%;
+        z-index: 1;
         @media (max-width:1140px) {
             flex-direction: column;
             align-items: flex-start;
@@ -26,7 +27,7 @@
         background: #EFEFF1;
     }
     &--day {
-        min-width: 300px;
+        max-width: 200px;
         display: inline-flex;
     }
     &--colored {
@@ -46,6 +47,7 @@
             width: 30px;
             height: 30px;
             border-radius: 2px;    
+            flex-shrink: 0;
         }
         @media (max-width:1140px) {
             margin-bottom: 5px;
@@ -64,11 +66,17 @@
         }
         @media (max-width:1140px) {
             padding-left: 0;
+            width: 100%;
         }
         p {
             font-size: $text-base;
             margin-bottom: 0;
             font-weight: 600;
+            @media (max-width:1140px) {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
             @media (max-width:1366px) {
                 font-size: $text-sm;
             }

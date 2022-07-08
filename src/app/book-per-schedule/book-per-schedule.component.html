@@ -23,8 +23,8 @@
                         </button>
                         <div class="dropdown-menu dropdown-menu--calender" aria-labelledby="dropdownMenuButton"
                             (click)="openDropdown($event)">
-                            <div class="filters__items">
-                                <button (click)="openDropdown($event)" class="btn btn-outline-primary"
+                            <div class="filters__items-sub">
+                                <button (click)="openDropdown($event)" class="sub-button"
                                     [matMenuTriggerFor]="menu1">{{ appliedFilter.label }}<img
                                         src="assets/images/arrow-down-primary.svg" alt="arrow-down"></button>
                                 <mat-menu #menu1="matMenu" xPosition="before">
