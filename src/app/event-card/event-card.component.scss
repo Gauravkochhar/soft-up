@@ -10,6 +10,17 @@
         flex-direction: row;
         justify-content: space-between;
         border: none;
+        position: absolute;
+        top: 10px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 96%;
+        @media (max-width:1140px) {
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
     }
     &--gray {
         background: #EFEFF1;
@@ -31,6 +42,14 @@
         height: 50px;
         border-radius: 10px;    
         overflow: hidden;
+        @media (max-width:1366px) {
+            width: 30px;
+            height: 30px;
+            border-radius: 2px;    
+        }
+        @media (max-width:1140px) {
+            margin-bottom: 5px;
+        }
         img {
             width: 100%;
             height: 100%;
@@ -40,13 +59,25 @@
         width: calc(100% - 50px);
         padding-left: 10px;
         text-align: left;
+        @media (max-width:1366px) {
+            width: calc(100% - 30px);
+        }
+        @media (max-width:1140px) {
+            padding-left: 0;
+        }
         p {
             font-size: $text-base;
             margin-bottom: 0;
             font-weight: 600;
+            @media (max-width:1366px) {
+                font-size: $text-sm;
+            }
         }
         small {
             font-size: $text-sm;
+            @media (max-width:1366px) {
+                font-size: $text-xs;
+            }
         }
     }
 }

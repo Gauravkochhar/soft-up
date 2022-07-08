@@ -270,10 +270,84 @@ h1 span {
 }
 
 .default-shadow {
-	box-shadow: 6px 0 11px 0px #ccc;
+	// box-shadow: 6px 0 11px 0px #ccc;
 }
 
 .filter-dropdown {
 	border-radius: 25px;
 	@extend .default-shadow;
+}
+
+.calender-table li {
+	position: relative;
+}
+
+.calender-table li {
+	&.col-1-00 {
+		.card-event {
+			// bottom: -100px;
+		}
+	}
+	&.col-1-10 {
+		.card-event {
+			bottom: -20px;
+		}
+	}
+	&.col-1-20 {
+		.card-event {
+			bottom: -60px;
+		}
+	}
+	&.col-1-30 {
+		.card-event {
+			bottom: -80px;
+		}
+	}
+	&.col-1-40 {
+		.card-event {
+			bottom: -100px;
+		}
+	}
+	&.col-1-50 {
+		.card-event {
+			bottom: -120px;
+		}
+	}
+	// &.col-1-60 {
+	// 	.card-event {
+	// 		bottom: -60px;
+	// 	}
+	// }
+	&.col-2-00 {
+		.card-event {
+			bottom: -140px;
+		}
+	}
+	&.col-2-10 {
+		.card-event {
+			bottom: -160px;
+		}
+	}
+
+	&.col-2-20 {
+		.card-event {
+			bottom: -18px;
+		}
+	}
+	&.col-2-30 {
+		.card-event {
+			bottom: -200px;
+		}
+	}
+	&.col-2-40 {
+		.card-event {
+			bottom: -220px;
+		}
+	}
+	&.col-2-50 {
+		.card-event {
+			bottom: -240px;
+		}
+	}
+
 }

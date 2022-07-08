@@ -1,9 +1,10 @@
 @import '../../variables';
 
 .calender-table {
-    display: table;
-    table-layout: fixed;
-    border-collapse: collapse;
+    // display: table;
+    // table-layout: fixed;
+    // border-collapse: collapse;
+    display: flex;
     width: 100%;
     margin: 0;
     li {
@@ -12,6 +13,8 @@
         height: 126px;
         vertical-align: middle;
         border-bottom: 1px solid #EFEFEF;
+        list-style: none;
+            width: calc((100% - 200px) / 7);
         &:not(:last-child) {
             border-right: 1px solid #EFEFEF;
         }

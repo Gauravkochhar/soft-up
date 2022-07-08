@@ -4,16 +4,20 @@
 .date-range-slider {
     margin: 0 -10px;
     ul {
-        display: table;
-        table-layout: fixed;
-        border-collapse: collapse;
+        // display: table;
+        // table-layout: fixed;
+        // border-collapse: collapse;
+        display: flex;
         width: 100%;
         margin: 0;
+        padding: 0 10px;
         li {
-            display: table-cell;
+            // display: table-cell;
             padding: 16px 10px;
             text-align:center;
             vertical-align: middle;
+            list-style: none;
+            width: calc((100% - 200px) / 7);
             &:first-child {
                 width: 100px;
                 text-align: center;
@@ -75,7 +79,9 @@
     }
     &--month {
         ul {
+            display: flex;
             li {
+                width: calc((100% - 160px) / 31);
                 padding: 16px 4px;
                 &:first-child, &:last-child {
                     width: 80px;

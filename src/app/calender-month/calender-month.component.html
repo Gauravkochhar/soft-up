@@ -1,4 +1,4 @@
-<div style="padding: 0 10px;">
+<div>
     <ul class="calender-table" *ngFor="let timeSlot of TIME_SLOTS;let timeSlotIndex = index">
         <li>{{ timeSlot }}</li>
         <ng-container *ngFor="let bookingEvent of activeBookingEventDetails;let dayIndex = index;">
