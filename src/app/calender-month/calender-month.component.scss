@@ -5,6 +5,7 @@
     width: 100%;
     margin: 0;
     li {
+        list-style: none;
         width: calc((100% - 160px) / 31);
         padding: 16px 10px;
         height: 126px;
