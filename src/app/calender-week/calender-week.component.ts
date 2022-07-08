@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TIME_SLOTS } from '../core/config/device.config';
 
 @Component({
@@ -11,6 +11,7 @@ export class CalenderWeekComponent implements OnInit {
   public readonly TIME_SLOTS = TIME_SLOTS;
   @Input() activeBookingEventDetails: any;
   @Input() bookEventColourDetails: any = {};
+  @Output() viewLocation = new EventEmitter();
 
   constructor() { }
 
@@ -25,5 +26,14 @@ export class CalenderWeekComponent implements OnInit {
     return slots.find((elm: any) => elm.eventStartTime.hour == slotTime);
   }
 
+  viewEvent(eventDetail:any){
+    console.log("eventDetail",eventDetail.eventLocationDetail);
+    if(eventDetail && eventDetail.eventLocationDetail) {
+      const locationCard = {...eventDetail.eventLocationDetail, id:eventDetail.eventLocationDetail.locationId};
+      this.viewLocation.emit(locationCard);
+    } else {
+      
+    }
+  } 
 
 }

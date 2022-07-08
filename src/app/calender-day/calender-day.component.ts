@@ -42,8 +42,12 @@ export class CalenderDayComponent implements OnInit {
 
   viewEvent(eventDetail:any){
     console.log("eventDetail",eventDetail.eventLocationDetail);
-    const locationCard = {...eventDetail.eventLocationDetail, id:eventDetail.eventLocationDetail.locationId};
-    this.viewLocation.emit(locationCard);
+    if(eventDetail && eventDetail.eventLocationDetail) {
+      const locationCard = {...eventDetail.eventLocationDetail, id:eventDetail.eventLocationDetail.locationId};
+      this.viewLocation.emit(locationCard);
+    } else {
+      
+    }
   } 
 
 }

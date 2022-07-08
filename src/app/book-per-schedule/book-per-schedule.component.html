@@ -27,7 +27,8 @@
                                 <button (click)="openDropdown($event)" class="sub-button"
                                     [matMenuTriggerFor]="menu1">{{ appliedFilter.label }}<img
                                         src="assets/images/arrow-down-primary.svg" alt="arrow-down"></button>
-                                <mat-menu #menu1="matMenu" xPosition="before">
+                                <mat-menu #menu1="matMenu">
+                                    <!-- xPosition="before" -->
                                     <button *ngFor="let filter of totalFilterList;" mat-menu-item
                                         (click)="onSelectDurationFilter($event, menu1, filter)">{{ filter.label
                                         }}</button>
@@ -51,11 +52,6 @@
                             </section>
                         </div>
                     </div>
-                    <!-- <button class="btn btn-outline-primary" [matMenuTriggerFor]="menu">Filter <img
-                            src="assets/images/arrow-down-primary.svg" alt="arrow-down"></button>
-                    <mat-menu #menu="matMenu">
-                        <button mat-menu-item *ngFor="let filter of locationFilterList;">{{ filter.heading }}</button>
-                    </mat-menu> -->
                 </div>
 
             </div>
@@ -73,10 +69,12 @@
     
     <!-- For Week -->
     <app-calender-week *ngIf="(appliedFilter.id == durationFilter.weekly.id)"
+    (viewLocation)="clickedLocationInfo = $event; isLocationPopupActive = true"
     [activeBookingEventDetails]="activeBookingEventDetails" [bookEventColourDetails]="bookEventColourDetails"></app-calender-week>
     
     <!-- For Month -->
     <app-calender-month *ngIf="(appliedFilter.id == durationFilter.monthly.id)"
+    (viewLocation)="clickedLocationInfo = $event; isLocationPopupActive = true"
         [activeBookingEventDetails]="activeBookingEventDetails" [bookEventColourDetails]="bookEventColourDetails"></app-calender-month>
 
 </div>

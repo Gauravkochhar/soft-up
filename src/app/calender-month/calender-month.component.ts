@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { TIME_SLOTS } from '../core/config/device.config';
 
 @Component({
@@ -12,6 +12,7 @@ export class CalenderMonthComponent implements OnInit, OnChanges {
   @Input() activeBookingEventDetails: any;
   @Input() bookEventColourDetails: any = {};
   public totalMonthDays:any;
+  @Output() viewLocation = new EventEmitter();
 
   constructor() { }
 
@@ -33,4 +34,14 @@ export class CalenderMonthComponent implements OnInit, OnChanges {
   getInitital(text: string) {
     return (text.split(' ').map((word: any) => word[0])).join('');
   }
+
+  viewEvent(eventDetail:any){
+    console.log("eventDetail",eventDetail.eventLocationDetail);
+    if(eventDetail && eventDetail.eventLocationDetail) {
+      const locationCard = {...eventDetail.eventLocationDetail, id:eventDetail.eventLocationDetail.locationId};
+      this.viewLocation.emit(locationCard);
+    } else {
+      
+    }
+  } 
 }

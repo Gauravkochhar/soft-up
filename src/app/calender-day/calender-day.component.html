@@ -1,49 +1,16 @@
-<!-- <ul class="calender-table">
-    <li>
-        01:00 AM
-    </li>
-    <li>
-       <app-event-card [type]="'day'" [style]="'gray'"></app-event-card>
-    </li>
-</ul>
-<ul class="calender-table">
-    <li>
-        02:00 AM
-    </li>
-    <li></li>
-</ul>
-<ul class="calender-table">
-    <li>
-        03:00 AM
-    </li>
-    <li>
-       <app-event-card [type]="'day'" [style]="'gray'"></app-event-card>
-    </li>
-</ul>
-<ul class="calender-table">
-    <li>
-        04:00 AM
-    </li>
-
-    <li></li>
-</ul> -->
-
 <ul class="calender-table" *ngFor="let timeSlot of TIME_SLOTS;let timeSlotIndex = index">
-    <li >
+    <li>
         {{ timeSlot }}
     </li>
     <ng-container *ngVar="getSlotDetail(timeSlotIndex+1, getDayWiseEvent(selectedDate)) as slotDetails">
-        <li class="col-{{ slotDetails?.eventStartTime?.duration?.HH}}-{{slotDetails?.eventStartTime?.duration?.MM}}">
-            <app-event-card *ngIf="slotDetails"
-                [slotDetails]="slotDetails"
-                [type]="'day'"
+        <li class="col-{{ slotDetails?.eventStartTime?.duration?.HH}}-{{slotDetails?.eventStartTime?.duration?.MM}}"
+            (click)="viewEvent(slotDetails)">
+            <app-event-card *ngIf="slotDetails" [slotDetails]="slotDetails" [type]="'day'"
                 [style]="bookEventColourDetails[slotDetails?.eventLocationDetail?.locationId] ? 'colored': 'gray'"
-                [background]="bookEventColourDetails[slotDetails?.eventLocationDetail?.locationId]"
-                (click)="viewEvent(slotDetails)"
-                >
-                </app-event-card>
+                [background]="bookEventColourDetails[slotDetails?.eventLocationDetail?.locationId]">
+            </app-event-card>
         </li>
-        <li >   
+        <li>
         </li>
     </ng-container>
 </ul>

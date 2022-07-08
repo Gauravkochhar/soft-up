@@ -4,7 +4,7 @@
     </li>
     <ng-container *ngFor="let bookingEvent of activeBookingEventDetails;let dayIndex = index;">
         <ng-container *ngVar="getSlotDetail(timeSlotIndex+1, getDayWiseEvent(bookingEvent.date)) as slotDetails">
-            <li class="col-{{ slotDetails?.eventStartTime?.duration?.HH}}-{{slotDetails?.eventStartTime?.duration?.MM}}">
+            <li class="col-{{ slotDetails?.eventStartTime?.duration?.HH}}-{{slotDetails?.eventStartTime?.duration?.MM}}" (click)="viewEvent(slotDetails)">
                 <app-event-card *ngIf="slotDetails"
                 [slotDetails]="slotDetails"
                 [style]="bookEventColourDetails[slotDetails?.eventLocationDetail?.locationId] ? 'colored': 'gray'"
