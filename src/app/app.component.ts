@@ -24,6 +24,8 @@ export class AppComponent {
 
   scroll = (event: any): void => {
     this.scrollPosition = event.target.scrollTop;
+    this.deviceService.scrollY = this.scrollPosition;
+    this.deviceService.scrollPositionChange.next(true);
   };
 
   loadHeader() {

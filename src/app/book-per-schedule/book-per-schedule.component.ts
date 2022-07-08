@@ -1,5 +1,6 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { MatMenuTrigger } from '@angular/material/menu';;
+import { ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatMenuTrigger } from '@angular/material/menu';import { Subscription } from 'rxjs';
+;
 import { ApiService } from '../core/service/api.service';
 import { BookPerScheduleService } from '../core/service/book-per-schedule.service';
 import { CalenderService } from '../core/service/calender.service';
@@ -10,8 +11,8 @@ import { BOOKING_EVENTS_API_RESPONSE_KEYS, DEFAULT_DATE_RANGE_LIST, DEVICE_WISE_
   templateUrl: './book-per-schedule.component.html',
   styleUrls: ['./book-per-schedule.component.scss']
 })
-export class BookPerScheduleComponent implements OnInit {
-
+export class BookPerScheduleComponent implements OnInit, OnDestroy {
+  @ViewChild('stickyHeader', {static:true}) stickyHeader:any;
   public durationFilter: any = DURATION_FILTERS;
   public appliedFilter = DURATION_FILTERS.daily;
   public totalFilterList: any[] | undefined;
@@ -20,6 +21,7 @@ export class BookPerScheduleComponent implements OnInit {
   public bookingEventDetails: any;
   public activeBookingEventDetails: any[] = DEFAULT_DATE_RANGE_LIST;
   public bookEventColourDetails: any = {};
+  public scrollChangeSubs:Subscription | undefined;
 
 
   @ViewChild(MatMenuTrigger) trigger: any;
@@ -36,6 +38,13 @@ export class BookPerScheduleComponent implements OnInit {
     this.getBookingEventList();
     this.totalFilterList = DEVICE_WISE_FILTER[this.deviceService.deviceType];
     this.bookPerScheduleService.activeFilterId = this.appliedFilter.id;
+    this.scrollChangeSubs = this.deviceService.scrollPositionChange.subscribe(()=>{
+      if (this.deviceService.scrollY > 10) {
+        this.stickyHeader.nativeElement.classList.add("sticky-top");
+      } else {
+        this.stickyHeader.nativeElement.classList.remove("sticky-top");
+      }
+    })
   }
 
   ngAfterContentChecked() {
@@ -103,5 +112,9 @@ export class BookPerScheduleComponent implements OnInit {
         endDate
       }
     }
+  }
+
+  ngOnDestroy(): void {
+    this.scrollChangeSubs?.unsubscribe();
   }
 }

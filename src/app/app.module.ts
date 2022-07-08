@@ -29,6 +29,7 @@ import { FindDatePipe } from './core/pipe/find-date.pipe';
 import { FindDayPipe } from './core/pipe/find-day.pipe';
 import { FindMonthPipe } from './core/pipe/find-month.pipe';
 import { NgVarDirective } from './core/directive/ng-var.directive';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 const environmentConfig: any = environment.logger;
 
 @NgModule({
@@ -45,6 +46,7 @@ const environmentConfig: any = environment.logger;
     MatButtonModule,
     MatFormFieldModule,
     MatNativeDateModule,
+    MatCheckboxModule,
     LoggerModule.forRoot({
       level: NgxLoggerLevel[environmentConfig.level],
     } as any),

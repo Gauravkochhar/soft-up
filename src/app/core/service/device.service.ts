@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { DEVICE_TYPE } from '../config/device.config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeviceService {
-
+  public scrollY:any;
+  public scrollPositionChange = new Subject();
   private activeScreenType = 'unknown';
 
   constructor() {

@@ -3,11 +3,18 @@
 
 .inner-contaier {
     padding-top: 100px;
+    @media (max-width:991px) {
+        padding-top: 70px;
+    }
 }
 
 .calender-top-section {
     background: $gray-300;
     padding: 20px 0 0 0;
+}
+
+.filter-dropdown {
+    box-shadow: none;
 }
 
 .filter-section {
@@ -66,15 +73,36 @@
 
 
 .dropdown-menu {
+
+    &--common {
+        width: 200px;
+        border: none;
+        background: #fff;
+        padding: 10px;
+        border-radius: 20px;
+        box-shadow: 0 0px 30px 0 rgb(0 0 0 / 30%);
+    }
     &--calender {
         width: 300px;
         right: 0 !important;
         left: inherit !important;
-        border: none;
-        background: $light;
-        padding: 10px;
-        border-radius: 20px;
-        box-shadow: 0 0px 30px 0 rgb(0 0 0 / 30%);
+    }
+    &--filter {
+        padding: 20px;
+        width: 248px;
+        h4  {
+            font-size: 20px;
+            font-weight: 700;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #EFEFEF;
+        }
+        .mat-checkbox {
+            display: block;
+            &:not(:last-child) {
+                margin-bottom: 10px;
+            }
+        }
     }
     &--calender {
         // background: red;

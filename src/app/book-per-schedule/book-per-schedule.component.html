@@ -1,5 +1,5 @@
 <div class="inner-contaier">
-    <div class="calender-top-section">
+    <div class="calender-top-section" #stickyHeader>
         <div class="filter-section position-relative d-flex align-items-center justify-content-center">
             <div class="date-range d-flex align-items-center">
                 <div class="date-range__arrow date-range__arrow--left cp">
@@ -21,7 +21,7 @@
                             Select {{ appliedFilter.label }} <img src="assets/images/arrow-down-white.svg"
                                 alt="arrow-down">
                         </button>
-                        <div class="dropdown-menu dropdown-menu--calender" aria-labelledby="dropdownMenuButton"
+                        <div class="dropdown-menu dropdown-menu--calender dropdown-menu--common" aria-labelledby="dropdownMenuButton"
                             (click)="openDropdown($event)">
                             <div class="filters__items-sub">
                                 <button (click)="openDropdown($event)" class="sub-button"
@@ -38,16 +38,31 @@
                     </div>
                 </div>
                 <div class="filters__items">
-                    <button class="btn btn-outline-primary" [matMenuTriggerFor]="menu">Filter <img
+                    <div class="dropdown filter-dropdown">
+                        <button class="btn btn-outline-primary" type="button" id="dropdownMenuButton1" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Filter <img src="assets/images/arrow-down-primary.svg"
+                                alt="arrow-down">
+                        </button>
+                        <div class="dropdown-menu dropdown-menu--common dropdown-menu--filter" aria-labelledby="dropdownMenuButton1"(click)="openDropdown($event)">
+                            <h4>Filter</h4>
+                            <section class="example-section">
+                                <mat-checkbox class="example-margin" *ngFor="let filter of locationFilterList;">{{ filter.heading }}</mat-checkbox>
+                            </section>
+                        </div>
+                    </div>
+                    <!-- <button class="btn btn-outline-primary" [matMenuTriggerFor]="menu">Filter <img
                             src="assets/images/arrow-down-primary.svg" alt="arrow-down"></button>
                     <mat-menu #menu="matMenu">
                         <button mat-menu-item *ngFor="let filter of locationFilterList;">{{ filter.heading }}</button>
-                    </mat-menu>
+                    </mat-menu> -->
                 </div>
 
             </div>
         </div>
-        <app-date-range-slider [appliedFilter]="appliedFilter" [activeBookingEventDetails]="activeBookingEventDetails"></app-date-range-slider>
+        <!-- <div> -->
+            <app-date-range-slider [appliedFilter]="appliedFilter" [activeBookingEventDetails]="activeBookingEventDetails"></app-date-range-slider>
+        <!-- </div> -->
     </div>
     
     <!-- For Day -->

@@ -278,6 +278,10 @@ h1 span {
 	@extend .default-shadow;
 }
 
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+	background: $primary1;
+}
+
 .calender-table li {
 	position: relative;
 }
@@ -286,6 +290,7 @@ h1 span {
 	&.col-0-10, &.col-00-10 {
 		.card-event {
 			bottom: 90px;
+			border-radius: 4px;
 			.card-content {
 				line-height: 10px;
 				font-size: 10px;
