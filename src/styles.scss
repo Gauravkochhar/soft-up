@@ -270,7 +270,7 @@ h1 span {
 }
 
 .default-shadow {
-	// box-shadow: 6px 0 11px 0px #ccc;
+	box-shadow: 6px 0 11px 0px #ccc;
 }
 
 .filter-dropdown {
@@ -283,78 +283,104 @@ h1 span {
 }
 
 .calender-table li {
-	&.col-0-30 {
+	&.col-0-10, &.col-00-10 {
+		.card-event {
+			bottom: 90px;
+			.card-content {
+				line-height: 10px;
+				font-size: 10px;
+				margin-top: -7px;
+			}
+			.card-thumbnail {
+				display: none;
+			}
+		}
+	}
+	&.col-0-20, &.col-00-20 {
+		.card-event {
+			bottom: 70px;
+			.card-content {
+				line-height: 16px;
+			}
+		}
+	}
+	&.col-0-30, &.col-00-30 {
 		.card-event {
 			bottom: 50px;
 		}
 	}
-	&.col-1-00 {
+	&.col-0-40, &.col-00-40 {
+		.card-event {
+			bottom: 35px;
+		}
+	}
+	&.col-0-50, &.col-00-50 {
+		.card-event {
+			bottom: 25px;
+		}
+	}
+	&.col-1-00, &.col-01-00 {
 		.card-event {
 			bottom: 10px;
 		}
 	}
-	&.col-1-10 {
+	&.col-1-10, &.col-01-10 {
 		.card-event {
 			bottom: -20px;
 		}
 	}
-	&.col-1-20 {
+	&.col-1-20, &.col-01-20 {
 		.card-event {
 			bottom: -60px;
 		}
 	}
-	&.col-1-30 {
+	&.col-1-30, &.col-01-30 {
 		.card-event {
 			bottom: -80px;
 		}
 	}
-	&.col-1-40 {
+	&.col-1-40, &.col-01-40 {
 		.card-event {
 			bottom: -100px;
 		}
 	}
-	&.col-1-50 {
+	&.col-1-50, &.col-01-50 {
 		.card-event {
 			bottom: -120px;
 		}
 	}
-	// &.col-1-60 {
-	// 	.card-event {
-	// 		bottom: -120px;
-	// 	}
-	// }
-	&.col-2-00 {
+	&.col-1-60, &.col-01-60, &.col-2-00 {
 		.card-event {
 			bottom: -120px;
 		}
 	}
-	&.col-2-10 {
+	&.col-2-10, &.col-02-10 {
 		.card-event {
 			bottom: -140px;
 		}
 	}
 
-	&.col-2-20 {
+	&.col-2-20, &.col-02-20 {
 		.card-event {
 			bottom: -160px;
 		}
 	}
-	&.col-2-30 {
+	&.col-2-30, &.col-02-30 {
 		.card-event {
 			bottom: -180px;
 		}
 	}
-	&.col-2-40 {
+	&.col-2-40, &.col-02-40 {
 		.card-event {
 			bottom: -200px;
 		}
 	}
-	&.col-2-50 {
+	&.col-2-50, &.col-02-50 {
 		.card-event {
 			bottom: -220px;
 		}
 	}
-	&.col-3-00 {
+	&.col-3-00, &.col-2-60, &.col-02-60 {
 		.card-event {
 			bottom: -240px;
 		}
