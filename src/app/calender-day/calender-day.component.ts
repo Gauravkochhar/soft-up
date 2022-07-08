@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TIME_SLOTS } from '../core/config/device.config';
 import { BookPerScheduleService } from '../core/service/book-per-schedule.service';
 
@@ -13,6 +13,7 @@ export class CalenderDayComponent implements OnInit {
   @Input() activeBookingEventDetails: any;
   @Input() bookEventColourDetails: any = {};
   public selectedDate: any;
+  @Output() viewLocation = new EventEmitter();
 
   constructor(
     private bookPerScheduleService: BookPerScheduleService) { }
@@ -39,5 +40,10 @@ export class CalenderDayComponent implements OnInit {
     return slots.find((elm: any) => elm.eventStartTime.hour == slotTime);
   }
 
+  viewEvent(eventDetail:any){
+    console.log("eventDetail",eventDetail.eventLocationDetail);
+    const locationCard = {...eventDetail.eventLocationDetail, id:eventDetail.eventLocationDetail.locationId};
+    this.viewLocation.emit(locationCard);
+  } 
 
 }

@@ -67,6 +67,7 @@
     
     <!-- For Day -->
     <app-calender-day *ngIf="(appliedFilter.id == durationFilter.daily.id)"
+    (viewLocation)="clickedLocationInfo = $event; isLocationPopupActive = true"
     [activeBookingEventDetails]="activeBookingEventDetails" [bookEventColourDetails]="bookEventColourDetails">
     </app-calender-day>
     
@@ -79,3 +80,15 @@
         [activeBookingEventDetails]="activeBookingEventDetails" [bookEventColourDetails]="bookEventColourDetails"></app-calender-month>
 
 </div>
+
+<!-- <div  class="popup-panel"> -->
+    <div class="popup-container" [ngClass]="{'popup-container--show': isLocationPopupActive}">
+        <div class="popup-card">
+            <app-location-card  [locationInfo]="clickedLocationInfo"></app-location-card>
+        </div>
+    </div>
+    <div class="popup-overlay" [ngClass]="{'popup-overlay--show':isLocationPopupActive}" (click)="isLocationPopupActive = !isLocationPopupActive">
+        <div class="close-icon"></div>
+    </div>
+    
+<!-- </div -->

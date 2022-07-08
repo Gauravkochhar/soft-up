@@ -38,7 +38,9 @@
                 [slotDetails]="slotDetails"
                 [type]="'day'"
                 [style]="bookEventColourDetails[slotDetails?.eventLocationDetail?.locationId] ? 'colored': 'gray'"
-                [background]="bookEventColourDetails[slotDetails?.eventLocationDetail?.locationId]">
+                [background]="bookEventColourDetails[slotDetails?.eventLocationDetail?.locationId]"
+                (click)="viewEvent(slotDetails)"
+                >
                 </app-event-card>
         </li>
         <li >   

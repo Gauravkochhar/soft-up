@@ -21,6 +21,8 @@ export class BookPerScheduleComponent implements OnInit, OnDestroy {
   public bookingEventDetails: any;
   public activeBookingEventDetails: any[] = DEFAULT_DATE_RANGE_LIST;
   public bookEventColourDetails: any = {};
+  public clickedLocationInfo:any;
+  public isLocationPopupActive:boolean = false;
   public scrollChangeSubs:Subscription | undefined;
 
 
@@ -113,6 +115,8 @@ export class BookPerScheduleComponent implements OnInit, OnDestroy {
       }
     }
   }
+
+
 
   ngOnDestroy(): void {
     this.scrollChangeSubs?.unsubscribe();
