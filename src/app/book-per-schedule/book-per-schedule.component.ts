@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatMenuTrigger } from '@angular/material/menu';import { Subscription } from 'rxjs';
 ;
 import { ApiService } from '../core/service/api.service';
@@ -26,6 +27,7 @@ export class BookPerScheduleComponent implements OnInit, OnDestroy {
   @ViewChild('stickyHeader', {static:true}) stickyHeader:any;
   @ViewChild('dropdownMenuButton', {static:true}) dropdownMenuButton:any;
   @ViewChild('dateRangePicker', {static:true}) dateRangePicker:any;
+  public date = new FormControl();
 
 
   @ViewChild(MatMenuTrigger) trigger: any;
@@ -121,9 +123,10 @@ export class BookPerScheduleComponent implements OnInit, OnDestroy {
   }
 
   getDateFilterRange(event: any, datePickerRef: any) {
-    datePickerRef._userSelection.emit({closed: true})
+    // datePickerRef._userSelection.emit({closed: true})
     // this.dropdownMenuButton.nativeElement.click();
     document.getElementById('dropdownMenuButton')?.click();
+    this.date.setValue(event);
   }
 
   ngOnDestroy(): void {

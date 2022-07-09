@@ -34,7 +34,7 @@
                                         }}</button>
                                 </mat-menu>
                             </div>
-                            <mat-calendar #dateRangePicker (selectedChange)="getDateFilterRange($event, dateRangePicker)"></mat-calendar>
+                            <mat-calendar formControlName="date" [selected]="date.value" #dateRangePicker (selectedChange)="getDateFilterRange($event, dateRangePicker)"></mat-calendar>
                         </div>
                     </div>
                 </div>

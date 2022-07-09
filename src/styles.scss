@@ -395,3 +395,14 @@ h1 span {
 	}
 
 }
+
+.cdk-overlay-container {
+	z-index: 999999;
+}
+
+.mat-calendar-body-cell {
+	.mat-calendar-body-selected {
+		background: $primary1;
+		color: $light;
+	}
+}
