@@ -34,7 +34,7 @@
                                         }}</button>
                                 </mat-menu>
                             </div>
-                            <mat-calendar></mat-calendar>
+                            <mat-calendar #dateRangePicker (selectedChange)="getDateFilterRange($event, dateRangePicker)"></mat-calendar>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
 <!-- <div  class="popup-panel"> -->
     <div class="popup-container" [ngClass]="{'popup-container--show': isLocationPopupActive}">
         <div class="popup-card">
-            <app-location-card  [locationInfo]="clickedLocationInfo"></app-location-card>
+            <app-location-card [isActive]="true"  [locationInfo]="clickedLocationInfo"></app-location-card>
         </div>
     </div>
     <div class="popup-overlay" [ngClass]="{'popup-overlay--show':isLocationPopupActive}" (click)="isLocationPopupActive = !isLocationPopupActive">

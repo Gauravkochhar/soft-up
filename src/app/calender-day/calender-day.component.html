@@ -3,9 +3,9 @@
         {{ timeSlot }}
     </li>
     <ng-container *ngVar="getSlotDetail(timeSlotIndex+1, getDayWiseEvent(selectedDate)) as slotDetails">
-        <li class="col-{{ slotDetails?.eventStartTime?.duration?.HH}}-{{slotDetails?.eventStartTime?.duration?.MM}}"
-            (click)="viewEvent(slotDetails)">
+        <li class="col-{{ slotDetails?.eventStartTime?.duration?.HH}}-{{slotDetails?.eventStartTime?.duration?.MM}}">
             <app-event-card *ngIf="slotDetails" [slotDetails]="slotDetails" [type]="'day'"
+                (click)="viewEvent(slotDetails, timeSlotIndex)"
                 [style]="bookEventColourDetails[slotDetails?.eventLocationDetail?.locationId] ? 'colored': 'gray'"
                 [background]="bookEventColourDetails[slotDetails?.eventLocationDetail?.locationId]">
             </app-event-card>

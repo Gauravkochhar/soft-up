@@ -12,7 +12,6 @@ import { BOOKING_EVENTS_API_RESPONSE_KEYS, DEFAULT_DATE_RANGE_LIST, DEVICE_WISE_
   styleUrls: ['./book-per-schedule.component.scss']
 })
 export class BookPerScheduleComponent implements OnInit, OnDestroy {
-  @ViewChild('stickyHeader', {static:true}) stickyHeader:any;
   public durationFilter: any = DURATION_FILTERS;
   public appliedFilter = DURATION_FILTERS.daily;
   public totalFilterList: any[] | undefined;
@@ -24,6 +23,9 @@ export class BookPerScheduleComponent implements OnInit, OnDestroy {
   public clickedLocationInfo:any;
   public isLocationPopupActive:boolean = false;
   public scrollChangeSubs:Subscription | undefined;
+  @ViewChild('stickyHeader', {static:true}) stickyHeader:any;
+  @ViewChild('dropdownMenuButton', {static:true}) dropdownMenuButton:any;
+  @ViewChild('dateRangePicker', {static:true}) dateRangePicker:any;
 
 
   @ViewChild(MatMenuTrigger) trigger: any;
@@ -84,11 +86,13 @@ export class BookPerScheduleComponent implements OnInit, OnDestroy {
   }
 
   onFilterChange(newFilter: any) {
-    this.appliedFilter = newFilter;
-    this.activeBookingEventDetails = this.bookingEventDetails[BOOKING_EVENTS_API_RESPONSE_KEYS[this.appliedFilter.id]];
-    this.bookPerScheduleService.activeFilterId = this.appliedFilter.id;
-    this.restoreFilterService();
-    this.updateFilterRangeInService();
+    if(this.appliedFilter.id != newFilter.id) {
+      this.appliedFilter = newFilter;
+      this.activeBookingEventDetails = this.bookingEventDetails[BOOKING_EVENTS_API_RESPONSE_KEYS[this.appliedFilter.id]];
+      this.bookPerScheduleService.activeFilterId = this.appliedFilter.id;
+      this.restoreFilterService();
+      this.updateFilterRangeInService();
+    }
   }
 
   restoreFilterService() {
@@ -116,7 +120,11 @@ export class BookPerScheduleComponent implements OnInit, OnDestroy {
     }
   }
 
-
+  getDateFilterRange(event: any, datePickerRef: any) {
+    datePickerRef._userSelection.emit({closed: true})
+    // this.dropdownMenuButton.nativeElement.click();
+    document.getElementById('dropdownMenuButton')?.click();
+  }
 
   ngOnDestroy(): void {
     this.scrollChangeSubs?.unsubscribe();

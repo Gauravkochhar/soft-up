@@ -40,14 +40,23 @@ export class CalenderDayComponent implements OnInit {
     return slots.find((elm: any) => elm.eventStartTime.hour == slotTime);
   }
 
-  viewEvent(eventDetail:any){
-    console.log("eventDetail",eventDetail.eventLocationDetail);
+  viewEvent(eventDetail:any, rowIndex: number){
+    // console.log("eventDetail",eventDetail.eventLocationDetail);
     if(eventDetail && eventDetail.eventLocationDetail) {
       const locationCard = {...eventDetail.eventLocationDetail, id:eventDetail.eventLocationDetail.locationId};
       this.viewLocation.emit(locationCard);
     } else {
-      
+      const mostNearEvent = this.getEventIfMoreThanOneHour(rowIndex);
+      console.log(mostNearEvent);
+      // this.viewLocation.emit(locationCard);
     }
+  }
+
+  getEventIfMoreThanOneHour(timeSlotIndex: number) {
+    // while(timeSlotIndex != 0) {
+    //   this.getSlotDetail(timeSlotIndex-1, this.getDayWiseEvent(this.selectedDate))
+    //   timeSlotIndex -= 1;
+    // }
   } 
 
 }
