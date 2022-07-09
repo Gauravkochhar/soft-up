@@ -101,6 +101,7 @@ export class BookPerScheduleComponent implements OnInit, OnDestroy {
     this.bookPerScheduleService.activeFilterDate = '';
     this.bookPerScheduleService.activeWeeklyFilterRange = {startDate: '', endDate: ''};
     this.bookPerScheduleService.activeMonthlyFilterRange = {startDate: '', endDate: ''};
+    this.date.setValue('');
   }
 
   updateFilterRangeInService() {
