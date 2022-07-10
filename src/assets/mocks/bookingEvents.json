@@ -19,9 +19,9 @@
                     "eventId": "1",
                     "eventStartTime": {
                         "hour": "1",
-                        "minute": "00",
+                        "minute": "20",
                         "duration": {
-                            "HH": "00",
+                            "HH": "02",
                             "MM": "10"
                         }
                     },

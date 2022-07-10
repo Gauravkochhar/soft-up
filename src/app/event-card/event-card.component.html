@@ -8,6 +8,10 @@
     </div>
     <div class="card-content">
         <p>{{ slotDetails?.eventLocationDetail?.placeName}}</p>
-        <small>{{slotDetails?.eventStartTime?.hour}}:{{slotDetails?.eventStartTime?.minute}} {{ slotDetails?.eventStartTime?.hour > 12 ? 'PM': 'AM'}}</small>
+        <ng-container *ngVar="(slotDetails?.eventStartTime?.duration?.MM != '00' && slotDetails?.eventStartTime?.duration?.MM != '0') as isMinuteAvailable;">
+            <ng-container *ngVar="(slotDetails?.eventStartTime?.duration?.HH != '00' && slotDetails?.eventStartTime?.duration?.HH != '0') as isHourAvailable">
+                <small>{{isHourAvailable ? slotDetails?.eventStartTime?.duration.HH: ''}} {{isHourAvailable ? 'hrs': ''}} {{isHourAvailable && isMinuteAvailable ? '-': ''}} {{ isMinuteAvailable ? slotDetails?.eventStartTime?.duration?.MM: ''}} {{ isMinuteAvailable ? 'min': ''}}</small>
+            </ng-container>
+        </ng-container>
     </div>
 </div>

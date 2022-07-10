@@ -27,12 +27,9 @@ export class CalenderWeekComponent implements OnInit {
   }
 
   viewEvent(eventDetail:any){
-    console.log("eventDetail",eventDetail.eventLocationDetail);
     if(eventDetail && eventDetail.eventLocationDetail) {
       const locationCard = {...eventDetail.eventLocationDetail, id:eventDetail.eventLocationDetail.locationId};
       this.viewLocation.emit(locationCard);
-    } else {
-      
     }
   } 
 
