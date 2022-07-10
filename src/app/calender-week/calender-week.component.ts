@@ -11,6 +11,7 @@ export class CalenderWeekComponent implements OnInit {
   public readonly TIME_SLOTS = TIME_SLOTS;
   @Input() activeBookingEventDetails: any;
   @Input() bookEventColourDetails: any = {};
+  @Input() dateRangeList: any = [];
   @Output() viewLocation = new EventEmitter();
 
   constructor() { }
@@ -19,7 +20,8 @@ export class CalenderWeekComponent implements OnInit {
   }
 
   getDayWiseEvent(date: any) {
-    return this.activeBookingEventDetails.find((elm: any) => elm.date == date).slots;
+    const event = this.activeBookingEventDetails.find((elm: any) => elm.date == date);
+    return event ? event.slots: [];
   }
 
   getSlotDetail(slotTime: any, slots: any) {

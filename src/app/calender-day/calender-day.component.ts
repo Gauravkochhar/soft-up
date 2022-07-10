@@ -11,6 +11,7 @@ export class CalenderDayComponent implements OnInit {
 
   public readonly TIME_SLOTS = TIME_SLOTS;
   @Input() activeBookingEventDetails: any;
+  @Input() dateRangeList: any[] = [];
   @Input() bookEventColourDetails: any = {};
   public selectedDate: any;
   @Output() viewLocation = new EventEmitter();
@@ -22,15 +23,16 @@ export class CalenderDayComponent implements OnInit {
   }
 
   ngOnChanges() {
-    if(this.activeBookingEventDetails.length) {
-      this.selectedDate = this.activeBookingEventDetails[3].date;
+    if(this.dateRangeList.length) {
+      this.selectedDate = this.dateRangeList[3].formatDate;
       this.bookPerScheduleService.activeFilterDate = this.selectedDate;
     }
   }
 
   getDayWiseEvent(date: any) {
     if(date) {
-      return this.activeBookingEventDetails.find((elm: any) => elm.date == date).slots;
+      const event = this.activeBookingEventDetails.find((elm: any) => elm.date == date);
+      return event ? event.slots: [];
     } else {
       return [];
     }

@@ -2,8 +2,8 @@
     <li>
         {{ timeSlot }}
     </li>
-    <ng-container *ngFor="let bookingEvent of activeBookingEventDetails;let dayIndex = index;">
-        <ng-container *ngVar="getSlotDetail(timeSlotIndex+1, getDayWiseEvent(bookingEvent.date)) as slotDetails">
+    <ng-container *ngFor="let dateEvent of dateRangeList;let dayIndex = index;">
+        <ng-container *ngVar="getSlotDetail(timeSlotIndex+1, getDayWiseEvent(dateEvent.formatDate)) as slotDetails">
             <li class="{{ slotDetails?.eventStartTime?.duration?.HH}}-{{slotDetails?.eventStartTime?.duration?.MM}}">
                 <app-event-card *ngIf="slotDetails"
                 (click)="viewEvent(slotDetails)"

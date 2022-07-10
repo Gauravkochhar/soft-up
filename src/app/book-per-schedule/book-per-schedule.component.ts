@@ -20,6 +20,7 @@ export class BookPerScheduleComponent implements OnInit, OnDestroy {
   public locationFilterList: any = [];
   public bookingEventDetails: any;
   public activeBookingEventDetails: any[] = DEFAULT_DATE_RANGE_LIST;
+  public dateRangeList: any[] = [];
   public bookEventColourDetails: any = {};
   public clickedLocationInfo:any;
   public isLocationPopupActive:boolean = false;
@@ -40,10 +41,15 @@ export class BookPerScheduleComponent implements OnInit, OnDestroy {
     public bookPerScheduleService: BookPerScheduleService) { }
 
   ngOnInit(): void {
+    this.dateRangeList = this.calenderService.getDaysListByFilter(this.appliedFilter.id);
     this.loadBannerText();
     this.getBookingEventList();
     this.totalFilterList = DEVICE_WISE_FILTER[this.deviceService.deviceType];
     this.bookPerScheduleService.activeFilterId = this.appliedFilter.id;
+    this.scrollChangeSubscription();
+  }
+
+  scrollChangeSubscription() {
     this.scrollChangeSubs = this.deviceService.scrollPositionChange.subscribe(()=>{
       if (this.deviceService.scrollY > 10) {
         this.stickyHeader.nativeElement.classList.add("sticky-top");
@@ -91,9 +97,11 @@ export class BookPerScheduleComponent implements OnInit, OnDestroy {
     if(this.appliedFilter.id != newFilter.id) {
       this.appliedFilter = newFilter;
       this.activeBookingEventDetails = this.bookingEventDetails[BOOKING_EVENTS_API_RESPONSE_KEYS[this.appliedFilter.id]];
+      this.dateRangeList = this.calenderService.getDaysListByFilter(this.appliedFilter.id);
       this.bookPerScheduleService.activeFilterId = this.appliedFilter.id;
       this.restoreFilterService();
-      this.updateFilterRangeInService();
+      this.bookPerScheduleService.updateFilterRangeInService(this.appliedFilter.id, this.dateRangeList);
+      // this.updateFilterRangeInService();
     }
   }
 
@@ -106,8 +114,8 @@ export class BookPerScheduleComponent implements OnInit, OnDestroy {
 
   updateFilterRangeInService() {
     if(this.appliedFilter.id == this.durationFilter.weekly.id) {
-      const startDate = this.activeBookingEventDetails.length ? this.activeBookingEventDetails[0].date: '';
-      const endDate = this.activeBookingEventDetails[this.activeBookingEventDetails.length-1].date;
+      const startDate = this.dateRangeList.length ? this.dateRangeList[0].date: '';
+      const endDate = this.dateRangeList[this.dateRangeList.length-1].date;
       this.bookPerScheduleService.activeWeeklyFilterRange = {
         startDate,
         endDate

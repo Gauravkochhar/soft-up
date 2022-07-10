@@ -31,14 +31,12 @@ export class AppComponent {
   loadHeader() {
     this.apiService.getHeaders().subscribe((response: any) => {
       this.headerList = response.header;
-      console.log(this.headerList);
     })
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.deviceService.setDeviceType(event.target.innerWidth);
-    console.log(this.deviceService.deviceType);
   }
 }
 

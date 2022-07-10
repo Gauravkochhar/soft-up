@@ -57,25 +57,28 @@
             </div>
         </div>
         <!-- <div> -->
-            <app-date-range-slider [appliedFilter]="appliedFilter" [activeBookingEventDetails]="activeBookingEventDetails"></app-date-range-slider>
+            <app-date-range-slider [(dateRangeList)]="dateRangeList" [appliedFilter]="appliedFilter" [activeBookingEventDetails]="activeBookingEventDetails"></app-date-range-slider>
         <!-- </div> -->
     </div>
     
     <!-- For Day -->
     <app-calender-day *ngIf="(appliedFilter.id == durationFilter.daily.id)"
     (viewLocation)="clickedLocationInfo = $event; isLocationPopupActive = true"
-    [activeBookingEventDetails]="activeBookingEventDetails" [bookEventColourDetails]="bookEventColourDetails">
+    [activeBookingEventDetails]="activeBookingEventDetails" [bookEventColourDetails]="bookEventColourDetails"
+    [dateRangeList]="dateRangeList">
     </app-calender-day>
     
     <!-- For Week -->
     <app-calender-week *ngIf="(appliedFilter.id == durationFilter.weekly.id)"
     (viewLocation)="clickedLocationInfo = $event; isLocationPopupActive = true"
-    [activeBookingEventDetails]="activeBookingEventDetails" [bookEventColourDetails]="bookEventColourDetails"></app-calender-week>
+    [activeBookingEventDetails]="activeBookingEventDetails" [bookEventColourDetails]="bookEventColourDetails"
+    [dateRangeList]="dateRangeList"></app-calender-week>
     
     <!-- For Month -->
     <app-calender-month *ngIf="(appliedFilter.id == durationFilter.monthly.id)"
     (viewLocation)="clickedLocationInfo = $event; isLocationPopupActive = true"
-        [activeBookingEventDetails]="activeBookingEventDetails" [bookEventColourDetails]="bookEventColourDetails"></app-calender-month>
+        [activeBookingEventDetails]="activeBookingEventDetails" [bookEventColourDetails]="bookEventColourDetails"
+        [dateRangeList]="dateRangeList"></app-calender-month>
 
 </div>
 

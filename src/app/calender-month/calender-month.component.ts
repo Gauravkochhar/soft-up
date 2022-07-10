@@ -10,6 +10,7 @@ export class CalenderMonthComponent implements OnInit, OnChanges {
 
   public readonly TIME_SLOTS = TIME_SLOTS;
   @Input() activeBookingEventDetails: any;
+  @Input() dateRangeList: any = [];
   @Input() bookEventColourDetails: any = {};
   public totalMonthDays:any;
   @Output() viewLocation = new EventEmitter();
@@ -24,7 +25,8 @@ export class CalenderMonthComponent implements OnInit, OnChanges {
   }
 
   getDayWiseEvent(date: any) {
-    return this.activeBookingEventDetails.find((elm: any) => elm.date == date).slots;
+    const event = this.activeBookingEventDetails.find((elm: any) => elm.date == date);
+    return event ? event.slots: [];
   }
 
   getSlotDetail(slotTime: any, slots: any) {

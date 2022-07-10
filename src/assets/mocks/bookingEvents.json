@@ -1,8 +1,31 @@
 {
     "dayEventList": [
         {
-            "date": "3/07/2022",
-            "slots": []
+            "date": "03/07/2022",
+            "slots": [
+                {
+                    "eventId": "1",
+                    "eventStartTime": {
+                        "hour": "1",
+                        "minute": "20",
+                        "duration": {
+                            "HH": "02",
+                            "MM": "10"
+                        }
+                    },
+                    "eventLocationDetail": {
+                        "locationId": "2",
+                        "imageUrl": "assets/images/card/back_to_past/2nd.png",
+                        "rating": "4.8",
+                        "totalReview": "10",
+                        "placeLocation": "Agra, India",
+                        "placeName": "Taj Mahal",
+                        "chargeAmount": "$50.00",
+                        "limit": "12",
+                        "totalBooked": "5"
+                    }
+                }
+            ]
         },
         {
             "date": "4/07/2022",
@@ -13,7 +36,7 @@
             "slots": []
         },
         {
-            "date": "16/07/2022",
+            "date": "10/07/2022",
             "slots": [
                 {
                     "eventId": "1",
@@ -98,11 +121,11 @@
     ],
     "weekEventList": [
         {
-            "date": "3/07/2022",
+            "date": "03/07/2022",
             "slots": []
         },
         {
-            "date": "4/07/2022",
+            "date": "04/07/2022",
             "slots": [
                 {
                     "eventId": "1",
@@ -129,11 +152,11 @@
             ]
         },
         {
-            "date": "5/07/2022",
+            "date": "05/07/2022",
             "slots": []
         },
         {
-            "date": "6/07/2022",
+            "date": "06/07/2022",
             "slots": [
                 {
                     "eventId": "1",
@@ -164,7 +187,7 @@
             "slots": []
         },
         {
-            "date": "8/07/2022",
+            "date": "08/07/2022",
             "slots": [
                 {
                     "eventId": "2",
@@ -191,7 +214,7 @@
             ]
         },
         {
-            "date": "9/07/2022",
+            "date": "09/07/2022",
             "slots": [
                 {
                     "eventId": "1",
@@ -220,7 +243,7 @@
     ],
     "monthEventList": [
         {
-            "date": "1/07/2022",
+            "date": "01/07/2022",
             "slots": [
                 {
                     "eventId": "2",
@@ -247,7 +270,7 @@
             ]
         },
         {
-            "date": "2/07/2022",
+            "date": "02/07/2022",
             "slots": [
                 {
                     "eventId": "2",
@@ -274,7 +297,7 @@
             ]
         },
         {
-            "date": "3/07/2022",
+            "date": "03/07/2022",
             "slots": [
                 {
                     "eventId": "2",
@@ -301,20 +324,20 @@
             ]
         },
         {
-            "date": "4/07/2022",
+            "date": "04/07/2022",
             "slots": [
             ]
         },
         {
-            "date": "5/07/2022",
+            "date": "05/07/2022",
             "slots": []
         },
         {
-            "date": "6/07/2022",
+            "date": "06/07/2022",
             "slots": []
         },
         {
-            "date": "7/07/2022",
+            "date": "07/07/2022",
             "slots": []
         },
         {

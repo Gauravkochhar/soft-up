@@ -8,7 +8,6 @@ export class FindMonthPipe implements PipeTransform {
 
   transform(value: any, ...args: unknown[]): unknown {
     const dateValue = value ? value.split('/'): [];
-    console.log(dateValue)
     if(dateValue.length == 3) {
       const findDate: any = new Date(`${dateValue[1]}/${dateValue[0]}/${dateValue[2]}`);
       return months[findDate.getMonth()];

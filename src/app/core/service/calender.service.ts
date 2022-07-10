@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { months, weekDay } from 'src/app/book-per-schedule/book-per-schedule.config';
+import { DURATION_FILTERS, months, weekDay } from 'src/app/book-per-schedule/book-per-schedule.config';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +29,17 @@ export class CalenderService {
     return `${dd < 10 ? '0'+dd : dd}/${mm < 10 ? '0'+mm: mm }/${yyyy}`;
   }
 
+  getDaysListByFilter(appliedFilterId: any) {
+    if(appliedFilterId === DURATION_FILTERS.daily.id) {
+      return this.getWeekDaysList();
+    } else if(appliedFilterId === DURATION_FILTERS.weekly.id) {
+      return this.getWeekDaysList();
+    } else if(appliedFilterId === DURATION_FILTERS.monthly.id) {
+      const date = new Date();
+      return this.getmonthDaysList(date.getMonth() + 1, date.getFullYear())
+    }
+  }
+
   getWeekDaysList(customDate?: any, format?: any) {
     let ngDate = customDate ? new Date(customDate): new Date();
     if(customDate) {
@@ -52,7 +63,7 @@ export class CalenderService {
         formatDate: `${dd < 10 ? '0'+dd : dd}/${mm < 10 ? '0'+mm: mm }/${yyyy}`,
         weekDay: weekDay[ngDate.getDay()]
       }
-    })
+    }).reverse();
   }
 
   getmonthDaysList(monthNo: number, year: number) {
