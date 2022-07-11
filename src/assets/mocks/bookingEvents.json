@@ -36,13 +36,13 @@
             "slots": []
         },
         {
-            "date": "10/07/2022",
+            "date": "11/07/2022",
             "slots": [
                 {
                     "eventId": "1",
                     "eventStartTime": {
-                        "hour": "1",
-                        "minute": "20",
+                        "hour": "20",
+                        "minute": "28",
                         "duration": {
                             "HH": "02",
                             "MM": "10"
@@ -214,8 +214,30 @@
             ]
         },
         {
-            "date": "09/07/2022",
+            "date": "11/07/2022",
             "slots": [
+                {
+                    "eventId": "1",
+                    "eventStartTime": {
+                        "hour": "2",
+                        "minute": "00",
+                        "duration": {
+                            "HH": "1",
+                            "MM": "00"
+                        }
+                    },
+                    "eventLocationDetail": {
+                        "locationId": "3",
+                        "imageUrl": "assets/images/card/back_to_past/2nd.png",
+                        "rating": "4.8",
+                        "totalReview": "10",
+                        "placeLocation": "Agra, India",
+                        "placeName": "Taj Mahal",
+                        "chargeAmount": "$50.00",
+                        "limit": "12",
+                        "totalBooked": "5"
+                    }
+                },
                 {
                     "eventId": "1",
                     "eventStartTime": {
@@ -354,7 +376,52 @@
         },
         {
             "date": "11/07/2022",
-            "slots": []
+            "slots": [
+                {
+                    "eventId": "2",
+                    "eventStartTime": {
+                        "hour": "1",
+                        "minute": "00",
+                        "duration": {
+                            "HH": "1",
+                            "MM": "00"
+                        }
+                    },
+                    "eventLocationDetail": {
+                        "locationId": "3",
+                        "imageUrl": "assets/images/card/back_to_past/2nd.png",
+                        "rating": "4.8",
+                        "totalReview": "10",
+                        "placeLocation": "Agra, India",
+                        "placeName": "Taj Mahal",
+                        "chargeAmount": "$50.00",
+                        "limit": "12",
+                        "totalBooked": "5"
+                    }
+                },
+                {
+                    "eventId": "2",
+                    "eventStartTime": {
+                        "hour": "2",
+                        "minute": "31",
+                        "duration": {
+                            "HH": "1",
+                            "MM": "00"
+                        }
+                    },
+                    "eventLocationDetail": {
+                        "locationId": "3",
+                        "imageUrl": "assets/images/card/back_to_past/2nd.png",
+                        "rating": "4.8",
+                        "totalReview": "10",
+                        "placeLocation": "Agra, India",
+                        "placeName": "Taj Mahal",
+                        "chargeAmount": "$50.00",
+                        "limit": "12",
+                        "totalBooked": "5"
+                    }
+                }
+            ]
         },
         {
             "date": "12/07/2022",

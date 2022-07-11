@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { DateRange } from '@angular/material/datepicker';
 import { MatMenuTrigger } from '@angular/material/menu';import { Subscription } from 'rxjs';
 ;
 import { ApiService } from '../core/service/api.service';
@@ -13,10 +14,13 @@ import { BOOKING_EVENTS_API_RESPONSE_KEYS, DEFAULT_DATE_RANGE_LIST, DEVICE_WISE_
   styleUrls: ['./book-per-schedule.component.scss']
 })
 export class BookPerScheduleComponent implements OnInit, OnDestroy {
+
+  public todayDate: any;
+  public todayDateJsObj: any = new Date();
   public durationFilter: any = DURATION_FILTERS;
   public appliedFilter = DURATION_FILTERS.daily;
   public totalFilterList: any[] | undefined;
-  requestingServerForBannerText = false;
+  public requestingServerForBannerText = false;
   public locationFilterList: any = [];
   public bookingEventDetails: any;
   public activeBookingEventDetails: any[] = DEFAULT_DATE_RANGE_LIST;
@@ -28,11 +32,13 @@ export class BookPerScheduleComponent implements OnInit, OnDestroy {
   @ViewChild('stickyHeader', {static:true}) stickyHeader:any;
   @ViewChild('dropdownMenuButton', {static:true}) dropdownMenuButton:any;
   @ViewChild('dateRangePicker', {static:true}) dateRangePicker:any;
-  public date = new FormControl();
-
-
+  @ViewChild('dateRangeSlider', {static:false}) dateRangeSlider:any;
   @ViewChild(MatMenuTrigger) trigger: any;
-  // public selected: Date | null;
+  public date = new FormControl();
+  public selectedLocationFilterList: any[] = [];
+  public daysDiffFromToday: any;
+  public selectedDateRange: any;
+
   constructor(
     private apiService: ApiService,
     private deviceService: DeviceService,
@@ -41,6 +47,8 @@ export class BookPerScheduleComponent implements OnInit, OnDestroy {
     public bookPerScheduleService: BookPerScheduleService) { }
 
   ngOnInit(): void {
+    this.todayDate = this.calenderService.getDateStringFromDate(new Date());
+    this.date.setValue(this.todayDateJsObj);
     this.dateRangeList = this.calenderService.getDaysListByFilter(this.appliedFilter.id);
     this.loadBannerText();
     this.getBookingEventList();
@@ -59,6 +67,14 @@ export class BookPerScheduleComponent implements OnInit, OnDestroy {
     })
   }
 
+  getPreviousDays() {
+    this.dateRangeSlider.getPreviousDays();
+  }
+  
+  getForwardDays() {
+    this.dateRangeSlider.getForwardDays();
+  }
+
   ngAfterContentChecked() {
     this.cdRef.detectChanges();
   }
@@ -68,6 +84,7 @@ export class BookPerScheduleComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.apiService.getBannerTextList().subscribe((response: any) => {
         this.locationFilterList = response.section;
+        this.selectedLocationFilterList = this.locationFilterList;
         this.locationFilterList.forEach((elm: any) => {
           this.bookEventColourDetails[elm.id] = elm.bookEventColor;
         })
@@ -83,25 +100,34 @@ export class BookPerScheduleComponent implements OnInit, OnDestroy {
     })
   }
 
-  openDropdown(event:any) {
-    event.stopPropagation();
-  }
-
   onSelectDurationFilter(event: any, menu1: any, filter: any) {
     event.stopPropagation();
     this.trigger.closeMenu();
-    this.onFilterChange(filter);
+    this.onDurationFilterChange(filter);
   }
 
-  onFilterChange(newFilter: any) {
+  onDurationFilterChange(newFilter: any) {
     if(this.appliedFilter.id != newFilter.id) {
       this.appliedFilter = newFilter;
       this.activeBookingEventDetails = this.bookingEventDetails[BOOKING_EVENTS_API_RESPONSE_KEYS[this.appliedFilter.id]];
       this.dateRangeList = this.calenderService.getDaysListByFilter(this.appliedFilter.id);
+      this.updateSelectedRangeOnCalender();
       this.bookPerScheduleService.activeFilterId = this.appliedFilter.id;
       this.restoreFilterService();
       this.bookPerScheduleService.updateFilterRangeInService(this.appliedFilter.id, this.dateRangeList);
-      // this.updateFilterRangeInService();
+    }
+  }
+
+  updateSelectedRangeOnCalender() {
+    if([this.durationFilter.weekly.id, this.durationFilter.monthly.id].includes(this.appliedFilter.id)) {
+      this.selectedDateRange = new DateRange( new Date(this.calenderService.convertDateInto_MMDDYYYY(this.dateRangeList[0].formatDate)), new Date(this.calenderService.convertDateInto_MMDDYYYY(this.dateRangeList[this.dateRangeList.length-1].formatDate)));
+    }
+  }
+
+  onLocationFilterChange(event:any, filter: any) {
+    event.checked && this.selectedLocationFilterList.push(filter);
+    if(!event.checked) {
+      this.selectedLocationFilterList = this.selectedLocationFilterList.filter((elm) => elm.id != filter.id);
     }
   }
 
@@ -112,30 +138,25 @@ export class BookPerScheduleComponent implements OnInit, OnDestroy {
     this.date.setValue('');
   }
 
-  updateFilterRangeInService() {
-    if(this.appliedFilter.id == this.durationFilter.weekly.id) {
-      const startDate = this.dateRangeList.length ? this.dateRangeList[0].date: '';
-      const endDate = this.dateRangeList[this.dateRangeList.length-1].date;
-      this.bookPerScheduleService.activeWeeklyFilterRange = {
-        startDate,
-        endDate
-      }
-    }
-    if(this.appliedFilter.id == this.durationFilter.monthly.id) {
-      const startDate = this.activeBookingEventDetails.length ? this.activeBookingEventDetails[0].date: '';
-      const endDate = this.activeBookingEventDetails[this.activeBookingEventDetails.length-1].date;
-      this.bookPerScheduleService.activeMonthlyFilterRange = {
-        startDate,
-        endDate
-      }
+  getDateFilterRange(event: any) {
+    document.getElementById('dropdownMenuButton')?.click();
+    this.date.setValue(event);
+    this.dateRangeList = this.calenderService.getDaysListByFilter(this.appliedFilter.id, this.calenderService.getDateStringFromDate(new Date(event)), 'dd/mm/yyyy');
+    this.dateRangeSlider.updateDaysDiffForWeekCalender(this.dateRangeList);
+  }
+
+  calenderRangeSelected(event: any, filterType: any) {
+    if(filterType == this.durationFilter.weekly.id) {
+      this.dateRangeList = this.calenderService.getWeekList1(event.startDate);
+      this.bookPerScheduleService.updateFilterRangeInService(this.appliedFilter.id, this.dateRangeList);
+    } else if(filterType == this.durationFilter.monthly.id) {
+      this.dateRangeList = this.calenderService.getmonthDaysList1(event.startDate);
+      this.bookPerScheduleService.updateFilterRangeInService(this.appliedFilter.id, this.dateRangeList);
     }
   }
 
-  getDateFilterRange(event: any, datePickerRef: any) {
-    // datePickerRef._userSelection.emit({closed: true})
-    // this.dropdownMenuButton.nativeElement.click();
-    document.getElementById('dropdownMenuButton')?.click();
-    this.date.setValue(event);
+  onExploreTour() {
+    this.isLocationPopupActive = false;
   }
 
   ngOnDestroy(): void {

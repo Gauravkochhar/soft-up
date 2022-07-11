@@ -10,60 +10,84 @@ import { CalenderService } from '../core/service/calender.service';
 })
 export class DateRangeSliderComponent implements OnInit {
 
+  public activeDate: any;
   public durationFilter: any = DURATION_FILTERS;
+  public highlistDateFilterList = [DURATION_FILTERS.daily.id];
+  
+  @Input() todayDate: any;
   @Input() appliedFilter: any;
   @Input() activeBookingEventDetails: any = [];
   @Input() dateRangeList: any = [];
+  @Input() daysDiffFromToday: number = 0;
   @Output() dateRangeListChange = new EventEmitter();
-  public highlistDateFilterList = [DURATION_FILTERS.daily.id];
-  public todayDate: any;
+  @Output() daysDiffFromTodayChange = new EventEmitter();
+  @Output() onSelectedRangeOnCalender = new EventEmitter();
 
-  public tempDate: any;
 
   constructor(
     private calenderService: CalenderService,
     public bookPerScheduleService: BookPerScheduleService) { }
 
   ngOnInit(): void {
-    this.todayDate = this.calenderService.getDateStringFromDate(new Date());
-    console.log(this.todayDate);
   }
 
   getPreviousDays() {
     if(this.appliedFilter.id == DURATION_FILTERS.daily.id) {
-      this.updateDetailsForWeekCalender(true, true);
+      let firstDateOfWeek: any = new Date(this.calenderService.convertDateInto_MMDDYYYY(this.dateRangeList[0].formatDate));
+      firstDateOfWeek.setDate(firstDateOfWeek.getDate() - 1);
+      this.updateDetailsForWeekCalender(firstDateOfWeek);
+      this.updateDaysDiffForWeekCalender();
     } else if(this.appliedFilter.id == DURATION_FILTERS.weekly.id) {
-      this.updateDetailsForWeekCalender(false, true);
+      let firstDateOfWeek: any = new Date(this.calenderService.convertDateInto_MMDDYYYY(this.dateRangeList[0].formatDate));
+      firstDateOfWeek.setDate(firstDateOfWeek.getDate() - 7);
+      this.updateDetailsForWeekCalender(firstDateOfWeek);
+      this.updateDaysDiffForWeekCalender();
+      this.onSelectedRangeOnCalender.emit();
     } else if(this.appliedFilter.id == DURATION_FILTERS.monthly.id) {
-      this.updateDetailsForMonthCalender(true);
+      let firstDateOfMonth: any = new Date(this.calenderService.convertDateInto_MMDDYYYY(this.dateRangeList[0].formatDate));
+      firstDateOfMonth.setMonth(firstDateOfMonth.getMonth() - 1);
+      this.updateDetailsForMonthCalender(firstDateOfMonth);
+      this.onSelectedRangeOnCalender.emit();
     }
   }
-
-  updateDetailsForWeekCalender(isDailyFilter: boolean, isPreviousDaysRequest: boolean) {
-    this.tempDate = !this.tempDate ? new Date(): this.tempDate;
-    isPreviousDaysRequest ? this.tempDate.setDate(this.tempDate.getDate() - (isDailyFilter ? 1: 7)): this.tempDate.setDate(this.tempDate.getDate() + (isDailyFilter ? 1: 7));
-    const middleDayOfWeek = this.calenderService.getDateStringFromDate(this.tempDate)
-    this.dateRangeList = this.calenderService.getWeekDaysList(middleDayOfWeek, 'dd/mm/yyyy');
-    this.dateRangeListChange.emit(this.dateRangeList);
-    this.bookPerScheduleService.updateFilterRangeInService(this.appliedFilter.id, this.dateRangeList);
-  }
-
-  updateDetailsForMonthCalender(isPreviousMonthRequest: boolean) {
-    this.tempDate = !this.tempDate ? new Date(): this.tempDate;
-    isPreviousMonthRequest ? this.tempDate.setMonth(this.tempDate.getMonth() - 1): this.tempDate.setMonth(this.tempDate.getMonth() + 1);
-    this.dateRangeList = this.calenderService.getmonthDaysList(this.tempDate.getMonth()+1, this.tempDate.getFullYear());
-    this.dateRangeListChange.emit(this.dateRangeList);
-    this.bookPerScheduleService.updateFilterRangeInService(this.appliedFilter.id, this.dateRangeList);
-  }
-
+  
   getForwardDays() {
     if(this.appliedFilter.id == DURATION_FILTERS.daily.id) {
-      this.updateDetailsForWeekCalender(true, false);
+      let firstDateOfWeek: any = new Date(this.calenderService.convertDateInto_MMDDYYYY(this.dateRangeList[0].formatDate));
+      firstDateOfWeek.setDate(firstDateOfWeek.getDate() + 1);
+      this.updateDetailsForWeekCalender(firstDateOfWeek);
+      this.updateDaysDiffForWeekCalender();
     } else if(this.appliedFilter.id == DURATION_FILTERS.weekly.id) {
-      this.updateDetailsForWeekCalender(false, false);
+      let firstDateOfWeek: any = new Date(this.calenderService.convertDateInto_MMDDYYYY(this.dateRangeList[0].formatDate));
+      firstDateOfWeek.setDate(firstDateOfWeek.getDate() + 7);
+      this.updateDetailsForWeekCalender(firstDateOfWeek);
+      this.updateDaysDiffForWeekCalender();
+      this.onSelectedRangeOnCalender.emit();
     } else if(this.appliedFilter.id == DURATION_FILTERS.monthly.id) {
-      this.updateDetailsForMonthCalender(false);
+      let firstDateOfMonth: any = new Date(this.calenderService.convertDateInto_MMDDYYYY(this.dateRangeList[0].formatDate));
+      firstDateOfMonth.setMonth(firstDateOfMonth.getMonth() + 1);
+      this.updateDetailsForMonthCalender(firstDateOfMonth);
+      this.onSelectedRangeOnCalender.emit();
     }
+  }
+
+  updateDetailsForWeekCalender(startingDate: any) {
+    this.activeDate = startingDate ? startingDate: (this.activeDate ? this.activeDate: new Date());
+    this.dateRangeList = this.calenderService.getWeekList1(this.calenderService.getDateStringFromDate(this.activeDate), 'dd/mm/yyyy');
+    this.dateRangeListChange.emit(this.dateRangeList);
+    this.bookPerScheduleService.updateFilterRangeInService(this.appliedFilter.id, this.dateRangeList);
+  }
+
+  updateDetailsForMonthCalender(startingDate?: any, dateFormat: any = 'dd/mm/yyyy') {
+    this.activeDate = startingDate ? startingDate: (this.activeDate ? this.activeDate: new Date());
+    this.dateRangeList = this.calenderService.getmonthDaysList1(this.calenderService.getDateStringFromDate(this.activeDate));
+    this.dateRangeListChange.emit(this.dateRangeList);
+    this.bookPerScheduleService.updateFilterRangeInService(this.appliedFilter.id, this.dateRangeList);
+  }
+
+  updateDaysDiffForWeekCalender(dateRangeList?: any[]) {
+      this.daysDiffFromToday = this.calenderService.getDayDifferenceBetweenDates(this.todayDate, (dateRangeList? dateRangeList[3].formatDate:this.dateRangeList[3].formatDate), 'dd/mm/yyyy', 'dd/mm/yyyy');
+      this.daysDiffFromTodayChange.emit(this.daysDiffFromToday);
   }
 
 }

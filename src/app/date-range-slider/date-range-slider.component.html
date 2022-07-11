@@ -1,7 +1,8 @@
 <div class="date-range-slider" [ngClass]="{'date-range-slider--month':appliedFilter.id == durationFilter.monthly.id}">
     <ul *ngIf="(appliedFilter.id == durationFilter.daily.id) || (appliedFilter.id == durationFilter.weekly.id) || (appliedFilter.id == durationFilter.monthly.id)">
         <li>
-            <div class="date-range-slider__arrow date-range-slider__arrow--left" (click)="getPreviousDays()">
+            <div class="date-range-slider__arrow date-range-slider__arrow--left"
+            [ngClass]="{'opacity-point-3': (appliedFilter.id == durationFilter.daily.id) && !daysDiffFromToday}" (click)="getPreviousDays()">
                 <img src="assets/images/long-arrow-left.svg" alt="long-arrow-left">
             </div>
         </li>

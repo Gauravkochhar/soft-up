@@ -15,6 +15,10 @@
 
 .filter-dropdown {
     box-shadow: none;
+    &:active, &:focus, &:hover {
+        background: transparent;
+        color: $primary;
+    }
 }
 
 .filter-section {
@@ -103,7 +107,8 @@
         .mat-checkbox {
             display: block;
             &:not(:last-child) {
-                margin-bottom: 10px;
+                margin-bottom: 17px;
+                border-bottom: 1px solid #edebebab;
             }
         }
     }
@@ -174,6 +179,8 @@
         cursor: pointer;
         margin-top: 10px;
         margin-right: 10px;
+        font-size: 32px;
+        user-select: none;
     }
     &--show {
         background: rgb(0 0 0 / 26%);

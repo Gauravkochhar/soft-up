@@ -30,10 +30,11 @@ import { FindDayPipe } from './core/pipe/find-day.pipe';
 import { FindMonthPipe } from './core/pipe/find-month.pipe';
 import { NgVarDirective } from './core/directive/ng-var.directive';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { DateRangePickerComponent } from './core/component/date-range-picker/date-range-picker.component';
 const environmentConfig: any = environment.logger;
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, DashboardComponent, PageNotFoundComponent, CalenderWeekComponent, BookPerScheduleComponent, EventCardComponent, CalenderDayComponent, CalenderMonthComponent, EventCardMonthComponent, DateRangeSliderComponent, FindDatePipe, FindDayPipe, FindMonthPipe, NgVarDirective],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, DashboardComponent, PageNotFoundComponent, CalenderWeekComponent, BookPerScheduleComponent, EventCardComponent, CalenderDayComponent, CalenderMonthComponent, EventCardMonthComponent, DateRangeSliderComponent, FindDatePipe, FindDayPipe, FindMonthPipe, NgVarDirective, DateRangePickerComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

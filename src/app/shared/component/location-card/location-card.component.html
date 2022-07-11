@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="explore-btn-section">
-                    <button [ngClass]="{'disable': locationInfo?.totalBooked == locationInfo?.limit}" matRipple>Explore
+                    <button [ngClass]="{'disable': (locationInfo?.totalBooked == locationInfo?.limit) || locationInfo?.isEventMissed}" matRipple (click)="exploreTour((locationInfo?.totalBooked == locationInfo?.limit) || locationInfo?.isEventMissed)">Explore
                         Tour <img class="btn-arrow-img" src="assets/images/card-images/right-arrow.png"></button>
                 </div>
             </div>

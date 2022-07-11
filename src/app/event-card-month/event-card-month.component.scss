@@ -13,5 +13,9 @@
         color: $light;
         border-radius: 50%;
         margin: 0 auto;
+        cursor: pointer;
+    }
+    &--graycolor {
+        color: gray;
     }
 }

@@ -29,14 +29,16 @@ export class CalenderService {
     return `${dd < 10 ? '0'+dd : dd}/${mm < 10 ? '0'+mm: mm }/${yyyy}`;
   }
 
-  getDaysListByFilter(appliedFilterId: any) {
+  getDaysListByFilter(appliedFilterId: any, startingDate?: any, startingDateFormat: any = 'dd/mm/yyyy') {
     if(appliedFilterId === DURATION_FILTERS.daily.id) {
-      return this.getWeekDaysList();
+      return startingDate ? this.getWeekDaysList(startingDate, startingDateFormat): this.getWeekDaysList();
     } else if(appliedFilterId === DURATION_FILTERS.weekly.id) {
-      return this.getWeekDaysList();
+      return startingDate ? this.getWeekDaysList(startingDate, startingDateFormat): this.getWeekDaysList();
     } else if(appliedFilterId === DURATION_FILTERS.monthly.id) {
-      const date = new Date();
-      return this.getmonthDaysList(date.getMonth() + 1, date.getFullYear())
+      const todayDate = new Date();
+      const firstDayOfMonth = new Date(todayDate.getFullYear(), todayDate.getMonth(), 1);
+      startingDate = startingDate? startingDate: this.getDateStringFromDate(firstDayOfMonth)
+      return this.getmonthDaysList1(startingDate, startingDateFormat); 
     }
   }
 
@@ -66,6 +68,7 @@ export class CalenderService {
     }).reverse();
   }
 
+  // accepting monthNo: 1-12
   getmonthDaysList(monthNo: number, year: number) {
     let monthDays: any= [];
     const firstDayOfMonth = new Date(year, monthNo-1, 1);
@@ -84,5 +87,121 @@ export class CalenderService {
       firstDayOfMonth.setDate(firstDayOfMonth.getDate() + 1);
     })
     return monthDays;
+  }
+
+  getWeekList1(startDate: any, dateFormat: any = 'dd/mm/yyyy') {
+    let weekDays: any = [];
+    if(dateFormat == 'dd/mm/yyyy') {
+      startDate = this.convertDateInto_MMDDYYYY(startDate);
+    }
+    startDate = new Date(startDate);
+    let endDate = new Date(startDate);
+    endDate.setDate(endDate.getDate() + 7);
+    const [startFormatDate, endFormatDate] = [this.getDateStringFromDate(startDate), this.getDateStringFromDate(endDate)]
+    const totalDays = this.getDayDifferenceBetweenDates(startFormatDate, endFormatDate);
+    Array(totalDays).fill(1).forEach((elm, i) => {
+      const [dd, mm, yyyy] = [new Date(startDate).getDate(), new Date(startDate).getMonth()+1, new Date(startDate).getFullYear()];
+      weekDays.push({
+        dd,
+        mm,
+        yyyy,
+        formatDate: `${dd < 10 ? '0'+dd : dd}/${mm < 10 ? '0'+mm: mm }/${yyyy}`,
+        weekDay: weekDay[startDate.getDay()]
+      });
+      startDate.setDate(startDate.getDate() + 1);
+    })
+    return weekDays;
+  }
+
+  getmonthDaysList1(startDate: any, dateFormat: any = 'dd/mm/yyyy') {
+    let monthDays: any = [];
+    if(dateFormat == 'dd/mm/yyyy') {
+      startDate = this.convertDateInto_MMDDYYYY(startDate);
+    }
+    startDate = new Date(startDate);
+    let endDate = new Date(startDate);
+    endDate.setMonth(endDate.getMonth() + 1);
+    const [startFormatDate, endFormatDate] = [this.getDateStringFromDate(startDate), this.getDateStringFromDate(endDate)]
+    const totalDays = this.getDayDifferenceBetweenDates(startFormatDate, endFormatDate);
+    Array(totalDays).fill(1).forEach((elm, i) => {
+      const [dd, mm, yyyy] = [new Date(startDate).getDate(), new Date(startDate).getMonth()+1, new Date(startDate).getFullYear()];
+      monthDays.push({
+        dd,
+        mm,
+        yyyy,
+        formatDate: `${dd < 10 ? '0'+dd : dd}/${mm < 10 ? '0'+mm: mm }/${yyyy}`,
+        weekDay: weekDay[startDate.getDay()]
+      });
+      startDate.setDate(startDate.getDate() + 1);
+    })
+    return monthDays;
+  }
+
+  convertDateInto_MMDDYYYY = (date: any) => {
+    const splitDate = date.split('/');
+    return `${splitDate[1]}/${splitDate[0]}/${splitDate[2]}`;
+  }
+
+  convertDateInto_YYYYMMDD = (date: any, dateFormat: any) => {
+    if(dateFormat == 'dd/mm/yyyy') {
+      const splitDate = date.split('/');
+      return `${splitDate[2]}/${splitDate[1]}/${splitDate[0]}`;
+    } else if(dateFormat == 'mm/dd/yyyy') {
+      const splitDate = date.split('/');
+      return `${splitDate[2]}/${splitDate[0]}/${splitDate[1]}`;
+    } else {
+      return '';
+    }
+  }
+
+  getDayDifferenceBetweenDates(date1: any, date2: any, date1Format: any = 'dd/mm/yyyy', date2Format: any = 'dd/mm/yyyy') {
+    if(date1Format == 'dd/mm/yyyy') {
+      date1 = this.convertDateInto_MMDDYYYY(date1);
+    }
+    if(date2Format == 'dd/mm/yyyy') {
+      date2 = this.convertDateInto_MMDDYYYY(date2);
+    }
+    const firstDate: any = new Date(date1);
+    const secondDate: any = new Date(date2);
+    const diffTime = Math.abs(secondDate - firstDate);
+    return Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+  }
+
+  isFirstDateGreaterThanSecond(date1: any, date2: any, date1Format: any = 'dd/mm/yyyy', date2Format: any = 'dd/mm/yyyy') {
+    if(date1Format == 'dd/mm/yyyy') {
+      date1 = this.convertDateInto_MMDDYYYY(date1);
+    }
+    if(date2Format == 'dd/mm/yyyy') {
+      date2 = this.convertDateInto_MMDDYYYY(date2);
+    }
+    const firstDate: any = new Date(date1);
+    const secondDate: any = new Date(date2);
+    return firstDate > secondDate;
+  }
+
+  isFirstTimeGreaterThanSecond(date1: any, date1Format: any, time1: any, date2: any, date2Format: any, time2: any) {
+    //time Format would be: HH:MM
+    if(date1Format == 'dd/mm/yyyy') {
+      date1 = this.convertDateInto_YYYYMMDD(date1, date1Format);
+    }
+    if(date1Format == 'mm/dd/yyyy') {
+      date1 = this.convertDateInto_YYYYMMDD(date1, date1Format);
+    }
+    if(date2Format == 'dd/mm/yyyy') {
+      date2 = this.convertDateInto_YYYYMMDD(date2, date2Format);
+    }
+    if(date2Format == 'mm/dd/yyyy') {
+      date2 = this.convertDateInto_YYYYMMDD(date2, date2Format);
+    }
+    date1 = date1.split('/').join('-')
+    date2 = date2.split('/').join('-')
+    const firstDate = new Date(`${date1} ` + time1);
+    const secondDate = new Date(`${date2} ` + time2);
+    return firstDate.getTime() > secondDate.getTime();
+  }
+
+  getCurrentTime() {
+    const time = new Date();
+    return time.getHours() + ":" + time.getMinutes();
   }
 }

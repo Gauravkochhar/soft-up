@@ -243,6 +243,7 @@ h1 span {
 	border-radius: 10px;
 	&:focus {
 		box-shadow: none;
+		outline: none;
 	}
 	img {
 		margin-left: 10px;
@@ -267,6 +268,8 @@ h1 span {
 
 .cp {
 	cursor: pointer;
+	width: 20px;
+	text-align: center;
 }
 
 .default-shadow {
@@ -405,4 +408,9 @@ h1 span {
 		background: $primary1;
 		color: $light;
 	}
+}
+
+.opacity-point-3 {
+    opacity: 0.3;
+	pointer-events: none;
 }

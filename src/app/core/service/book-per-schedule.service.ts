@@ -21,7 +21,6 @@ export class BookPerScheduleService {
         startDate,
         endDate
       }
-      console.log(this.activeWeeklyFilterRange)
     }
     if(appliedFilterId == DURATION_FILTERS.monthly.id) {
       const startDate = dateRangeList.length ? dateRangeList[0].formatDate: '';

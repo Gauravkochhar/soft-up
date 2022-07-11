@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { TIME_SLOTS } from '../core/config/device.config';
+import { CalenderService } from '../core/service/calender.service';
 
 @Component({
   selector: 'app-calender-month',
@@ -9,13 +10,17 @@ import { TIME_SLOTS } from '../core/config/device.config';
 export class CalenderMonthComponent implements OnInit, OnChanges {
 
   public readonly TIME_SLOTS = TIME_SLOTS;
+  @Input() todayDate: any;
   @Input() activeBookingEventDetails: any;
   @Input() dateRangeList: any = [];
   @Input() bookEventColourDetails: any = {};
+  @Input() selectedLocationFilterList: any[] = [];
   public totalMonthDays:any;
   @Output() viewLocation = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    public calenderService: CalenderService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -26,7 +31,7 @@ export class CalenderMonthComponent implements OnInit, OnChanges {
 
   getDayWiseEvent(date: any) {
     const event = this.activeBookingEventDetails.find((elm: any) => elm.date == date);
-    return event ? event.slots: [];
+    return event ? event.slots.filter((elm: any) => this.selectedLocationFilterList.some((elm1) => elm1.id == elm.eventLocationDetail.locationId)): [];
   }
 
   getSlotDetail(slotTime: any, slots: any) {
@@ -37,9 +42,9 @@ export class CalenderMonthComponent implements OnInit, OnChanges {
     return (text.split(' ').map((word: any) => word[0])).join('');
   }
 
-  viewEvent(eventDetail:any){
+  viewEvent(eventDetail:any, isEventMissed: boolean){
     if(eventDetail && eventDetail.eventLocationDetail) {
-      const locationCard = {...eventDetail.eventLocationDetail, id:eventDetail.eventLocationDetail.locationId};
+      const locationCard = {...eventDetail.eventLocationDetail, id:eventDetail.eventLocationDetail.locationId, isEventMissed};
       this.viewLocation.emit(locationCard);
     }
   } 
