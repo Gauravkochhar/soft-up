@@ -3,30 +3,43 @@
             "routeName": "Home",
             "path": ""
         },
+
         {
-            "routeName": "Book Per Tour",
-            "path": "/booking"
-        },
-        {
-            "routeName": "Soft Fly",
+            "routeName": "Fly Now",
             "path": "",
             "subPath": [{
-                    "routeName": "Soft Fly First",
-                    "path": "/soft-fly-first"
+                    "routeName": "Book per Tour",
+                    "path": "/Book-per-tour"
                 },
                 {
-                    "routeName": "Soft Fly Second",
-                    "path": "/soft-fly-second"
-                },
-                {
-                    "routeName": "Soft Fly Third",
-                    "path": "/soft-fly-third"
+                    "routeName": "Book per Schedule",
+                    "path": "/Book-per-schedule"
                 }
+
+            ]
+        },
+
+        {
+            "routeName": "Join Us",
+            "path": "",
+            "subPath": [{
+                    "routeName": "Promote your destination",
+                    "path": "/destination"
+                },
+                {
+                    "routeName": "Promote your service",
+                    "path": "/service"
+                }
+
             ]
         },
         {
             "routeName": "About Us",
             "path": "/about-us"
+        },
+        {
+            "routeName": "Our Services",
+            "path": "/our-services"
         },
         {
             "routeName": "Contact Us",
