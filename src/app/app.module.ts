@@ -26,7 +26,8 @@ import { MatInputModule } from '@angular/material/input';
 import { OurServicesComponent } from './our-services/our-services.component';
 import { JoinUsServiceComponent } from './join-us-service/join-us-service.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 const environmentConfig: any = environment.logger;
 
 @NgModule({
@@ -37,6 +38,7 @@ const environmentConfig: any = environment.logger;
     SharedModule,
     SlickCarouselModule,
     HttpClientModule,
+    MatDatepickerModule,
     LoggerModule.forRoot({
       level: NgxLoggerLevel[environmentConfig.level],
     } as any),
@@ -45,7 +47,8 @@ const environmentConfig: any = environment.logger;
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    MatNativeDateModule
   ],
   providers: [
   ],

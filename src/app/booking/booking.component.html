@@ -3,47 +3,67 @@
         <ul class="progressbar">
             <li class="active">Order Details</li>
             <li [ngClass]="step >= 2 ? 'active' : ''">About you</li>
-            <li [ngClass]="step >= 3 ? 'active' : ''">Payment</li>
+            <li [ngClass]="step >= 3 ? 'active' : ''" class="bordered-circle">Payment</li>
             <li [ngClass]="step >= 4 ? 'active' : ''">Confirm</li>
         </ul>
         <hr>
         <div class="row" *ngIf="step === 1">
-            <div class="col-md-8">
+            <div class="col-md-8 col-left">
                 <div class="booking-form">
-                    <div class="row">
-                        <div class="col-md-6 t-left">
-                            <h5>Select Date</h5>
+                    <div class="row row--date">
+                        <div class="col-md-6 t-left d-flex align-items-center">
+                            <h5 class="mb-0">Select Date</h5>
                         </div>
                         <div class="col-md-6 t-right">
-                            <select>
-                                <option>Jun 2022</option>
-                                <option>July 2022</option>
-                                <option>August 2022</option>
-                            </select>
+                            <div class="dropdown">
+                                <button class="btn btn--date" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Jun 2022 <img src="assets/images/arrow-down-gray.svg" alt="arrow-down-gray">
+                                </button>
+                                <div class="dropdown-menu dropdown-menu--calender" aria-labelledby="dropdownMenuButton">
+                                    <mat-calendar [(selected)]="selected"></mat-calendar>
+                                </div>
+                              </div>
                         </div>
                     </div>
-                    <ul class="weekly">
-                        <li class="active"><a href="javascript:void(0);">Today</a></li>
-                        <li><a href="javascript:void(0);"><span>THR</span><strong>02</strong></a></li>
-                        <li><a href="javascript:void(0);"><span>FRI</span><strong>03</strong></a></li>
-                        <li><a href="javascript:void(0);"><span>SAT</span><strong>04</strong></a></li>
-                        <li><a href="javascript:void(0);"><span>SUN</span><strong>05</strong></a></li>
-                        <li><a href="javascript:void(0);"><span>MON</span><strong>06</strong></a></li>
-                        <a href="javascript:void(0);" class="right_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                    </ul>
+                    <div class="custom-slider-wrapper">
+                        <a href="javascript:void(0);" class="arrow arrow--left" (click)="scrollSlide()"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                        <ul class="weekly" id="horizontal_slider">
+                            <li class="weekly-list active"><div class="weekly-list__inner ">Today</div></li>
+                            <li class="weekly-list"><div class="weekly-list__inner "><span>THR</span><strong>02</strong></div></li>
+                            <li class="weekly-list"><div class="weekly-list__inner"><span>FRI</span><strong>03</strong></div></li>
+                            <li class="weekly-list"><div class="weekly-list__inner"><span>SAT</span><strong>04</strong></div></li>
+                            <li class="weekly-list"><div class="weekly-list__inner"><span>SUN</span><strong>05</strong></div></li>
+                            <li class="weekly-list"><div class="weekly-list__inner"><span>MON</span><strong>06</strong></div></li>
+                            <li class="weekly-list"><div class="weekly-list__inner "><span>THR</span><strong>02</strong></div></li>
+                            <li class="weekly-list"><div class="weekly-list__inner"><span>FRI</span><strong>03</strong></div></li>
+                            <li class="weekly-list"><div class="weekly-list__inner"><span>SAT</span><strong>04</strong></div></li>
+                            <li class="weekly-list"><div class="weekly-list__inner"><span>SUN</span><strong>05</strong></div></li>
+                            <li class="weekly-list"><div class="weekly-list__inner"><span>MON</span><strong>06</strong></div></li>
+                            <li class="weekly-list"><div class="weekly-list__inner "><span>THR</span><strong>02</strong></div></li>
+                            <li class="weekly-list"><div class="weekly-list__inner"><span>FRI</span><strong>03</strong></div></li>
+                            <li class="weekly-list"><div class="weekly-list__inner"><span>SAT</span><strong>04</strong></div></li>
+                            <li class="weekly-list"><div class="weekly-list__inner"><span>SUN</span><strong>05</strong></div></li>
+                            <li class="weekly-list"><div class="weekly-list__inner"><span>MON</span><strong>06</strong></div></li>
+                            <li class="weekly-list"><div class="weekly-list__inner "><span>THR</span><strong>02</strong></div></li>
+                            <li class="weekly-list"><div class="weekly-list__inner"><span>FRI</span><strong>03</strong></div></li>
+                            <li class="weekly-list"><div class="weekly-list__inner"><span>SAT</span><strong>04</strong></div></li>
+                            <li class="weekly-list"><div class="weekly-list__inner"><span>SUN</span><strong>05</strong></div></li>
+                            <li class="weekly-list"><div class="weekly-list__inner"><span>MON</span><strong>06</strong></div></li>
+                        </ul>
+                        <a href="javascript:void(0);" (click)="scrollSlide(true)" class="arrow arrow--right"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                    </div>
                     <hr>
-                    <h5 class="form_heading">Select Time</h5>
+                    <h5 class="form_heading form_heading--time">Select Time</h5>
                     <ul class="time">
-                        <li><a href="javascript:void(0);">Today</a></li>
-                        <li><a href="javascript:void(0);">08 - 09 AM</a></li>
-                        <li class="active"><a href="javascript:void(0);">10 - 11 AM</a></li>
-                        <li><a href="javascript:void(0);">11 - 12 AM</a></li>
-                        <li><a href="javascript:void(0);">04 - 06 PM</a></li>
-                        <li><a href="javascript:void(0);">05 - 06 PM</a></li>
-                        <li><a href="javascript:void(0);">11 - 12 AM</a></li>
+                        <li class="time-list time-list--disabled"><div class="time-list__inner">Today</div></li>
+                        <li class="time-list"><div class="time-list__inner">08 - 09 AM</div></li>
+                        <li class="time-list active"><div class="time-list__inner">10 - 11 AM</div></li>
+                        <li class="time-list"><div class="time-list__inner">11 - 12 AM</div></li>
+                        <li class="time-list"><div class="time-list__inner">04 - 06 PM</div></li>
+                        <li class="time-list"><div class="time-list__inner">05 - 06 PM</div></li>
+                        <li class="time-list"><div class="time-list__inner">11 - 12 AM</div></li>
                     </ul>
                     <ul class="next-btn">
-                        <li><a href="javascript:void(0);" (click)="next()">Next</a></li>
+                        <li><a href="javascript:void(0);" class="disabled" (click)="next()">Next</a></li>
                     </ul>
                 </div>
             </div>
@@ -54,49 +74,72 @@
                     <h4>Taj Mahal - India</h4>
                     <p>Safari</p>
                     <ul>
-                        <li>Taj Mahal - India (safari) <span>$ 22.00</span></li>
-                        <li>Discount <span>$ 0.00</span></li>
-                        <li>Total <strong>$22.00</strong></li>
+                        <li>
+                            <div class="pricing">
+                                Taj Mahal - India (safari) <span>$ 22.00</span>
+                            </div>
+                            <div class="pricing">
+                                Discount <span>$ 0.00</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pricing">
+                                Total <strong>$22.00</strong>
+                            </div>
+                        </li>
                         <li class="apply-coupne"><a href="javascript:void(0);">Apply Promocode</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="row" *ngIf="step === 2">
-            <div class="col-md-8">
-                <div class="booking-form">
+            <div class="col-md-8 col-left">
+                <div class="booking-form booking-form--contactdetails">
                     <h5>Contact Information</h5>
                     <form>
-                        <div class="form-row">
-                            <div class="col">
+                        <div class="row">
+                            <div class="col-md-6 form-field-col">
                                 <label>First Name</label>
                                 <input type="text" class="form-control" placeholder="Enatr your first name">
+                                <p class="error-msg">This field is reqiued</p>
                             </div>
-                            <div class="col">
+                            <div class="col-md-6 form-field-col">
                                 <label>Last Name</label>
                                 <input type="text" class="form-control" placeholder="Enatr your last name">
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="col">
+                        <div class="row mb-3">
+                            <div class="col-md-6 form-field-col">
                                 <label>Contact Number</label>
-                                <input type="text" class="form-control" placeholder="989-8256-234">
+                                <div class="input-conuntry-dropdown">
+                                    <div class="dropdown">
+                                        <button class="btn btn-country" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                           <img src="assets/images/flag.svg" alt="" class="flag"> Jun 2022 <img src="assets/images/arrow-down-gray.svg" class="arrow--right" alt="arrow-down-gray"></button>
+                                        <div class="dropdown-menu dropdown-menu--country" aria-labelledby="dropdownMenuButton">
+                                          <a class="dropdown-item" href="#"><img src="assets/images/flag.svg" alt="" class="flag"> Action</a>
+                                          <a class="dropdown-item" href="#"><img src="assets/images/flag.svg" alt="" class="flag">Another action</a>
+                                          <a class="dropdown-item" href="#"><img src="assets/images/flag.svg" alt="" class="flag"> Something else here</a>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="989-8256-234">
+                                </div>
                             </div>
-                            <div class="col">
+                            <div class="col-md-6 form-field-col">
                                 <label>Email</label>
                                 <input type="text" class="form-control" placeholder="Enatr your email">
                             </div>
                         </div>
+                        <hr>
                         <h5>Your Location</h5>
-                        <div class="form-row loaction-input">
-                            <div class="col">
+                        <div class="row loaction-input">
+                            <div class="col-md-12 form-field-col">
                                 <label>Address</label>
                                 <input type="text" class="form-control" placeholder="124 City Road, London, EC1V 2NX">
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="col">
+                        <div class="row">
+                            <div class="col-md-6 form-field-col">
                                 <label>Country</label>
                                 <select>
                                   <option>Enter your country</option>
@@ -105,7 +148,7 @@
                                   <option>Enter your country</option>
                               </select>
                             </div>
-                            <div class="col">
+                            <div class="col-md-6 form-field-col">
                                 <label>CIty</label>
                                 <select>
                                   <option>Enter your city</option>
@@ -115,8 +158,8 @@
                               </select>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="col">
+                        <div class="row">
+                            <div class="col-md-6 form-field-col">
                                 <label>Region</label>
                                 <select>
                                   <option>Enter your region</option>
@@ -126,8 +169,8 @@
                               </select>
                             </div>
                         </div>
-                        <div class="form-row mt-3">
-                            <div class="col">
+                        <div class="row mt-3">
+                            <div class="col-md-12">
                                 <ul class="next-btn">
                                     <li class="back-btn"><a href="javascript:void(0);" (click)="prev()">Back</a></li>
                                     <li><a href="javascript:void(0);" (click)="next()">Next</a></li>
@@ -145,39 +188,53 @@
                     <h4>Taj Mahal - India</h4>
                     <p>Safari</p>
                     <ul>
-                        <li>Taj Mahal - India (safari) <span>$ 22.00</span></li>
-                        <li>Discount <span>$ 0.00</span></li>
-                        <li>Total <strong>$22.00</strong></li>
+                        <li>
+                            <div class="pricing">
+                                Taj Mahal - India (safari) <span>$ 22.00</span>
+                            </div>
+                            <div class="pricing">
+                                Discount <span>$ 0.00</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pricing">
+                                Total <strong>$22.00</strong>
+                            </div>
+                        </li>
                         <li class="apply-coupne"><a href="javascript:void(0);">Apply Promocode</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="row" *ngIf="step === 3">
-            <div class="col-md-8">
-                <div class="booking-form">
-                    <h5>Payment Details</h5>
-                    <p>Enter your personal details to complete your viewing.</p>
+            <div class="col-md-8 col-left">
+                <div class="booking-form booking-form--payment">
+                   <div class="heading-custom">
+                        <h5>Payment Details</h5>
+                        <p class="mb-0">Enter your personal details to complete your viewing.</p>
+                   </div>
                     <form>
-                        <div class="form-row card-section">
-                            <div class="col">
-                                <a href="javascript:void(0);" class="active">
+                        <div class="row payment-card-row">
+                            <div class="col-md-6">
+                                <div class="active payment-type-block">
                                     <i class="fa fa-credit-card" aria-hidden="true"></i>
                                     <span>Cards</span>
-                                </a>
+                                </div>
                             </div>
-                            <div class="col">
-                                <a href="javascript:void(0);">
+                            <div class="col-md-6">
+                                <div class="payment-type-block">
                                     <i class="fa fa-paypal" aria-hidden="true"></i>
                                     <span>PayPal</span>
-                                </a>
+                                </div>
                             </div>
                         </div>
                         <div class="form-row card-number">
                             <div class="col">
                                 <label>Card Number</label>
-                                <input type="text" class="form-control" placeholder="9898  8256  4586  4558">
-                                <i class="fa fa-cc-visa" aria-hidden="true"></i>
+                                <div class="form-group--card">
+                                    <input type="text" class="form-control form-control--cardnum" placeholder="9898  8256  4586  4558">
+                                    <img src="assets/images/visa.png" alt="visa">
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
@@ -196,10 +253,10 @@
                                 <input type="text" class="form-control" placeholder="Enatr card CVC/CVV">
                             </div>
                         </div>
-                        <small>By confirming payment you are approving our Terms & Conditions and acknowledging our Privacy Policy.
+                        <small class="desc">By confirming payment you are approving our Terms & Conditions and acknowledging our Privacy Policy.
                         Your Payment information and test information will remain Confidential.</small>
-                        <div class="form-row mt-3">
-                            <div class="col">
+                        <div class="row mt-3">
+                            <div class="col-md-12">
                                 <ul class="next-btn">
                                     <li class="back-btn"><a href="javascript:void(0);" (click)="prev()">Back</a></li>
                                     <li><a href="javascript:void(0);" (click)="next()">Confirm Payment</a></li>
@@ -217,9 +274,19 @@
                     <h4>Taj Mahal - India</h4>
                     <p>Safari</p>
                     <ul>
-                        <li>Taj Mahal - India (safari) <span>$ 22.00</span></li>
-                        <li>Discount <span>$ 0.00</span></li>
-                        <li>Total <strong>$22.00</strong></li>
+                        <li>
+                            <div class="pricing">
+                                Taj Mahal - India (safari) <span>$ 22.00</span>
+                            </div>
+                            <div class="pricing">
+                                Discount <span>$ 0.00</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pricing">
+                                Total <strong>$22.00</strong>
+                            </div>
+                        </li>
                         <li class="apply-coupne"><a href="javascript:void(0);">Apply Promocode</a></li>
                     </ul>
                 </div>

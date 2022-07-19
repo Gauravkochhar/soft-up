@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookingComponent implements OnInit {
   public step = 1;
+  selected!: Date;
   constructor() { }
 
   ngOnInit(): void {
@@ -17,5 +18,13 @@ export class BookingComponent implements OnInit {
   }
   prev():void {
     this.step--;
+  }
+
+  scrollSlide(isRight?:any) {
+    if(isRight){
+      (document.getElementById('horizontal_slider') as HTMLElement).scrollLeft +=150;
+    }else {
+      (document.getElementById('horizontal_slider') as HTMLElement).scrollLeft -=150;
+    }
   }
 }
